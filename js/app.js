@@ -849,7 +849,7 @@ class WhatsAppMarketingApp {
     const name = document.getElementById('contact-name')?.value || 'Friend';
     const phone = document.getElementById('contact-phone')?.value || '';
     
-    this.showToast(`✅ Thank you ${name}! Our Next ReachDMS specialist (+91 98201 44521) will call you within 15 minutes.`, 'success');
+    this.showToast(`✅ Thank you ${name}! Our WhatsApp Marketing specialist (+91 98201 44521) will call you within 15 minutes.`, 'success');
   }
 
   showToast(message, type = 'info') {

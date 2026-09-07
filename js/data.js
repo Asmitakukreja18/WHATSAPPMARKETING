@@ -1,11 +1,11 @@
-// Next ReachDMS - Enterprise CPaaS & Conversational Marketing Platform Store
+// WhatsApp Marketing - Enterprise CPaaS & Conversational Marketing Platform Store
 
 const DASHBOARD_DATA = {
   // Current Logged-in Account Profile
   currentUser: {
     name: "Rajesh Kumar",
     company: "Apex Global Enterprises",
-    email: "rajesh@reachdms.io",
+    email: "rajesh@whatsappmarketing.io",
     phone: "+91 98201 44521",
     role: "Director of Growth",
     avatar: "RK",
@@ -15,7 +15,7 @@ const DASHBOARD_DATA = {
       totalUsed: 1150000,
       remaining: 3850000,
       walletBalance: "₹46,200.00",
-      tier: "ReachDMS Enterprise Tier (Unlimited Throughput)",
+      tier: "WhatsApp Marketing Enterprise Tier (Unlimited Throughput)",
       perMsgRate: "₹0.11 / msg"
     },
     wabaStatus: {
@@ -29,7 +29,7 @@ const DASHBOARD_DATA = {
     }
   },
 
-  // ReachDMS Customer Impact Case Studies
+  // WhatsApp Marketing Customer Impact Case Studies
   caseStudies: [
     {
       id: "cs_retail",
@@ -37,7 +37,7 @@ const DASHBOARD_DATA = {
       client: "Nova Luxe Apparel",
       metric: "+48% Revenue Spike & 5.2x ROI",
       challenge: "Customer drop-off on traditional SMS promotions with low click-through rates.",
-      solution: "Deployed Next ReachDMS SmartQueue with interactive catalog carousels and personalized 1-tap checkout links.",
+      solution: "Deployed WhatsApp Marketing SmartQueue with interactive catalog carousels and personalized 1-tap checkout links.",
       results: ["52,000 WhatsApp broadcasts dispatched in 10 mins", "99.6% inbox delivery with 94.2% read rate", "₹24.6 Lakhs in sales unlocked in the first 48 hours"],
       tag: "5.2x ROI"
     },
@@ -47,7 +47,7 @@ const DASHBOARD_DATA = {
       client: "UrbanBlend Direct",
       metric: "41% Automated Cart Recovery",
       challenge: "High cart abandonment rates on Shopify store with generic email follow-ups ignored.",
-      solution: "Implemented Next ReachDMS Event Webhooks triggering dynamic WhatsApp reminders with time-sensitive discount codes.",
+      solution: "Implemented WhatsApp Marketing Event Webhooks triggering dynamic WhatsApp reminders with time-sensitive discount codes.",
       results: ["8,420 abandoned carts recovered on autopilot", "46.8% button click engagement rate", "₹6.8 Lakhs added to monthly recurring revenue"],
       tag: "41% Recovered"
     },
@@ -57,7 +57,7 @@ const DASHBOARD_DATA = {
       client: "Skyline & Apex Living Dubai",
       metric: "185+ Private Site Bookings",
       challenge: "Engaging global high-net-worth property investors across India and the GCC without spam flags.",
-      solution: "Leveraged ReachDMS HyperRoute with HD video walkthroughs, digital payment tokens, and WhatsApp instant calendar booking.",
+      solution: "Leveraged WhatsApp Marketing HyperRoute with HD video walkthroughs, digital payment tokens, and WhatsApp instant calendar booking.",
       results: ["12,400 qualified investors reached with zero bans", "185 chauffeured site visits confirmed", "AED 6.4M in property token advances collected"],
       tag: "185+ Bookings"
     },
@@ -67,7 +67,7 @@ const DASHBOARD_DATA = {
       client: "AeroTech National Academy",
       metric: "95,000 Instant Hall Tickets",
       challenge: "Critical need for real-time exam admit card distribution with absolute zero delay or failure.",
-      solution: "Utilized ReachDMS High-Speed Turbo Dispatch with dynamic PDF generation and real-time delivery audit logs.",
+      solution: "Utilized WhatsApp Marketing High-Speed Turbo Dispatch with dynamic PDF generation and real-time delivery audit logs.",
       results: ["95,000 PDF admit cards delivered in 14 minutes", "100% verified inbox placement with blue-tick tracking", "Zero support ticket escalations"],
       tag: "99.9% Delivered"
     }
@@ -117,7 +117,7 @@ const DASHBOARD_DATA = {
       headerMedia: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80",
       mediaType: "image",
       body: "Hi {{Name}}! 🎉\n\nEnjoy an EXCLUSIVE *50% OFF* on our new Festive Collection at *Nova Luxe*.\n\nUse Code: *FESTIVE50* at checkout.\nValid till midnight this Sunday only! 🛍️✨",
-      footer: "Next ReachDMS • Reply STOP to unsubscribe",
+      footer: "WhatsApp Marketing • Reply STOP to unsubscribe",
       button1: "Claim 50% Off 🛍️",
       button2: "Store Directions 📍"
     },
@@ -127,7 +127,7 @@ const DASHBOARD_DATA = {
       headerMedia: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80",
       mediaType: "image",
       body: "Hello {{Name}}, you left items in your shopping bag! 🛒\n\nComplete your order in the next 15 minutes and get an *Extra 10% OFF* + FREE Express Delivery.\n\nYour Bag: {{ItemName}}\nDiscount Code: *RECOVER10*",
-      footer: "Next ReachDMS Direct Checkout",
+      footer: "WhatsApp Marketing Direct Checkout",
       button1: "Complete Order Now ⚡",
       button2: "Chat with Support 💬"
     },
@@ -137,7 +137,7 @@ const DASHBOARD_DATA = {
       headerMedia: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80",
       mediaType: "image",
       body: "Dear {{Name}},\n\nIntroducing *Skyline Residences* — Ultra-luxury 3 & 4 BHK apartments with private sky pools in Business Bay, Dubai.\n\nPre-launch token bookings now open with an exclusive 5-year post-handover payment plan.",
-      footer: "ReachDMS Prime Properties",
+      footer: "WhatsApp Marketing Prime Properties",
       button1: "Download HD Brochure 📑",
       button2: "Book VIP Chauffeur Visit 🚗"
     },
@@ -147,7 +147,7 @@ const DASHBOARD_DATA = {
       headerMedia: "",
       mediaType: "none",
       body: "Dear {{Name}},\n\nYour Admit Card for the *National Scholarship Exam 2026* is ready for download.\n\n• Roll No: {{RollNumber}}\n• Center: {{ExamCenter}}\n• Reporting Time: 08:30 AM\n\nPlease carry a printed copy with valid ID proof.",
-      footer: "ReachDMS Fast Alert System",
+      footer: "WhatsApp Marketing Fast Alert System",
       button1: "Download PDF Hall Ticket 📥",
       button2: "Exam Guidelines 📝"
     }
@@ -160,7 +160,7 @@ const DASHBOARD_DATA = {
       volume: "1,00,000 Messages",
       ratePerMsg: "₹0.13",
       totalCost: "₹13,000",
-      features: ["Next ReachDMS FlowEngine", "Virtual Anti-Ban Throttling", "100% Non-WhatsApp Credit Refund", "Real-Time Blue Tick Reports", "Standard Email & Chat Support"],
+      features: ["WhatsApp Marketing FlowEngine", "Virtual Anti-Ban Throttling", "100% Non-WhatsApp Credit Refund", "Real-Time Blue Tick Reports", "Standard Email & Chat Support"],
       isPopular: false,
       btnText: "Choose Starter"
     },
@@ -188,7 +188,7 @@ const DASHBOARD_DATA = {
   integrations: [
     { name: "Shopify Direct", desc: "Automate abandoned cart recovery, order dispatch alerts, and customer notifications.", icon: "🛍️", status: "Connected", category: "E-Commerce" },
     { name: "HubSpot CRM", desc: "Sync leads, trigger WhatsApp drip sequences from HubSpot workflow stages.", icon: "🎯", status: "Connected", category: "CRM" },
-    { name: "Zapier & Make", desc: "Connect Next ReachDMS with 5,000+ cloud apps and databases in seconds.", icon: "⚡", status: "Connected", category: "Automation" },
+    { name: "Zapier & Make", desc: "Connect WhatsApp Marketing with 5,000+ cloud apps and databases in seconds.", icon: "⚡", status: "Connected", category: "Automation" },
     { name: "Razorpay & Stripe", desc: "Send WhatsApp payment links with automated instant receipt generation.", icon: "💳", status: "Connected", category: "Payments" },
     { name: "OpenAI GPT-4o", desc: "Deploy intelligent 24/7 conversational support bots with smart lead qualification.", icon: "🤖", status: "Active", category: "AI Bots" },
     { name: "WooCommerce & Magento", desc: "Trigger transactional delivery tracking and review request sequences.", icon: "📦", status: "Available", category: "E-Commerce" }

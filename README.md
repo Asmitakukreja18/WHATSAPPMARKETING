@@ -1,6 +1,6 @@
-# Next ReachDMS — Enterprise CPaaS & WhatsApp Marketing Platform
+# WhatsApp Marketing Platform — Enterprise CPaaS & Conversational Marketing
 
-Next ReachDMS is a high-throughput conversational marketing and CPaaS (Communication Platform as a Service) platform designed for scaling businesses across India, UAE, and global markets.
+A high-throughput WhatsApp conversational marketing and CPaaS (Communication Platform as a Service) platform designed for scaling businesses with Meta Cloud API, SmartQueue anti-ban broadcast, and interactive customer engagement.
 
 ## 🚀 Key Features
 
@@ -25,7 +25,7 @@ Next ReachDMS is a high-throughput conversational marketing and CPaaS (Communica
 - **Number Filter Tool**: Built-in phone number validator to eliminate non-WhatsApp contacts.
 
 ## 🎨 Design & Architecture
-- **Theme**: Default Light Theme with high-contrast slate typography and cyan/emerald accents.
+- **Theme**: High-contrast Light/Dark mode with cyan/emerald accents and glassmorphism.
 - **Responsiveness**: 100% Mobile, Tablet, and Desktop responsive layout.
 - **Dual-Mode**: Single-click top toggle between Public Website and SaaS App Dashboard.
 
@@ -33,9 +33,9 @@ Next ReachDMS is a high-throughput conversational marketing and CPaaS (Communica
 ```
 ├── index.html                           # Main App Hub (Public Site + SaaS Dashboard Switcher)
 ├── demo_regi.html                       # Free Demo Registration & 100 Test Credits
-├── contact.html                         # Contact Us (Delhi Tech Hub & Dubai Enterprise Center)
+├── contact.html                         # Contact Us
 ├── case-studies.html                    # Verified Customer Case Studies & ROI Breakdown
-├── about-us.html                        # About Next ReachDMS & Telecom Infrastructure
+├── about-us.html                        # About WhatsApp Marketing & Telecom Infrastructure
 ├── leadership.html                      # Executive Leadership & Founders
 ├── whatsapp-marketing-services.html     # Bulk WhatsApp Broadcasts
 ├── whatsapp-business-api.html           # Official WhatsApp Business API & Green Tick
@@ -48,21 +48,8 @@ Next ReachDMS is a high-throughput conversational marketing and CPaaS (Communica
 │   └── style.css                        # Design System & Responsive Stylesheet
 └── js/
     ├── data.js                          # Platform Data Store, Presets & Case Studies
-    └── app.js                           # Multi-Mode Controller & Interactive Logic
+    └── app.js                           # Dashboard Simulator, Chart Engine & Reactive State
 ```
-
-## 💻 Quick Start
-
-To run locally:
-```bash
-# Using Node / npx
-npx serve -l 5000 .
-
-# Or using Python
-python -m http.server 5000
-```
-Open [http://localhost:5000](http://localhost:5000) in your web browser.
 
 ---
-
-&copy; 2026 Next ReachDMS. All rights reserved.
+© 2026 WhatsApp Marketing Platform. All rights reserved.
