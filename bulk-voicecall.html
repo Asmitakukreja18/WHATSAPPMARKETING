@@ -11,79 +11,891 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="css/style.css">
-</head>
-<body style="background: var(--bg-body); min-height: 100vh; display: flex; flex-direction: column;">
+  <style>
+    /* Responsive Enhancements for Voice OBD Page */
+    :root {
+      --header-height: 68px;
+    }
 
-  <!-- Header -->
-  <header style="background: var(--bg-card); border-bottom: 1px solid var(--border-subtle); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 40;">
-    <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-main);">
-      <div class="brand-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+    /* Base Layout & Wrapper */
+    .obd-page-wrapper {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Top Quick Info Bar */
+    .top-info-bar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @media (max-width: 640px) {
+      .top-info-bar {
+        justify-content: center;
+        text-align: center;
+      }
+      .top-info-bar .info-right {
+        display: none;
+      }
+    }
+
+    /* Main Responsive Header */
+    .site-header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 1.15rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .brand-logo svg {
+      color: var(--brand-amber);
+    }
+
+    /* Desktop Navigation */
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .desktop-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+      padding: 6px 4px;
+    }
+
+    .desktop-nav a:hover,
+    .desktop-nav a.active {
+      color: var(--brand-amber);
+      font-weight: 700;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Hamburger Menu Button (Mobile/Tablet) */
+    .mobile-menu-toggle {
+      display: none;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 8px 10px;
+      cursor: pointer;
+      color: var(--text-main);
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+    }
+
+    .mobile-menu-toggle:hover {
+      background: var(--bg-card-hover);
+    }
+
+    /* Mobile Drawer Menu */
+    .mobile-nav-drawer {
+      display: none;
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-card);
+      z-index: 99;
+      padding: 20px;
+      overflow-y: auto;
+      border-top: 1px solid var(--border-subtle);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mobile-nav-drawer.is-open {
+      display: flex;
+    }
+
+    .mobile-nav-drawer a {
+      padding: 12px 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      border-radius: var(--radius-md);
+      background: var(--bg-card-subtle);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-nav-drawer a:hover,
+    .mobile-nav-drawer a.active {
+      background: var(--brand-amber-glow);
+      color: var(--brand-amber);
+    }
+
+    .mobile-nav-drawer .mobile-actions {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: clamp(40px, 8vw, 80px) 20px clamp(30px, 6vw, 60px);
+      text-align: center;
+      background: radial-gradient(circle at 50% 20%, rgba(217, 119, 6, 0.12) 0%, transparent 70%);
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: var(--brand-amber-glow);
+      border: 1px solid rgba(217, 119, 6, 0.3);
+      border-radius: var(--radius-full);
+      color: var(--brand-amber);
+      font-size: clamp(0.75rem, 2vw, 0.85rem);
+      font-weight: 700;
+      margin-bottom: 20px;
+      max-width: 90%;
+      word-break: break-word;
+    }
+
+    .hero-title {
+      font-size: clamp(1.8rem, 4.5vw, 2.9rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+      padding: 0 10px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-cta-group .btn-primary,
+    .hero-cta-group .btn-secondary {
+      padding: 12px 24px;
+      font-size: 0.95rem;
+      border-radius: var(--radius-md);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      min-width: 200px;
+    }
+
+    /* Live Interactive OBD Call Flow Preview Card */
+    .simulator-container {
+      max-width: 900px;
+      margin: 40px auto 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: clamp(16px, 4vw, 32px);
+      box-shadow: var(--shadow-card);
+      text-align: left;
+    }
+
+    .simulator-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .simulator-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .simulator-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .call-flow-step {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .call-flow-step .step-num {
+      background: var(--brand-amber);
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    /* Key Metrics Bar */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .metric-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px 16px;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+    }
+
+    .metric-val {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--brand-amber);
+      margin-bottom: 4px;
+    }
+
+    .metric-lbl {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .metrics-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .metrics-bar {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Features Grid */
+    .features-section {
+      padding: clamp(30px, 6vw, 60px) 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: clamp(20px, 3vw, 28px);
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition-normal), border-color var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--brand-amber);
+      box-shadow: 0 12px 28px -6px rgba(217, 119, 6, 0.15);
+    }
+
+    .feature-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      background: var(--brand-amber-glow);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      color: var(--brand-amber);
+    }
+
+    /* Comparison Table / Responsive Container */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      margin-top: 30px;
+    }
+
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      min-width: 600px;
+    }
+
+    .responsive-table th, 
+    .responsive-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.88rem;
+    }
+
+    .responsive-table th {
+      background: var(--bg-card-subtle);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* CTA Banner Section */
+    .cta-banner-section {
+      background: linear-gradient(135deg, #78350f 0%, #d97706 100%);
+      color: white;
+      padding: clamp(40px, 6vw, 60px) 20px;
+      margin: 40px 20px;
+      border-radius: var(--radius-xl);
+      text-align: center;
+      max-width: 1160px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-banner-section h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .cta-banner-section p {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      opacity: 0.92;
+      max-width: 650px;
+      margin: 0 auto 24px;
+    }
+
+    /* Responsive Footer */
+    .site-footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-subtle);
+      padding: 40px 20px 24px;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 900px) {
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .footer-col h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--text-main);
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-col a {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-col a:hover {
+      color: var(--brand-amber);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 30px;
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Screen width queries */
+    @media (max-width: 992px) {
+      .desktop-nav {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      .header-phone-btn {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-cta-group .btn-primary,
+      .hero-cta-group .btn-secondary {
+        width: 100%;
+      }
+      .site-header {
+        padding: 10px 14px;
+      }
+      .brand-logo {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body class="obd-page-wrapper">
+
+  <!-- Top Info Bar -->
+  <div class="top-info-bar">
+    <div>
+      ⚡ <strong>High Capacity OBD Cloud:</strong> 10,000+ Simultaneous Channels Active
+    </div>
+    <div class="info-right">
+      <span>Helpline: <strong>+91 98201 44521</strong></span>
+      <span style="margin: 0 8px;">│</span>
+      <span>Dubai Hub: <strong>+971 50 123 4567</strong></span>
+    </div>
+  </div>
+
+  <!-- Responsive Header -->
+  <header class="site-header">
+    <a href="index.html" class="brand-logo">
+      <div class="brand-icon" style="background: var(--brand-amber-glow); border-color: rgba(217, 119, 6, 0.4);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
       </div>
-      <div style="font-size: 1.15rem; font-weight: 800;">WhatsApp <strong>Marketing</strong></div>
+      <div>WhatsApp <strong style="color: var(--brand-amber);">Marketing</strong></div>
     </a>
 
-    <nav class="public-header-nav" style="display: flex; align-items: center; gap: 16px; font-size: 0.88rem; font-weight: 600;">
-      <a href="index.html" style="color: var(--text-muted); text-decoration: none;">Platform</a>
-      <a href="whatsapp-marketing-services.html" style="color: var(--text-muted); text-decoration: none;">WhatsApp Broadcasts</a>
-      <a href="bulk-sms.html" style="color: var(--text-muted); text-decoration: none;">ReachSMS</a>
-      <a href="bulk-voicecall.html" style="color: var(--brand-cyan); font-weight: 700; text-decoration: none;">Voice OBD</a>
-      <a href="rcs-messaging-services.html" style="color: var(--text-muted); text-decoration: none;">RCS</a>
-      <a href="pricing-sms-voice-email-wa.html" style="color: var(--text-muted); text-decoration: none;">Pricing</a>
-      <a href="about-us.html" style="color: var(--text-muted); text-decoration: none;">About</a>
-      <a href="contact.html" style="color: var(--text-muted); text-decoration: none;">Contact</a>
+    <!-- Desktop Nav Links -->
+    <nav class="desktop-nav">
+      <a href="index.html">Platform</a>
+      <a href="whatsapp-marketing-services.html">WhatsApp Broadcasts</a>
+      <a href="bulk-sms.html">ReachSMS</a>
+      <a href="bulk-voicecall.html" class="active">Voice OBD</a>
+      <a href="rcs-messaging-services.html">RCS</a>
+      <a href="pricing-sms-voice-email-wa.html">Pricing</a>
+      <a href="about-us.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
 
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <a href="tel:+919820144521" class="btn-secondary" style="font-size: 0.82rem; text-decoration: none;">📞 +91 98201 44521</a>
-      <a href="demo_regi.html" class="btn-primary" style="text-decoration: none;">Free Demo</a>
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <a href="tel:+919820144521" class="btn-secondary header-phone-btn" style="font-size: 0.82rem; text-decoration: none;">📞 +91 98201 44521</a>
+      <a href="demo_regi.html" class="btn-primary" style="text-decoration: none; font-size: 0.85rem; padding: 8px 16px;">Free Demo</a>
+      
+      <!-- Hamburger Toggle Button -->
+      <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section style="padding: 60px 20px; text-align: center; background: radial-gradient(circle at 50% 30%, rgba(217, 119, 6, 0.12) 0%, transparent 65%);">
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <a href="index.html"><span>🏠 Home & Platform</span> <span>→</span></a>
+    <a href="whatsapp-marketing-services.html"><span>💬 WhatsApp Broadcasts</span> <span>→</span></a>
+    <a href="bulk-sms.html"><span>📱 ReachSMS DLT</span> <span>→</span></a>
+    <a href="bulk-voicecall.html" class="active"><span>📞 Bulk Voice OBD</span> <span>✓</span></a>
+    <a href="rcs-messaging-services.html"><span>⚡ RCS Business Messaging</span> <span>→</span></a>
+    <a href="pricing-sms-voice-email-wa.html"><span>📊 Pricing & Plans</span> <span>→</span></a>
+    <a href="case-studies.html"><span>🏆 Case Studies</span> <span>→</span></a>
+    <a href="about-us.html"><span>🏢 About WhatsApp Marketing</span> <span>→</span></a>
+    <a href="contact.html"><span>✉️ Contact Us</span> <span>→</span></a>
+
+    <div class="mobile-actions">
+      <a href="tel:+919820144521" class="btn-secondary" style="justify-content: center; font-size: 0.9rem;">📞 Call Helpline: +91 98201 44521</a>
+      <a href="demo_regi.html" class="btn-primary" style="justify-content: center; font-size: 0.95rem;">🎁 Request Voice Demo (100 Free Calls)</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
     <div style="max-width: 900px; margin: 0 auto;">
-      <span class="brand-badge" style="background: var(--brand-amber-glow); color: var(--brand-amber); margin-bottom: 14px;">Automated OBD • DTMF Keypress Capture</span>
-      <h1 style="font-size: 2.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 16px;">
-        High-Volume <span class="gradient-text">Voice Call (OBD)</span> Broadcasting
+      <div class="hero-badge">
+        <span>🎙️ 100% Automated OBD</span>
+        <span>•</span>
+        <span>DTMF Keypress Capture</span>
+        <span>•</span>
+        <span>30s Pulse Billing</span>
+      </div>
+
+      <h1 class="hero-title">
+        High-Volume <span class="highlight">Voice Call (OBD)</span> Broadcasting
       </h1>
-      <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 720px; margin: 0 auto 28px; line-height: 1.6;">
-        Broadcast recorded voice messages, conduct customer surveys, and collect interactive DTMF feedback with 10,000+ simultaneous channel capacity.
+
+      <p class="hero-subtitle">
+        Deliver pre-recorded audio messages, conduct automated customer feedback surveys, and capture real-time DTMF key responses with our 10,000+ simultaneous channel cloud telephony infrastructure.
       </p>
-      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-        <a href="demo_regi.html" class="btn-primary" style="text-decoration: none; padding: 12px 28px;">🎁 Start Free Voice Demo</a>
-        <a href="pricing-sms-voice-email-wa.html" class="btn-secondary" style="text-decoration: none; padding: 12px 28px;">📊 Voice Call Rates</a>
+
+      <div class="hero-cta-group">
+        <a href="demo_regi.html" class="btn-primary">
+          <span>🎁 Start Free Voice Demo</span>
+        </a>
+        <a href="pricing-sms-voice-email-wa.html" class="btn-secondary">
+          <span>📊 View Voice Call Rates</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Live Interactive Voice Call Campaign Preview -->
+    <div class="simulator-container">
+      <div class="simulator-header">
+        <div>
+          <div style="font-weight: 800; font-size: 1.1rem; color: var(--text-main);">⚡ Live OBD Voice Campaign Engine</div>
+          <div style="font-size: 0.82rem; color: var(--text-muted);">Simulated Outbound Dialing with Interactive IVR Routing</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="status-indicator status-active" style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--brand-emerald);"></span>
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--brand-emerald);">Gateway Active (PRI / SIP Trunk)</span>
+        </div>
+      </div>
+
+      <div class="simulator-grid">
+        <div class="call-flow-step">
+          <div class="step-num">1</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.92rem; margin-bottom: 4px;">Instant Number Dialing</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Campaign dials target database with CLI caller ID. Auto-retries busy and unanswered numbers up to 3 times.</div>
+          </div>
+        </div>
+
+        <div class="call-flow-step">
+          <div class="step-num">2</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.92rem; margin-bottom: 4px;">Crystal Clear Audio Playback</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Plays studio-quality MP3/WAV recording or dynamic AI Text-to-Speech in Hindi, English, and 12+ regional languages.</div>
+          </div>
+        </div>
+
+        <div class="call-flow-step">
+          <div class="step-num">3</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.92rem; margin-bottom: 4px;">Interactive DTMF Input</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;"><em>"Press 1 for Sales, Press 2 for WhatsApp Brochure"</em>. Customer keypad touches captured instantly in real time.</div>
+          </div>
+        </div>
+
+        <div class="call-flow-step">
+          <div class="step-num">4</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.92rem; margin-bottom: 4px;">Live Excel Logs & Webhooks</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Exact call duration, answer status, and keypress responses automatically pushed to your CRM or downloaded as CSV.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Features -->
-  <main class="public-section">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 50px;">
-      <div class="panel-card" style="padding: 26px;">
-        <div style="font-size: 2rem; margin-bottom: 12px;">📞</div>
+  <!-- Metrics Bar -->
+  <div class="metrics-bar">
+    <div class="metric-box">
+      <div class="metric-val">10,000+</div>
+      <div class="metric-lbl">Concurrent Calls Capacity</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-val">30 Sec</div>
+      <div class="metric-lbl">Pulse Fair Billing</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-val">14+</div>
+      <div class="metric-lbl">Indian & Regional Languages</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-val">99.8%</div>
+      <div class="metric-lbl">PRI Line Uptime SLA</div>
+    </div>
+  </div>
+
+  <!-- Features Matrix -->
+  <main class="features-section">
+    <div style="text-align: center; margin-bottom: 36px;">
+      <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 8px;">Enterprise Voice Broadcast Features</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 600px; margin: 0 auto;">Everything you need to execute high-impact political campaigns, event reminders, OTP voice verification, and lead generation.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">📞</div>
         <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">Automated Voice Broadcast</h3>
         <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Deliver crystal clear audio clips to lakhs of mobile phones in regional languages with automatic retry on busy numbers.</p>
       </div>
 
-      <div class="panel-card" style="padding: 26px;">
-        <div style="font-size: 2rem; margin-bottom: 12px;">🔢</div>
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">🔢</div>
         <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">Interactive DTMF Input Capture</h3>
         <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Prompt callers to press 1 to speak with an agent, press 2 for SMS brochure, or press 3 to confirm their booking.</p>
       </div>
 
-      <div class="panel-card" style="padding: 26px;">
-        <div style="font-size: 2rem; margin-bottom: 12px;">📊</div>
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">📊</div>
         <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">Live Call Duration Billing</h3>
         <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Pay only for answered calls with granular 30-second pulse billing and instant Excel export logs.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">🗣️</div>
+        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">AI Text-to-Speech (TTS)</h3>
+        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Dynamically insert recipient names, appointment dates, or payment dues using ultra-natural human sounding TTS.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">🛡️</div>
+        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">DND Filtering & Smart Retries</h3>
+        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Full TRAI regulation compliance with instant DND screening for promotional routes and open routes for transactional alerts.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">🔌</div>
+        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">REST API & Webhooks</h3>
+        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Integrate voice calls into your CRM, web app, or ERP with simple HTTP POST requests and live status webhooks.</p>
+      </div>
+    </div>
+
+    <!-- Responsive Pulse Pricing Table -->
+    <div style="margin-top: 50px;">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <h3 style="font-size: 1.4rem; font-weight: 800;">Transparent OBD Voice Call Pricing (Per 30s Pulse)</h3>
+        <p style="color: var(--text-muted); font-size: 0.88rem;">No setup fees, no monthly rentals. Pay only when user answers.</p>
+      </div>
+
+      <div class="table-container">
+        <table class="responsive-table">
+          <thead>
+            <tr>
+              <th>Volume Tier</th>
+              <th>30-Sec Pulse Rate</th>
+              <th>Channels Allocated</th>
+              <th>DTMF Capture</th>
+              <th>Delivery Speed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>10,000 - 50,000 Calls</strong></td>
+              <td><span style="color: var(--brand-amber); font-weight: 800;">₹0.20</span> / pulse</td>
+              <td>100 Parallel Lines</td>
+              <td>Included</td>
+              <td>Standard Priority</td>
+            </tr>
+            <tr>
+              <td><strong>50,000 - 2,00,000 Calls</strong></td>
+              <td><span style="color: var(--brand-amber); font-weight: 800;">₹0.16</span> / pulse</td>
+              <td>500 Parallel Lines</td>
+              <td>Included</td>
+              <td>High Priority</td>
+            </tr>
+            <tr>
+              <td><strong>2,00,000 - 10,00,000+ Calls</strong></td>
+              <td><span style="color: var(--brand-amber); font-weight: 800;">₹0.12</span> / pulse</td>
+              <td>2,000+ Dedicated PRI</td>
+              <td>Custom IVR Included</td>
+              <td>Ultra Turbo Queue</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer style="padding: 30px 40px; background: var(--bg-card); border-top: 1px solid var(--border-subtle); text-align: center; color: var(--text-muted); font-size: 0.85rem;">
-    WhatsApp Marketing &copy; 2026. Delhi Tech Hub: +91 98201 44521 | Dubai Enterprise Center: +971 50 123 4567 | support@whatsappmarketing.io
+  <!-- CTA Banner -->
+  <section class="cta-banner-section">
+    <h2>Ready to Launch Your Voice Campaign in 5 Minutes?</h2>
+    <p>Upload your audio recording, paste your contact list, and watch thousands of calls connect simultaneously with real-time analytics.</p>
+    <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+      <a href="demo_regi.html" class="btn-primary" style="background: white; color: #78350f; font-weight: 800; padding: 12px 28px; text-decoration: none; border-radius: var(--radius-md);">
+        🚀 Register for Free Demo
+      </a>
+      <a href="tel:+919820144521" class="btn-secondary" style="background: rgba(255, 255, 255, 0.15); color: white; border-color: rgba(255, 255, 255, 0.4); padding: 12px 24px; text-decoration: none; border-radius: var(--radius-md);">
+        📞 Talk to Voice Specialist
+      </a>
+    </div>
+  </section>
+
+  <!-- Responsive Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <div class="brand-icon" style="background: var(--brand-amber-glow); border-color: rgba(217, 119, 6, 0.4);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <strong style="font-size: 1.1rem;">WhatsApp Marketing</strong>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 340px;">
+          Enterprise communication and CPaaS cloud gateway providing High-Volume WhatsApp Broadcasts, DLT SMS, Voice OBD, and RCS messaging across India & Global markets.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="whatsapp-marketing-services.html">WhatsApp Broadcasts</a></li>
+          <li><a href="whatsapp-business-api.html">WhatsApp Business API</a></li>
+          <li><a href="bulk-sms.html">ReachSMS (DLT OTP & Promo)</a></li>
+          <li><a href="bulk-voicecall.html">Voice OBD & IVR</a></li>
+          <li><a href="rcs-messaging-services.html">RCS Business Messaging</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Live Dashboard Platform</a></li>
+          <li><a href="pricing-sms-voice-email-wa.html">Transparent Pricing</a></li>
+          <li><a href="case-studies.html">Client Success Stories</a></li>
+          <li><a href="about-us.html">About Company</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Direct Contact</h4>
+        <ul>
+          <li style="font-size: 0.85rem; color: var(--text-muted);">📞 +91 98201 44521</li>
+          <li style="font-size: 0.85rem; color: var(--text-muted);">📍 Delhi Tech Hub & Dubai</li>
+          <li style="font-size: 0.85rem; color: var(--text-muted);">✉️ support@whatsappmarketing.io</li>
+          <li style="margin-top: 8px;"><a href="demo_regi.html" class="btn-primary" style="display: inline-block; font-size: 0.78rem; padding: 6px 14px; text-decoration: none;">Book Demo</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      WhatsApp Marketing &copy; 2026. All rights reserved. Enterprise CPaaS Telephony SLA.
+    </div>
   </footer>
 
+  <!-- Mobile Drawer Menu Toggle Script -->
+  <script>
+    (function() {
+      const toggleBtn = document.getElementById('mobileMenuBtn');
+      const navDrawer = document.getElementById('mobileNavDrawer');
+
+      if (toggleBtn && navDrawer) {
+        toggleBtn.addEventListener('click', function() {
+          const isOpen = navDrawer.classList.toggle('is-open');
+          toggleBtn.setAttribute('aria-expanded', isOpen);
+          toggleBtn.innerHTML = isOpen 
+            ? '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'
+            : '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+        });
+
+        // Close menu when clicking outside or resizing
+        document.addEventListener('click', function(e) {
+          if (!navDrawer.contains(e.target) && !toggleBtn.contains(e.target) && navDrawer.classList.contains('is-open')) {
+            navDrawer.classList.remove('is-open');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            toggleBtn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+          }
+        });
+
+        window.addEventListener('resize', function() {
+          if (window.innerWidth > 992 && navDrawer.classList.contains('is-open')) {
+            navDrawer.classList.remove('is-open');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            toggleBtn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+          }
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
