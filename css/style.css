@@ -540,6 +540,21 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
   border-color: var(--text-subtle);
 }
 
+/* Header Compact Buttons */
+header .btn-primary,
+header .btn-secondary,
+.site-header .btn-primary,
+.site-header .btn-secondary,
+.header-actions .btn-primary,
+.header-actions .btn-secondary {
+  font-size: 0.78rem !important;
+  padding: 5px 12px !important;
+  border-radius: 6px !important;
+  gap: 5px !important;
+  line-height: 1.25 !important;
+  font-weight: 600 !important;
+}
+
 /* Page Body Container */
 .page-content {
   flex: 1;
