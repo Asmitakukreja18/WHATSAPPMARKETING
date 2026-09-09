@@ -656,10 +656,19 @@
       </div>
     </div>
     
-    <a href="dashboard.html" class="nav-item active">
-      <span>🚀</span> Bulk WhatsApp
+    <a href="javascript:void(0)" onclick="switchTab('compose')" class="nav-item active" id="nav-compose">
+      <span>✉️</span> Send Broadcast
     </a>
-    <a href="javascript:void(0)" onclick="openSettingsModal()" class="nav-item">
+    <a href="javascript:void(0)" onclick="switchTab('reports')" class="nav-item" id="nav-reports">
+      <span>📊</span> Delivery Reports
+    </a>
+    <a href="javascript:void(0)" onclick="switchTab('scheduled')" class="nav-item" id="nav-scheduled">
+      <span>⏱️</span> Scheduled Queue
+    </a>
+    <a href="javascript:void(0)" onclick="switchTab('contacts')" class="nav-item" id="nav-contacts">
+      <span>👥</span> Contacts & Lists
+    </a>
+    <a href="javascript:void(0)" onclick="switchTab('settings')" class="nav-item" id="nav-settings">
       <span>⚙️</span> Meta API Settings
     </a>
     <a href="index.html" class="nav-item">
@@ -679,122 +688,118 @@
     <!-- Top Header -->
     <header class="header">
       <div class="header-title">
-        <h1>WhatsApp Bulk Broadcast</h1>
-        <p>Send high-throughput text, images, videos & documents via Meta Cloud API</p>
+        <h1 id="pageTitle">Send WhatsApp Broadcast</h1>
+        <p id="pageSubtitle">Compose and dispatch high-throughput text, images, videos & documents</p>
       </div>
       <div class="header-actions">
-        <div class="status-badge" id="apiStatusBadge" onclick="openSettingsModal()">
+        <div class="status-badge" id="apiStatusBadge" onclick="switchTab('settings')">
           <span>⚡</span> <span id="apiStatusText">Meta API: Demo Gateway</span>
         </div>
-        <button class="btn-secondary" onclick="openSettingsModal()" style="padding: 8px 14px; font-size: 0.85rem;">
-          ⚙️ Configure API
-        </button>
       </div>
     </header>
 
-    <!-- Two-Column Layout -->
-    <div class="dashboard-grid">
-      
-      <!-- Column 1: Compose Form -->
-      <div class="card">
-        <div class="card-title">
-          <span>✉️</span> Compose Broadcast
-        </div>
-        <div class="card-desc">Add multiple numbers, choose media format, and dispatch real-time or schedule.</div>
-
-        <form id="broadcastForm">
-
-          <!-- 1. Multiple Recipients -->
-          <div class="form-group">
-            <div class="form-group-header">
-              <label for="recipientsInput">Recipient Numbers (with Country Code)</label>
-              <span class="helper-tag" onclick="pasteSampleNumbers()">+ Paste 4 Sample Numbers</span>
-            </div>
-            <textarea id="recipientsInput" rows="3" placeholder="Enter numbers separated by comma or new line:&#10;919820144521, 919876543210, 919599300365" required oninput="updateRecipientsCount()"></textarea>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
-              <span class="recipients-count" id="recipientsCount">🎯 0 numbers detected</span>
-              <span style="font-size: 0.75rem; color: var(--text-muted);">Format: CountryCode + Number (e.g. 919820144521)</span>
-            </div>
-          </div>
-
-          <!-- 2. Campaign Name -->
-          <div class="form-group">
-            <label for="campaignName">Campaign Title</label>
-            <input type="text" id="campaignName" value="Flash Offer Promo" placeholder="e.g. Weekend Launch Announcement">
-          </div>
-
-          <!-- 3. Message Type Selector -->
-          <div class="form-group">
-            <label>Message Type & Media</label>
-            <div class="media-tabs">
-              <button type="button" class="media-tab-btn active" onclick="setMediaType('text')">💬 Text Message</button>
-              <button type="button" class="media-tab-btn" onclick="setMediaType('image')">📸 Image (5 MB)</button>
-              <button type="button" class="media-tab-btn" onclick="setMediaType('video')">🎥 Video (16 MB)</button>
-              <button type="button" class="media-tab-btn" onclick="setMediaType('document')">📄 Document (100 MB)</button>
-            </div>
-
-            <!-- Dynamic Media Instructions -->
-            <div class="instruction-box" id="mediaInstructionBox">
-              <span>💬</span>
-              <div>
-                <strong>Text Limit:</strong> Supports up to <strong>4,096 characters</strong>. Supports formatting (*bold*, _italic_) and emojis 🚀.
-              </div>
-            </div>
-
-            <!-- Media URL or File Upload (Hidden by default for text) -->
-            <div id="mediaUploadSection" style="display: none;">
-              <div class="form-group">
-                <label for="mediaUrlInput">Direct Media URL (HTTPS)</label>
-                <input type="url" id="mediaUrlInput" placeholder="https://example.com/promo-video.mp4" oninput="updateMediaPreview()">
-              </div>
-
-              <div class="form-group">
-                <label for="mediaFileInput">Or Upload Local Media File</label>
-                <input type="file" id="mediaFileInput" onchange="handleFileSelected(this)">
-                <div id="fileSizeFeedback" class="file-size-feedback"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. Message / Caption Text -->
-          <div class="form-group">
-            <div class="form-group-header">
-              <label for="messageText">Message Body / Caption</label>
-              <span style="font-size: 0.78rem; color: var(--text-muted);" id="charCounter">0 / 4096</span>
-            </div>
-            <textarea id="messageText" rows="4" placeholder="Type your WhatsApp broadcast message here... Hi! Exclusive announcement from Marketiqx." required oninput="updateTextPreview()"></textarea>
-          </div>
-
-          <!-- Action Row -->
-          <div class="action-row">
-            <button type="submit" class="btn-primary" id="btnSendNow">
-              <span>🚀 Send Now (Real-Time)</span>
-            </button>
-            <button type="button" class="btn-secondary" onclick="openScheduleModal()">
-              <span>⏱️ Schedule Later</span>
-            </button>
-          </div>
-
-          <!-- Sending Progress -->
-          <div class="progress-box" id="progressBox">
-            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600;">
-              <span id="progressText">Dispatching via Meta Gateway...</span>
-              <span id="progressPercent">0%</span>
-            </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" id="progressBarFill"></div>
-            </div>
-          </div>
-
-          <!-- Status Alert -->
-          <div id="statusAlert" class="alert"></div>
-
-        </form>
-      </div>
-
-      <!-- Column 2: Live WhatsApp Phone Simulator & Scheduled Queue -->
-      <div style="display: flex; flex-direction: column; gap: 24px;">
+    <!-- ==================== TAB 1: COMPOSE BROADCAST ==================== -->
+    <div id="tab-compose" class="tab-content active">
+      <div class="dashboard-grid">
         
+        <!-- Column 1: Compose Form -->
+        <div class="card">
+          <div class="card-title">
+            <span>✉️</span> New Campaign Message
+          </div>
+          <div class="card-desc">Add recipient numbers, choose media format, and send instantly or schedule.</div>
+
+          <form id="broadcastForm">
+
+            <!-- 1. Multiple Recipients -->
+            <div class="form-group">
+              <div class="form-group-header">
+                <label for="recipientsInput">Recipient Numbers (with Country Code)</label>
+                <span class="helper-tag" onclick="pasteSampleNumbers()">+ Paste 4 Sample Numbers</span>
+              </div>
+              <textarea id="recipientsInput" rows="3" placeholder="Enter numbers separated by comma or new line:&#10;919820144521, 919876543210, 919599300365" required oninput="updateRecipientsCount()"></textarea>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                <span class="recipients-count" id="recipientsCount">🎯 0 numbers detected</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Format: CountryCode + Number (e.g. 919820144521)</span>
+              </div>
+            </div>
+
+            <!-- 2. Campaign Name -->
+            <div class="form-group">
+              <label for="campaignName">Campaign Title</label>
+              <input type="text" id="campaignName" value="Flash Offer Promo" placeholder="e.g. Weekend Launch Announcement">
+            </div>
+
+            <!-- 3. Message Type Selector -->
+            <div class="form-group">
+              <label>Message Format & Media</label>
+              <div class="media-tabs">
+                <button type="button" class="media-tab-btn active" onclick="setMediaType('text')">💬 Text Message</button>
+                <button type="button" class="media-tab-btn" onclick="setMediaType('image')">📸 Image (5 MB)</button>
+                <button type="button" class="media-tab-btn" onclick="setMediaType('video')">🎥 Video (16 MB)</button>
+                <button type="button" class="media-tab-btn" onclick="setMediaType('document')">📄 Document (100 MB)</button>
+              </div>
+
+              <!-- Dynamic Media Instructions -->
+              <div class="instruction-box" id="mediaInstructionBox">
+                <span>💬</span>
+                <div>
+                  <strong>Text Limit:</strong> Supports up to <strong>4,096 characters</strong>. Supports formatting (*bold*, _italic_) and emojis 🚀.
+                </div>
+              </div>
+
+              <!-- Media URL or File Upload -->
+              <div id="mediaUploadSection" style="display: none;">
+                <div class="form-group">
+                  <label for="mediaUrlInput">Direct Media URL (HTTPS)</label>
+                  <input type="url" id="mediaUrlInput" placeholder="https://example.com/promo-video.mp4" oninput="updateMediaPreview()">
+                </div>
+
+                <div class="form-group">
+                  <label for="mediaFileInput">Or Upload Local Media File</label>
+                  <input type="file" id="mediaFileInput" onchange="handleFileSelected(this)">
+                  <div id="fileSizeFeedback" class="file-size-feedback"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Message / Caption Text -->
+            <div class="form-group">
+              <div class="form-group-header">
+                <label for="messageText">Message Body / Caption</label>
+                <span style="font-size: 0.78rem; color: var(--text-muted);" id="charCounter">0 / 4096</span>
+              </div>
+              <textarea id="messageText" rows="4" placeholder="Type your WhatsApp broadcast message here... Hi! Exclusive announcement from Marketiqx." required oninput="updateTextPreview()"></textarea>
+            </div>
+
+            <!-- Action Row -->
+            <div class="action-row">
+              <button type="submit" class="btn-primary" id="btnSendNow">
+                <span>🚀 Send Now (Real-Time)</span>
+              </button>
+              <button type="button" class="btn-secondary" onclick="openScheduleModal()">
+                <span>⏱️ Schedule Later</span>
+              </button>
+            </div>
+
+            <!-- Sending Progress -->
+            <div class="progress-box" id="progressBox">
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600;">
+                <span id="progressText">Dispatching via Meta Gateway...</span>
+                <span id="progressPercent">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressBarFill"></div>
+              </div>
+            </div>
+
+            <!-- Status Alert -->
+            <div id="statusAlert" class="alert"></div>
+
+          </form>
+        </div>
+
+        <!-- Column 2: Live WhatsApp Phone Simulator -->
         <div class="card" style="text-align: center;">
           <div class="card-title" style="justify-content: center;">
             <span>📱</span> Live Message Simulator
@@ -831,51 +836,180 @@
           </div>
         </div>
 
-        <!-- Scheduled Queue Card -->
-        <div class="card" id="scheduledCard" style="display: none;">
-          <div class="card-title">
-            <span>⏱️</span> Scheduled Broadcasts
+      </div>
+    </div>
+
+    <!-- ==================== TAB 2: DELIVERY REPORTS ==================== -->
+    <div id="tab-reports" class="tab-content" style="display: none;">
+      
+      <!-- Metrics Overview -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px;">
+        <div class="card" style="padding: 20px;">
+          <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">TOTAL BROADCASTS</div>
+          <div style="font-size: 1.8rem; font-weight: 800; color: var(--brand-primary); margin-top: 6px;" id="metricTotal">24</div>
+        </div>
+        <div class="card" style="padding: 20px;">
+          <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">SUCCESSFULLY DELIVERED</div>
+          <div style="font-size: 1.8rem; font-weight: 800; color: var(--brand-success); margin-top: 6px;" id="metricDelivered">23</div>
+        </div>
+        <div class="card" style="padding: 20px;">
+          <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">READ RATE</div>
+          <div style="font-size: 1.8rem; font-weight: 800; color: #8b5cf6; margin-top: 6px;">89.4%</div>
+        </div>
+        <div class="card" style="padding: 20px;">
+          <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">DELIVERY SLA</div>
+          <div style="font-size: 1.8rem; font-weight: 800; color: #f59e0b; margin-top: 6px;">99.8%</div>
+        </div>
+      </div>
+
+      <!-- Logs Table Card -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <div class="card-title"><span>📊</span> Real-Time Dispatch & Delivery Logs</div>
+            <div class="card-desc" style="margin-bottom: 0;">Detailed status and Meta message IDs (WAMID) for all dispatches.</div>
           </div>
-          <div id="scheduledList" style="font-size: 0.85rem; display: flex; flex-direction: column; gap: 10px;"></div>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn-secondary" style="padding: 8px 14px; font-size: 0.85rem;" onclick="clearLogs()">Clear Logs</button>
+          </div>
         </div>
 
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Phone Number</th>
+                <th>Format</th>
+                <th>Message Preview / Caption</th>
+                <th>Timestamp</th>
+                <th>Delivery Status</th>
+                <th>Meta WAMID</th>
+              </tr>
+            </thead>
+            <tbody id="logsTableBody">
+              <tr>
+                <td><strong>+919820144521</strong></td>
+                <td><span style="font-size: 0.75rem; background: #e0f2fe; color: #0284c7; padding: 2px 6px; border-radius: 4px;">TEXT</span></td>
+                <td>Welcome to Marketiqx Platform!</td>
+                <td>Just now</td>
+                <td><span class="badge-status sent">✅ Delivered</span></td>
+                <td><code>wamid.HBgLMjAyNjA5MD</code></td>
+              </tr>
+              <tr>
+                <td><strong>+919876543210</strong></td>
+                <td><span style="font-size: 0.75rem; background: #fdf2f8; color: #db2777; padding: 2px 6px; border-radius: 4px;">VIDEO</span></td>
+                <td>Special Festive Offer Promo Video</td>
+                <td>2 mins ago</td>
+                <td><span class="badge-status sent">✅ Delivered</span></td>
+                <td><code>wamid.HBgLa22e0dc1d4ac</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </div>
 
-    <!-- Live Real-Time Delivery Log Table -->
-    <div class="card">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-        <div>
-          <div class="card-title"><span>📊</span> Live Dispatch & Delivery Reports</div>
-          <div class="card-desc" style="margin-bottom: 0;">Real-time logs of messages dispatched to WhatsApp.</div>
+    <!-- ==================== TAB 3: SCHEDULED QUEUE ==================== -->
+    <div id="tab-scheduled" class="tab-content" style="display: none;">
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <div>
+            <div class="card-title"><span>⏱️</span> Scheduled Broadcast Queue</div>
+            <div class="card-desc" style="margin-bottom: 0;">Broadcasts queued for future automated dispatch.</div>
+          </div>
+          <button class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openScheduleModal()">+ New Schedule</button>
         </div>
-        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;" onclick="clearLogs()">Clear Logs</button>
-      </div>
 
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Phone Number</th>
-              <th>Format</th>
-              <th>Message / Caption</th>
-              <th>Timestamp</th>
-              <th>Status</th>
-              <th>Meta WAMID</th>
-            </tr>
-          </thead>
-          <tbody id="logsTableBody">
-            <tr>
-              <td>919820144521</td>
-              <td><span style="font-size: 0.75rem; background: #e0f2fe; color: #0284c7; padding: 2px 6px; border-radius: 4px;">TEXT</span></td>
-              <td>Welcome to Marketiqx Platform!</td>
-              <td>Just now</td>
-              <td><span class="badge-status sent">✅ Delivered</span></td>
-              <td><code>wamid.HBgLMjAyNjA5MD</code></td>
-            </tr>
-          </tbody>
-        </table>
+        <div id="scheduledList" style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
+          <div style="background: var(--bg-body); padding: 16px 20px; border-radius: var(--radius-md); border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <strong style="font-size: 1rem;">Weekend Sale VIP Blast</strong> (4 Recipients)
+              <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">📅 Scheduled for Tomorrow at 10:00 AM • Video Attachment</div>
+            </div>
+            <span style="font-size: 0.8rem; background: rgba(245, 158, 11, 0.1); color: var(--brand-warning); font-weight: 700; padding: 6px 12px; border-radius: 6px;">⏳ QUEUED (AUTO-SEND)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 4: CONTACTS ==================== -->
+    <div id="tab-contacts" class="tab-content" style="display: none;">
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <div>
+            <div class="card-title"><span>👥</span> Contact Lists & Segments</div>
+            <div class="card-desc" style="margin-bottom: 0;">Manage your verified customer audience groups.</div>
+          </div>
+          <button class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="switchTab('compose'); pasteSampleNumbers();">Use in Campaign 🚀</button>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Group Name</th>
+                <th>Audience Size</th>
+                <th>Quality Rating</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>VIP High-Ticket Clients</strong></td>
+                <td>1,250 contacts</td>
+                <td>⭐⭐⭐⭐⭐ 99.4%</td>
+                <td><span class="badge-status sent">Active</span></td>
+                <td><button class="btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="switchTab('compose'); pasteSampleNumbers();">Select</button></td>
+              </tr>
+              <tr>
+                <td><strong>Festive Leads Batch 1</strong></td>
+                <td>4,500 contacts</td>
+                <td>⭐⭐⭐⭐ 98.1%</td>
+                <td><span class="badge-status sent">Active</span></td>
+                <td><button class="btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="switchTab('compose'); pasteSampleNumbers();">Select</button></td>
+              </tr>
+              <tr>
+                <td><strong>E-commerce Abandoned Cart</strong></td>
+                <td>820 contacts</td>
+                <td>⭐⭐⭐⭐⭐ 99.0%</td>
+                <td><span class="badge-status sent">Active</span></td>
+                <td><button class="btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="switchTab('compose'); pasteSampleNumbers();">Select</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 5: SETTINGS ==================== -->
+    <div id="tab-settings" class="tab-content" style="display: none;">
+      <div class="card" style="max-width: 680px;">
+        <div class="card-title"><span>⚙️</span> Official Meta Cloud API Configuration</div>
+        <div class="card-desc">Connect your real Meta WhatsApp Business API credentials from developers.facebook.com</div>
+
+        <div class="form-group">
+          <label for="metaTokenInput">System User Permanent Access Token</label>
+          <input type="password" id="metaTokenInput" placeholder="EAAxxxxxx... (Bearer Token)">
+          <span style="font-size: 0.78rem; color: var(--text-muted);">Found in Meta Business Manager > System Users > WhatsApp Assets.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="metaPhoneIdInput">Phone Number ID</label>
+          <input type="text" id="metaPhoneIdInput" placeholder="e.g. 109823472394823">
+          <span style="font-size: 0.78rem; color: var(--text-muted);">From Meta Developer Portal > WhatsApp > API Setup.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="metaWabaIdInput">WhatsApp Business Account ID (WABA)</label>
+          <input type="text" id="metaWabaIdInput" placeholder="e.g. 102938475619283">
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 24px;">
+          <button class="btn-primary" onclick="saveSettings()">Save & Connect Meta API ⚡</button>
+          <button class="btn-secondary" onclick="resetToDemo()">Use Demo Simulation Mode</button>
+        </div>
       </div>
     </div>
 
@@ -974,6 +1108,42 @@
       localStorage.removeItem('marketiqx_auth');
       localStorage.removeItem('marketiqx_user');
       window.location.href = 'index.html';
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+
+      const target = document.getElementById(`tab-${tabId}`);
+      if (target) {
+        target.style.display = 'block';
+      }
+
+      const navEl = document.getElementById(`nav-${tabId}`);
+      if (navEl) navEl.classList.add('active');
+
+      const titles = {
+        compose: { title: "Send WhatsApp Broadcast", subtitle: "Compose and dispatch high-throughput text, images, videos & documents" },
+        reports: { title: "Delivery Reports & Analytics", subtitle: "Real-time delivery statistics, read rates and Meta WAMID tracking" },
+        scheduled: { title: "Scheduled Broadcast Queue", subtitle: "Manage future automated WhatsApp message campaigns" },
+        contacts: { title: "Audience & Contact Lists", subtitle: "Manage verified customer segments and broadcast groups" },
+        settings: { title: "Meta API Configuration", subtitle: "Connect your official Meta WhatsApp Business API credentials" }
+      };
+
+      if (titles[tabId]) {
+        document.getElementById('pageTitle').innerText = titles[tabId].title;
+        document.getElementById('pageSubtitle').innerText = titles[tabId].subtitle;
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function resetToDemo() {
+      localStorage.removeItem('meta_access_token');
+      localStorage.removeItem('meta_phone_id');
+      document.getElementById('metaTokenInput').value = '';
+      document.getElementById('metaPhoneIdInput').value = '';
+      updateApiBadge(false);
+      showAlert('Switched to Demo Gateway mode.', 'success');
     }
 
     // Media Types & Limits
