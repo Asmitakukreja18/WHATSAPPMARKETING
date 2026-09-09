@@ -203,85 +203,144 @@ class NextReachBackendHandler(http.server.SimpleHTTPRequestHandler):
                 "message_id": contact_entry["id"]
             })
 
-        # 3. API: Send Individual WhatsApp Message
-        if path == '/api/whatsapp/send-single':
-            recipient = payload.get('recipient_phone', '').strip()
-            template_id = payload.get('template_id', 'hello_world')
-            parameters = payload.get('parameters', [])
+        # Helper: Dispatch WhatsApp Message to Meta Cloud API
+        def send_meta_wa(recipient, media_type, text, media_url, template_id, token, phone_id):
+            if not token or token == "YOUR_META_TOKEN_HERE":
+                return {
+                    "success": True,
+                    "recipient": recipient,
+                    "message_id": f"wamid.HBgL{uuid.uuid4().hex[:16]}",
+                    "status": "DELIVERED_SIMULATED",
+                    "timestamp": time.strftime('%Y-%m-%d %H:%M:%S'),
+                    "note": "Delivered in Test/Mock Mode. Add real Meta Token & Phone ID in Settings for live WhatsApp delivery."
+                }
 
-            if not recipient:
-                return self._send_json_response(400, {"success": False, "error": "Recipient phone is required"})
-
-            # Load Meta credentials from environment
-            meta_token = os.getenv("META_ACCESS_TOKEN", "YOUR_META_TOKEN_HERE")
-            phone_number_id = os.getenv("META_PHONE_NUMBER_ID", "YOUR_PHONE_ID_HERE")
-
-            url = f"https://graph.facebook.com/v17.0/{phone_number_id}/messages"
-            
+            url = f"https://graph.facebook.com/v19.0/{phone_id}/messages"
             headers = {
-                "Authorization": f"Bearer {meta_token}",
+                "Authorization": f"Bearer {token}",
                 "Content-Type": "application/json"
             }
 
             data = {
                 "messaging_product": "whatsapp",
-                "to": recipient,
-                "type": "template",
-                "template": {
-                    "name": template_id,
-                    "language": { "code": "en_US" }
-                }
+                "recipient_type": "individual",
+                "to": recipient
             }
 
-            if meta_token == "YOUR_META_TOKEN_HERE":
-                # Mock response if tokens are missing
-                return self._send_json_response(200, {
-                    "success": True,
-                    "message_id": f"mock_wamid.{uuid.uuid4().hex}",
-                    "note": "Tokens not set. Showing mock success."
-                })
+            if media_type == "image":
+                data["type"] = "image"
+                data["image"] = {"link": media_url}
+                if text:
+                    data["image"]["caption"] = text
+            elif media_type == "video":
+                data["type"] = "video"
+                data["video"] = {"link": media_url}
+                if text:
+                    data["video"]["caption"] = text
+            elif media_type == "document":
+                data["type"] = "document"
+                data["document"] = {"link": media_url, "filename": "Document.pdf"}
+                if text:
+                    data["document"]["caption"] = text
+            elif media_type == "template":
+                data["type"] = "template"
+                data["template"] = {
+                    "name": template_id or "hello_world",
+                    "language": {"code": "en_US"}
+                }
+            else:
+                data["type"] = "text"
+                data["text"] = {"preview_url": True, "body": text or "Hello from Marketiqx!"}
 
             try:
                 req = urllib.request.Request(url, data=json.dumps(data).encode('utf-8'), headers=headers, method='POST')
                 with urllib.request.urlopen(req) as response:
                     res_body = json.loads(response.read().decode('utf-8'))
-                    
-                return self._send_json_response(200, {
+                
+                msg_id = res_body.get('messages', [{}])[0].get('id', f"wamid.{uuid.uuid4().hex[:12]}")
+                return {
                     "success": True,
-                    "message_id": res_body.get('messages', [{}])[0].get('id', 'N/A'),
                     "recipient": recipient,
-                    "status": "SENT_TO_META_GATEWAY"
-                })
+                    "message_id": msg_id,
+                    "status": "SENT_TO_META",
+                    "timestamp": time.strftime('%Y-%m-%d %H:%M:%S')
+                }
             except Exception as e:
                 err_msg = str(e)
                 if hasattr(e, 'read'):
-                    err_msg = e.read().decode('utf-8')
-                return self._send_json_response(500, {"success": False, "error": err_msg})
+                    try:
+                        err_json = json.loads(e.read().decode('utf-8'))
+                        err_msg = err_json.get('error', {}).get('message', str(err_json))
+                    except Exception:
+                        pass
+                return {
+                    "success": False,
+                    "recipient": recipient,
+                    "error": err_msg,
+                    "status": "FAILED",
+                    "timestamp": time.strftime('%Y-%m-%d %H:%M:%S')
+                }
+
+        # 3. API: Send Individual WhatsApp Message
+        if path == '/api/whatsapp/send-single':
+            recipient = payload.get('recipient_phone', '').strip().replace('+', '').replace(' ', '').replace('-', '')
+            media_type = payload.get('media_type', 'text')
+            text = payload.get('message_text', payload.get('text', '')).strip()
+            media_url = payload.get('media_url', '').strip()
+            template_id = payload.get('template_id', 'hello_world')
+            token = payload.get('meta_token') or os.getenv("META_ACCESS_TOKEN", "YOUR_META_TOKEN_HERE")
+            phone_id = payload.get('phone_number_id') or os.getenv("META_PHONE_NUMBER_ID", "YOUR_PHONE_ID_HERE")
+
+            if not recipient:
+                return self._send_json_response(400, {"success": False, "error": "Recipient phone number is required"})
+
+            res = send_meta_wa(recipient, media_type, text, media_url, template_id, token, phone_id)
+            status_code = 200 if res.get('success') else 400
+            return self._send_json_response(status_code, res)
 
         # 4. API: WhatsApp Bulk Broadcast Dispatcher
         if path == '/api/whatsapp/send-bulk':
             campaign_name = payload.get('campaign_name', f"Broadcast_{time.strftime('%Y%m%d_%H%M')}")
             recipients = payload.get('recipients', [])
-            template_id = payload.get('template_id', 'tpl_broadcast_offer')
+            media_type = payload.get('media_type', 'text')
+            text = payload.get('message_text', '').strip()
+            media_url = payload.get('media_url', '').strip()
+            template_id = payload.get('template_id', '')
+            token = payload.get('meta_token') or os.getenv("META_ACCESS_TOKEN", "YOUR_META_TOKEN_HERE")
+            phone_id = payload.get('phone_number_id') or os.getenv("META_PHONE_NUMBER_ID", "YOUR_PHONE_ID_HERE")
 
             if not recipients or not isinstance(recipients, list):
                 return self._send_json_response(400, {
                     "success": False, 
-                    "error": "Recipients must be a non-empty array of phone numbers or objects."
+                    "error": "Recipients must be a non-empty list of phone numbers."
                 })
 
-            total_recipients = len(recipients)
+            results = []
+            delivered_count = 0
+            failed_count = 0
+
+            for raw_number in recipients:
+                num_str = str(raw_number).strip().replace('+', '').replace(' ', '').replace('-', '')
+                if not num_str:
+                    continue
+                
+                result = send_meta_wa(num_str, media_type, text, media_url, template_id, token, phone_id)
+                results.append(result)
+                if result.get('success'):
+                    delivered_count += 1
+                else:
+                    failed_count += 1
+
             campaign_record = {
                 "campaign_id": f"CAMP_{int(time.time())}_{uuid.uuid4().hex[:6]}",
                 "name": campaign_name,
-                "template_id": template_id,
+                "media_type": media_type,
                 "created_at": time.strftime('%Y-%m-%d %H:%M:%S'),
-                "total_targets": total_recipients,
-                "queued": total_recipients,
-                "delivered": int(total_recipients * 0.98),
-                "read": int(total_recipients * 0.86),
-                "replied": int(total_recipients * 0.28),
-                "status": "DISPATCH_COMPLETED"
+                "total_targets": len(results),
+                "delivered": delivered_count,
+                "failed": failed_count,
+                "status": "COMPLETED" if failed_count == 0 else ("PARTIAL" if delivered_count > 0 else "FAILED"),
+                "results": results
             }
 
             campaigns = load_json(CAMPAIGNS_FILE, [])
@@ -290,7 +349,7 @@ class NextReachBackendHandler(http.server.SimpleHTTPRequestHandler):
 
             return self._send_json_response(200, {
                 "success": True,
-                "message": f"Successfully queued and dispatched {total_recipients} WhatsApp messages via Meta Cloud API.",
+                "message": f"Broadcast processed! {delivered_count} delivered, {failed_count} failed.",
                 "campaign": campaign_record
             })
 

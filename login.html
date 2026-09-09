@@ -137,7 +137,7 @@
     </div>
     <div class="subtitle">Log in to your WhatsApp Dashboard</div>
 
-    <form onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+    <form id="loginForm" onsubmit="handleLogin(event)">
       <div class="form-group">
         <label for="email">Username or Email</label>
         <input type="text" id="email" value="admin@marketiqx.com" placeholder="admin or admin@marketiqx.com" required>
@@ -154,5 +154,14 @@
     <a href="index.html" class="back-home">← Back to Website</a>
   </div>
 
+  <script>
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      localStorage.setItem('marketiqx_auth', 'true');
+      localStorage.setItem('marketiqx_user', email || 'admin@marketiqx.com');
+      window.location.href = 'dashboard.html';
+    }
+  </script>
 </body>
 </html>

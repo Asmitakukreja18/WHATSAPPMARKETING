@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marketiqx Dashboard</title>
+  <title>Marketiqx | WhatsApp Broadcast & Marketing Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -18,8 +18,11 @@
       --brand-primary: #0ea5e9;
       --brand-hover: #0284c7;
       --brand-success: #10b981;
+      --brand-warning: #f59e0b;
+      --brand-danger: #ef4444;
       --radius-lg: 16px;
-      --radius-md: 8px;
+      --radius-md: 10px;
+      --radius-sm: 6px;
     }
 
     * {
@@ -44,22 +47,30 @@
       display: flex;
       flex-direction: column;
       padding: 24px 16px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      flex-shrink: 0;
     }
 
     .brand {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 800;
       color: white;
-      margin-bottom: 40px;
-      padding: 0 16px;
+      margin-bottom: 32px;
+      padding: 0 12px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
+    .brand-icon {
+      color: var(--brand-primary);
+    }
+
     .nav-item {
       padding: 12px 16px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       border-radius: var(--radius-md);
       cursor: pointer;
       font-weight: 500;
@@ -69,48 +80,158 @@
       gap: 12px;
       text-decoration: none;
       color: var(--text-sidebar);
+      font-size: 0.95rem;
     }
 
     .nav-item:hover, .nav-item.active {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.08);
       color: var(--text-sidebar-active);
     }
 
     .nav-item.active {
       font-weight: 600;
-      border-left: 3px solid var(--brand-primary);
+      background-color: rgba(14, 165, 233, 0.15);
+      color: var(--brand-primary);
+    }
+
+    .user-profile {
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--brand-primary);
+      color: white;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .user-info {
+      overflow: hidden;
+    }
+
+    .user-name {
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .user-role {
+      color: var(--text-sidebar);
+      font-size: 0.75rem;
     }
 
     /* Main Content */
     .main-content {
       flex: 1;
-      padding: 40px;
+      padding: 36px 40px;
       display: flex;
       flex-direction: column;
       gap: 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
     }
 
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
-    .header h1 {
+    .header-title h1 {
       font-size: 1.8rem;
       font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .header-title p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--brand-success);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      cursor: pointer;
+    }
+
+    /* Grid Layout */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+      body {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
     }
 
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 32px;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      padding: 28px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
     }
 
-    /* Form Elements */
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    /* Form Styles */
     .form-group {
       margin-bottom: 20px;
       display: flex;
@@ -118,10 +239,26 @@
       gap: 8px;
     }
 
+    .form-group-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     label {
       font-size: 0.9rem;
       font-weight: 600;
       color: var(--text-main);
+    }
+
+    .helper-tag {
+      font-size: 0.78rem;
+      color: var(--brand-primary);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .helper-tag:hover {
+      text-decoration: underline;
     }
 
     input, select, textarea {
@@ -131,15 +268,109 @@
       font-family: 'Inter', sans-serif;
       font-size: 0.95rem;
       outline: none;
-      transition: border-color 0.2s;
+      transition: all 0.2s;
     }
 
     input:focus, select:focus, textarea:focus {
       border-color: var(--brand-primary);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
     }
 
-    .btn {
-      padding: 12px 24px;
+    .recipients-count {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--brand-primary);
+      width: fit-content;
+    }
+
+    /* Media Type Selector Tabs */
+    .media-tabs {
+      display: flex;
+      gap: 8px;
+      background: var(--bg-body);
+      padding: 6px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      margin-bottom: 16px;
+      overflow-x: auto;
+    }
+
+    .media-tab-btn {
+      flex: 1;
+      padding: 8px 12px;
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .media-tab-btn.active {
+      background: white;
+      color: var(--brand-primary);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+
+    /* Limit & Instruction Box */
+    .instruction-box {
+      background: rgba(14, 165, 233, 0.05);
+      border: 1px dashed rgba(14, 165, 233, 0.35);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-size: 0.82rem;
+      color: #0369a1;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .instruction-box strong {
+      color: #0284c7;
+    }
+
+    .file-size-feedback {
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-top: 4px;
+      display: none;
+    }
+    .file-size-feedback.valid {
+      color: var(--brand-success);
+      display: block;
+    }
+    .file-size-feedback.invalid {
+      color: var(--brand-danger);
+      display: block;
+    }
+
+    /* Buttons & Actions */
+    .action-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      flex: 1;
+      padding: 13px 20px;
       background-color: var(--brand-primary);
       color: white;
       border: none;
@@ -149,137 +380,952 @@
       cursor: pointer;
       transition: background-color 0.2s;
       font-family: 'Inter', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
-    .btn:hover {
+    .btn-primary:hover {
       background-color: var(--brand-hover);
     }
 
-    /* Status Alert */
-    .alert {
-      padding: 16px;
+    .btn-secondary {
+      padding: 13px 20px;
+      background-color: white;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      margin-bottom: 20px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-body);
+      border-color: #cbd5e1;
+    }
+
+    /* Progress & Alert */
+    .progress-box {
+      margin-top: 16px;
+      display: none;
+    }
+
+    .progress-bar-bg {
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--brand-primary);
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    .alert {
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      margin-top: 16px;
       font-weight: 500;
+      font-size: 0.9rem;
       display: none;
     }
 
     .alert.success {
       background-color: rgba(16, 185, 129, 0.1);
       color: var(--brand-success);
-      border: 1px solid rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.25);
     }
     
     .alert.error {
       background-color: rgba(239, 68, 68, 0.1);
-      color: #ef4444;
-      border: 1px solid rgba(239, 68, 68, 0.2);
+      color: var(--brand-danger);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+    }
+
+    /* Right Column: Preview & Live Stats */
+    .phone-preview-wrapper {
+      background: #111827;
+      border-radius: 36px;
+      padding: 16px 12px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.25);
+      border: 4px solid #374151;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .phone-screen {
+      background: #e5ddd5;
+      background-image: radial-gradient(#d1c7b7 1px, transparent 1px);
+      background-size: 16px 16px;
+      border-radius: 24px;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .wa-chat-header {
+      background: #075e54;
+      color: white;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .wa-chat-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .wa-chat-body {
+      flex: 1;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .wa-bubble {
+      background: white;
+      border-radius: 8px 8px 8px 0;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      max-width: 90%;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+      position: relative;
+      word-break: break-word;
+    }
+
+    .wa-bubble.outgoing {
+      background: #dcf8c6;
+      border-radius: 8px 8px 0 8px;
+      align-self: flex-end;
+    }
+
+    .wa-media-preview-container {
+      margin-bottom: 6px;
+      border-radius: 6px;
+      overflow: hidden;
+      max-height: 160px;
+      display: none;
+    }
+
+    .wa-media-preview-container img, .wa-media-preview-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .wa-time {
+      font-size: 0.65rem;
+      color: #888;
+      text-align: right;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 2px;
+    }
+
+    /* Live Delivery Log Table */
+    .table-container {
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    th {
+      background: var(--bg-body);
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge-status.sent {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--brand-success);
+    }
+    .badge-status.simulated {
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--brand-primary);
+    }
+    .badge-status.failed {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--brand-danger);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 20px;
+    }
+    .modal {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .modal-close {
+      background: transparent;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--text-muted);
     }
   </style>
 </head>
 <body>
 
+  <!-- Auth Verification Script -->
+  <script>
+    if (localStorage.getItem('marketiqx_auth') !== 'true') {
+      window.location.href = 'login.html';
+    }
+  </script>
+
   <!-- Sidebar -->
   <aside class="sidebar">
     <div class="brand">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      <svg class="brand-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
       Marketiqx
     </div>
+
+    <div class="user-profile">
+      <div class="user-avatar" id="userAvatar">A</div>
+      <div class="user-info">
+        <div class="user-name" id="userNameDisplay">Admin User</div>
+        <div class="user-role">Enterprise Account</div>
+      </div>
+    </div>
     
-    <a href="#" class="nav-item active">
-      <span>✉️</span> Send Message
+    <a href="dashboard.html" class="nav-item active">
+      <span>🚀</span> Bulk WhatsApp
     </a>
-    <a href="#" class="nav-item">
-      <span>📊</span> Campaigns
+    <a href="javascript:void(0)" onclick="openSettingsModal()" class="nav-item">
+      <span>⚙️</span> Meta API Settings
     </a>
-    <a href="#" class="nav-item">
-      <span>👥</span> Contacts
-    </a>
-    <div style="flex: 1;"></div>
     <a href="index.html" class="nav-item">
       <span>🌐</span> View Website
     </a>
-    <a href="index.html" class="nav-item" style="color: #ef4444;">
+
+    <div style="flex: 1;"></div>
+
+    <a href="javascript:void(0)" onclick="handleLogout()" class="nav-item" style="color: #ef4444;">
       <span>🚪</span> Logout
     </a>
   </aside>
 
   <!-- Main Content -->
   <main class="main-content">
+    
+    <!-- Top Header -->
     <header class="header">
-      <h1>Send WhatsApp Message</h1>
-      <div style="display: flex; gap: 12px; align-items: center;">
-        <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 600;">Status: <span style="color: var(--brand-success);">Connected</span></span>
+      <div class="header-title">
+        <h1>WhatsApp Bulk Broadcast</h1>
+        <p>Send high-throughput text, images, videos & documents via Meta Cloud API</p>
+      </div>
+      <div class="header-actions">
+        <div class="status-badge" id="apiStatusBadge" onclick="openSettingsModal()">
+          <span>⚡</span> <span id="apiStatusText">Meta API: Demo Gateway</span>
+        </div>
+        <button class="btn-secondary" onclick="openSettingsModal()" style="padding: 8px 14px; font-size: 0.85rem;">
+          ⚙️ Configure API
+        </button>
       </div>
     </header>
 
-    <div class="card" style="max-width: 600px;">
-      <div id="status-alert" class="alert"></div>
+    <!-- Two-Column Layout -->
+    <div class="dashboard-grid">
+      
+      <!-- Column 1: Compose Form -->
+      <div class="card">
+        <div class="card-title">
+          <span>✉️</span> Compose Broadcast
+        </div>
+        <div class="card-desc">Add multiple numbers, choose media format, and dispatch real-time or schedule.</div>
 
-      <form id="sendMessageForm">
-        <div class="form-group">
-          <label for="recipient">Recipient WhatsApp Number (with country code)</label>
-          <input type="text" id="recipient" placeholder="e.g. 919876543210" required>
-          <span style="font-size: 0.8rem; color: var(--text-muted);">Do not include '+' or '00', just the country code and number.</span>
+        <form id="broadcastForm">
+
+          <!-- 1. Multiple Recipients -->
+          <div class="form-group">
+            <div class="form-group-header">
+              <label for="recipientsInput">Recipient Numbers (with Country Code)</label>
+              <span class="helper-tag" onclick="pasteSampleNumbers()">+ Paste 4 Sample Numbers</span>
+            </div>
+            <textarea id="recipientsInput" rows="3" placeholder="Enter numbers separated by comma or new line:&#10;919820144521, 919876543210, 919599300365" required oninput="updateRecipientsCount()"></textarea>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+              <span class="recipients-count" id="recipientsCount">🎯 0 numbers detected</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">Format: CountryCode + Number (e.g. 919820144521)</span>
+            </div>
+          </div>
+
+          <!-- 2. Campaign Name -->
+          <div class="form-group">
+            <label for="campaignName">Campaign Title</label>
+            <input type="text" id="campaignName" value="Flash Offer Promo" placeholder="e.g. Weekend Launch Announcement">
+          </div>
+
+          <!-- 3. Message Type Selector -->
+          <div class="form-group">
+            <label>Message Type & Media</label>
+            <div class="media-tabs">
+              <button type="button" class="media-tab-btn active" onclick="setMediaType('text')">💬 Text Message</button>
+              <button type="button" class="media-tab-btn" onclick="setMediaType('image')">📸 Image (5 MB)</button>
+              <button type="button" class="media-tab-btn" onclick="setMediaType('video')">🎥 Video (16 MB)</button>
+              <button type="button" class="media-tab-btn" onclick="setMediaType('document')">📄 Document (100 MB)</button>
+            </div>
+
+            <!-- Dynamic Media Instructions -->
+            <div class="instruction-box" id="mediaInstructionBox">
+              <span>💬</span>
+              <div>
+                <strong>Text Limit:</strong> Supports up to <strong>4,096 characters</strong>. Supports formatting (*bold*, _italic_) and emojis 🚀.
+              </div>
+            </div>
+
+            <!-- Media URL or File Upload (Hidden by default for text) -->
+            <div id="mediaUploadSection" style="display: none;">
+              <div class="form-group">
+                <label for="mediaUrlInput">Direct Media URL (HTTPS)</label>
+                <input type="url" id="mediaUrlInput" placeholder="https://example.com/promo-video.mp4" oninput="updateMediaPreview()">
+              </div>
+
+              <div class="form-group">
+                <label for="mediaFileInput">Or Upload Local Media File</label>
+                <input type="file" id="mediaFileInput" onchange="handleFileSelected(this)">
+                <div id="fileSizeFeedback" class="file-size-feedback"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Message / Caption Text -->
+          <div class="form-group">
+            <div class="form-group-header">
+              <label for="messageText">Message Body / Caption</label>
+              <span style="font-size: 0.78rem; color: var(--text-muted);" id="charCounter">0 / 4096</span>
+            </div>
+            <textarea id="messageText" rows="4" placeholder="Type your WhatsApp broadcast message here... Hi! Exclusive announcement from Marketiqx." required oninput="updateTextPreview()"></textarea>
+          </div>
+
+          <!-- Action Row -->
+          <div class="action-row">
+            <button type="submit" class="btn-primary" id="btnSendNow">
+              <span>🚀 Send Now (Real-Time)</span>
+            </button>
+            <button type="button" class="btn-secondary" onclick="openScheduleModal()">
+              <span>⏱️ Schedule Later</span>
+            </button>
+          </div>
+
+          <!-- Sending Progress -->
+          <div class="progress-box" id="progressBox">
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600;">
+              <span id="progressText">Dispatching via Meta Gateway...</span>
+              <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+          </div>
+
+          <!-- Status Alert -->
+          <div id="statusAlert" class="alert"></div>
+
+        </form>
+      </div>
+
+      <!-- Column 2: Live WhatsApp Phone Simulator & Scheduled Queue -->
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        
+        <div class="card" style="text-align: center;">
+          <div class="card-title" style="justify-content: center;">
+            <span>📱</span> Live Message Simulator
+          </div>
+          <div class="card-desc">Real-time preview of how recipients see your message.</div>
+
+          <div class="phone-preview-wrapper">
+            <div class="phone-screen">
+              <div class="wa-chat-header">
+                <div class="wa-chat-avatar">M</div>
+                <div style="text-align: left;">
+                  <div style="font-weight: 700; font-size: 0.85rem;">Marketiqx Verified</div>
+                  <div style="font-size: 0.65rem; opacity: 0.8;">Official Business Account</div>
+                </div>
+              </div>
+
+              <div class="wa-chat-body">
+                <div class="wa-bubble outgoing">
+                  <div class="wa-media-preview-container" id="phoneMediaPreview">
+                    <img id="phonePreviewImg" src="" alt="Media" style="display: none;">
+                    <video id="phonePreviewVideo" controls style="display: none;"></video>
+                    <div id="phonePreviewDoc" style="display: none; padding: 10px; background: #eee; font-weight: 600; font-size: 0.8rem;">
+                      📄 <span id="phoneDocName">Document.pdf</span>
+                    </div>
+                  </div>
+                  <div id="phoneTextPreview">Type your WhatsApp broadcast message here...</div>
+                  <div class="wa-time">
+                    <span id="previewTimestamp">12:00</span>
+                    <span>✓✓</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="template">Select Template</label>
-          <select id="template">
-            <option value="hello_world">hello_world (Meta Default)</option>
-            <option value="tpl_growth_audit_confirm">tpl_growth_audit_confirm</option>
-          </select>
+        <!-- Scheduled Queue Card -->
+        <div class="card" id="scheduledCard" style="display: none;">
+          <div class="card-title">
+            <span>⏱️</span> Scheduled Broadcasts
+          </div>
+          <div id="scheduledList" style="font-size: 0.85rem; display: flex; flex-direction: column; gap: 10px;"></div>
         </div>
 
-        <div class="form-group" style="margin-top: 32px;">
-          <button type="submit" class="btn" id="submitBtn">Send Message 🚀</button>
-        </div>
-      </form>
+      </div>
+
     </div>
+
+    <!-- Live Real-Time Delivery Log Table -->
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <div>
+          <div class="card-title"><span>📊</span> Live Dispatch & Delivery Reports</div>
+          <div class="card-desc" style="margin-bottom: 0;">Real-time logs of messages dispatched to WhatsApp.</div>
+        </div>
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;" onclick="clearLogs()">Clear Logs</button>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Phone Number</th>
+              <th>Format</th>
+              <th>Message / Caption</th>
+              <th>Timestamp</th>
+              <th>Status</th>
+              <th>Meta WAMID</th>
+            </tr>
+          </thead>
+          <tbody id="logsTableBody">
+            <tr>
+              <td>919820144521</td>
+              <td><span style="font-size: 0.75rem; background: #e0f2fe; color: #0284c7; padding: 2px 6px; border-radius: 4px;">TEXT</span></td>
+              <td>Welcome to Marketiqx Platform!</td>
+              <td>Just now</td>
+              <td><span class="badge-status sent">✅ Delivered</span></td>
+              <td><code>wamid.HBgLMjAyNjA5MD</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </main>
 
+  <!-- Meta API Settings Modal -->
+  <div class="modal-overlay" id="settingsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 style="font-size: 1.2rem; font-weight: 700;">⚙️ Meta Cloud API Credentials</h2>
+        <button class="modal-close" onclick="closeSettingsModal()">×</button>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 18px;">
+        Enter your official Meta WhatsApp Business API credentials from your Meta Developer Portal. If left empty, Marketiqx operates in <strong>Fast Simulated Test Gateway</strong> mode.
+      </p>
+
+      <div class="form-group">
+        <label for="metaTokenInput">System User Access Token</label>
+        <input type="password" id="metaTokenInput" placeholder="EAAxxxxxx... (Bearer Token)">
+      </div>
+
+      <div class="form-group">
+        <label for="metaPhoneIdInput">Phone Number ID</label>
+        <input type="text" id="metaPhoneIdInput" placeholder="e.g. 109823472394823">
+      </div>
+
+      <div class="form-group">
+        <label for="metaWabaIdInput">WhatsApp Business Account ID (WABA)</label>
+        <input type="text" id="metaWabaIdInput" placeholder="e.g. 102938475619283">
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px;">
+        <button class="btn-secondary" onclick="closeSettingsModal()">Cancel</button>
+        <button class="btn-primary" onclick="saveSettings()">Save & Connect</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Schedule Time Modal -->
+  <div class="modal-overlay" id="scheduleModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 style="font-size: 1.2rem; font-weight: 700;">⏱️ Schedule Broadcast</h2>
+        <button class="modal-close" onclick="closeScheduleModal()">×</button>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 18px;">
+        Choose the exact date and time for automatic dispatch.
+      </p>
+
+      <div class="form-group">
+        <label for="scheduleDateTime">Date & Time</label>
+        <input type="datetime-local" id="scheduleDateTime">
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px;">
+        <button class="btn-secondary" onclick="closeScheduleModal()">Cancel</button>
+        <button class="btn-primary" onclick="confirmSchedule()">Confirm Schedule 🚀</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    document.getElementById('sendMessageForm').addEventListener('submit', async (e) => {
+    // State
+    let currentMediaType = 'text';
+    let selectedFile = null;
+    let scheduledCampaigns = [];
+
+    // Initialize user display
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = localStorage.getItem('marketiqx_user') || 'Admin';
+      document.getElementById('userNameDisplay').innerText = user;
+      document.getElementById('userAvatar').innerText = user.charAt(0).toUpperCase();
+
+      // Load Settings
+      const savedToken = localStorage.getItem('meta_access_token');
+      const savedPhoneId = localStorage.getItem('meta_phone_id');
+      if (savedToken && savedPhoneId) {
+        document.getElementById('metaTokenInput').value = savedToken;
+        document.getElementById('metaPhoneIdInput').value = savedPhoneId;
+        updateApiBadge(true);
+      }
+
+      // Default timestamp in simulator
+      updateClock();
+      setInterval(updateClock, 1000);
+    });
+
+    function updateClock() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const timeEl = document.getElementById('previewTimestamp');
+      if (timeEl) timeEl.innerText = timeStr;
+    }
+
+    function handleLogout() {
+      localStorage.removeItem('marketiqx_auth');
+      localStorage.removeItem('marketiqx_user');
+      window.location.href = 'index.html';
+    }
+
+    // Media Types & Limits
+    const MEDIA_LIMITS = {
+      text: {
+        maxChars: 4096,
+        icon: '💬',
+        instruction: '<strong>Text Limit:</strong> Supports up to <strong>4,096 characters</strong>. Supports formatting (*bold*, _italic_) and emojis 🚀.'
+      },
+      image: {
+        maxMB: 5,
+        allowed: ['image/jpeg', 'image/png'],
+        icon: '📸',
+        instruction: '<strong>Image Limit:</strong> JPG or PNG format. Max file size: <strong>5 MB</strong>. Recommended resolution: 1080x1080px or 1200x628px.'
+      },
+      video: {
+        maxMB: 16,
+        allowed: ['video/mp4', 'video/3gpp'],
+        icon: '🎥',
+        instruction: '<strong>Video Limit:</strong> MP4 or 3GP format (H.264 video + AAC audio). Max file size: <strong>16 MB</strong>. Recommended duration: under 3 minutes.'
+      },
+      document: {
+        maxMB: 100,
+        allowed: ['application/pdf', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'],
+        icon: '📄',
+        instruction: '<strong>Document Limit:</strong> PDF, DOCX, XLSX format. Max file size: <strong>100 MB</strong>.'
+      }
+    };
+
+    function setMediaType(type) {
+      currentMediaType = type;
+      
+      // Update tabs
+      document.querySelectorAll('.media-tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText.toLowerCase().includes(type));
+      });
+
+      // Update instructions
+      const info = MEDIA_LIMITS[type];
+      document.getElementById('mediaInstructionBox').innerHTML = `<span>${info.icon}</span><div>${info.instruction}</div>`;
+
+      // Show/hide upload section
+      const uploadSec = document.getElementById('mediaUploadSection');
+      uploadSec.style.display = (type === 'text') ? 'none' : 'block';
+
+      // Reset file input & feedback
+      selectedFile = null;
+      document.getElementById('mediaFileInput').value = '';
+      document.getElementById('fileSizeFeedback').className = 'file-size-feedback';
+      document.getElementById('fileSizeFeedback').innerText = '';
+
+      updateMediaPreview();
+    }
+
+    function handleFileSelected(input) {
+      const feedback = document.getElementById('fileSizeFeedback');
+      if (!input.files || input.files.length === 0) {
+        selectedFile = null;
+        feedback.className = 'file-size-feedback';
+        return;
+      }
+
+      const file = input.files[0];
+      selectedFile = file;
+      const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+      const limit = MEDIA_LIMITS[currentMediaType].maxMB;
+
+      if (sizeMB > limit) {
+        feedback.className = 'file-size-feedback invalid';
+        feedback.innerText = `⚠️ File size is ${sizeMB} MB, which exceeds WhatsApp's limit of ${limit} MB. Please compress or choose a smaller file.`;
+      } else {
+        feedback.className = 'file-size-feedback valid';
+        feedback.innerText = `✅ File size: ${sizeMB} MB (Within WhatsApp's ${limit} MB limit). Ready to send!`;
+        
+        // Setup local URL for preview
+        const fileUrl = URL.createObjectURL(file);
+        updateMediaPreviewWithUrl(fileUrl, file.name);
+      }
+    }
+
+    function updateRecipientsCount() {
+      const raw = document.getElementById('recipientsInput').value;
+      const list = parseRecipients(raw);
+      document.getElementById('recipientsCount').innerText = `🎯 ${list.length} valid recipient${list.length === 1 ? '' : 's'} detected`;
+    }
+
+    function parseRecipients(raw) {
+      if (!raw) return [];
+      return raw.split(/[\n,;]+/)
+        .map(n => n.replace(/[^0-9]/g, ''))
+        .filter(n => n.length >= 10);
+    }
+
+    function pasteSampleNumbers() {
+      document.getElementById('recipientsInput').value = "919820144521, 919876543210, 919599300365, 919811223344";
+      updateRecipientsCount();
+    }
+
+    function updateTextPreview() {
+      const text = document.getElementById('messageText').value;
+      document.getElementById('charCounter').innerText = `${text.length} / 4096`;
+      document.getElementById('phoneTextPreview').innerText = text || "Type your WhatsApp broadcast message here...";
+    }
+
+    function updateMediaPreview() {
+      const url = document.getElementById('mediaUrlInput').value.trim();
+      updateMediaPreviewWithUrl(url, "Document.pdf");
+    }
+
+    function updateMediaPreviewWithUrl(url, filename) {
+      const container = document.getElementById('phoneMediaPreview');
+      const img = document.getElementById('phonePreviewImg');
+      const video = document.getElementById('phonePreviewVideo');
+      const doc = document.getElementById('phonePreviewDoc');
+
+      img.style.display = 'none';
+      video.style.display = 'none';
+      doc.style.display = 'none';
+
+      if (!url && currentMediaType === 'text') {
+        container.style.display = 'none';
+        return;
+      }
+
+      container.style.display = 'block';
+
+      if (currentMediaType === 'image') {
+        img.src = url || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400';
+        img.style.display = 'block';
+      } else if (currentMediaType === 'video') {
+        video.src = url || '';
+        video.style.display = 'block';
+      } else if (currentMediaType === 'document') {
+        doc.style.display = 'block';
+        document.getElementById('phoneDocName').innerText = filename || 'Brochure.pdf';
+      }
+    }
+
+    // Broadcast Submission
+    document.getElementById('broadcastForm').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const btn = document.getElementById('submitBtn');
-      const alertBox = document.getElementById('status-alert');
-      const recipient = document.getElementById('recipient').value.trim();
-      const template = document.getElementById('template').value;
+      const recipients = parseRecipients(document.getElementById('recipientsInput').value);
+
+      if (recipients.length === 0) {
+        showAlert('Please enter at least one valid 10+ digit phone number with country code.', 'error');
+        return;
+      }
+
+      // Check file size limit
+      if (selectedFile) {
+        const sizeMB = selectedFile.size / (1024 * 1024);
+        const limit = MEDIA_LIMITS[currentMediaType].maxMB;
+        if (sizeMB > limit) {
+          showAlert(`Cannot send: Selected file is ${sizeMB.toFixed(2)} MB, exceeding WhatsApp's ${limit} MB limit.`, 'error');
+          return;
+        }
+      }
+
+      const campaignName = document.getElementById('campaignName').value.trim() || 'Broadcast';
+      const text = document.getElementById('messageText').value.trim();
+      const mediaUrl = document.getElementById('mediaUrlInput').value.trim();
+      const metaToken = localStorage.getItem('meta_access_token') || '';
+      const phoneId = localStorage.getItem('meta_phone_id') || '';
+
+      const btn = document.getElementById('btnSendNow');
+      const progressBox = document.getElementById('progressBox');
+      const progressBarFill = document.getElementById('progressBarFill');
+      const progressText = document.getElementById('progressText');
+      const progressPercent = document.getElementById('progressPercent');
 
       btn.disabled = true;
-      btn.innerText = 'Sending...';
-      alertBox.style.display = 'none';
-      alertBox.className = 'alert';
+      progressBox.style.display = 'block';
+      progressBarFill.style.width = '10%';
+      progressPercent.innerText = '10%';
+      progressText.innerText = `Queueing ${recipients.length} messages...`;
 
       try {
-        const res = await fetch('/api/whatsapp/send-single', {
+        progressBarFill.style.width = '40%';
+        progressPercent.innerText = '40%';
+        progressText.innerText = `Dispatching to WhatsApp Meta Gateway...`;
+
+        const res = await fetch('/api/whatsapp/send-bulk', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            recipient_phone: recipient,
-            template_id: template
+            campaign_name: campaignName,
+            recipients: recipients,
+            media_type: currentMediaType,
+            message_text: text,
+            media_url: mediaUrl,
+            meta_token: metaToken,
+            phone_number_id: phoneId
           })
         });
 
         const data = await res.json();
         
-        alertBox.style.display = 'block';
+        progressBarFill.style.width = '100%';
+        progressPercent.innerText = '100%';
+        progressText.innerText = `Completed!`;
+
         if (data.success) {
-          alertBox.classList.add('success');
-          alertBox.innerText = `✅ Message successfully queued! Message ID: ${data.message_id || 'N/A'}`;
+          showAlert(`🎉 Broadcast sent successfully! Dispatched to ${recipients.length} numbers.`, 'success');
+          
+          // Add to Logs Table
+          if (data.campaign && data.campaign.results) {
+            data.campaign.results.forEach(item => {
+              addLogRow(item.recipient, currentMediaType.toUpperCase(), text, item.status, item.message_id || 'wamid.HBgL...');
+            });
+          }
         } else {
-          alertBox.classList.add('error');
-          alertBox.innerText = `❌ Failed: ${data.error || 'Unknown error occurred'}`;
+          showAlert(`❌ Failed: ${data.error || 'Server error'}`, 'error');
         }
       } catch (err) {
-        alertBox.style.display = 'block';
-        alertBox.classList.add('error');
-        alertBox.innerText = `❌ Network Error: Could not reach the server.`;
+        showAlert('❌ Network error: Could not reach the Marketiqx backend.', 'error');
       } finally {
         btn.disabled = false;
-        btn.innerText = 'Send Message 🚀';
+        setTimeout(() => {
+          progressBox.style.display = 'none';
+        }, 3000);
       }
     });
+
+    function showAlert(msg, type) {
+      const box = document.getElementById('statusAlert');
+      box.innerText = msg;
+      box.className = `alert ${type}`;
+      box.style.display = 'block';
+      setTimeout(() => { box.style.display = 'none'; }, 6000);
+    }
+
+    function addLogRow(phone, format, text, status, wamid) {
+      const tbody = document.getElementById('logsTableBody');
+      const tr = document.createElement('tr');
+      const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      
+      tr.innerHTML = `
+        <td><strong>+${phone}</strong></td>
+        <td><span style="font-size: 0.75rem; background: #e0f2fe; color: #0284c7; padding: 2px 6px; border-radius: 4px;">${format}</span></td>
+        <td>${(text || 'Media Message').substring(0, 30)}...</td>
+        <td>${now}</td>
+        <td><span class="badge-status sent">✅ Delivered</span></td>
+        <td><code>${wamid}</code></td>
+      `;
+      tbody.insertBefore(tr, tbody.firstChild);
+    }
+
+    function clearLogs() {
+      document.getElementById('logsTableBody').innerHTML = '';
+    }
+
+    // Scheduling Functionality
+    function openScheduleModal() {
+      const now = new Date();
+      now.setMinutes(now.getMinutes() + 30);
+      document.getElementById('scheduleDateTime').value = now.toISOString().slice(0, 16);
+      document.getElementById('scheduleModal').style.display = 'flex';
+    }
+
+    function closeScheduleModal() {
+      document.getElementById('scheduleModal').style.display = 'none';
+    }
+
+    function confirmSchedule() {
+      const dt = document.getElementById('scheduleDateTime').value;
+      if (!dt) {
+        alert('Please choose a valid date and time.');
+        return;
+      }
+
+      const recipients = parseRecipients(document.getElementById('recipientsInput').value);
+      if (recipients.length === 0) {
+        alert('Please enter recipients first before scheduling.');
+        return;
+      }
+
+      const campaignName = document.getElementById('campaignName').value || 'Scheduled Broadcast';
+      
+      scheduledCampaigns.push({
+        name: campaignName,
+        time: dt,
+        recipientsCount: recipients.length
+      });
+
+      renderScheduledQueue();
+      closeScheduleModal();
+      showAlert(`⏱️ Broadcast scheduled for ${new Date(dt).toLocaleString()}!`, 'success');
+    }
+
+    function renderScheduledQueue() {
+      const card = document.getElementById('scheduledCard');
+      const list = document.getElementById('scheduledList');
+      if (scheduledCampaigns.length === 0) {
+        card.style.display = 'none';
+        return;
+      }
+
+      card.style.display = 'block';
+      list.innerHTML = scheduledCampaigns.map(c => `
+        <div style="background: var(--bg-body); padding: 10px 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <strong>${c.name}</strong> (${c.recipientsCount} recipients)
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">📅 ${new Date(c.time).toLocaleString()}</div>
+          </div>
+          <span style="font-size: 0.75rem; background: rgba(245, 158, 11, 0.1); color: var(--brand-warning); font-weight: 700; padding: 4px 8px; border-radius: 4px;">⏳ QUEUED</span>
+        </div>
+      `).join('');
+    }
+
+    // Settings Modal
+    function openSettingsModal() {
+      document.getElementById('settingsModal').style.display = 'flex';
+    }
+
+    function closeSettingsModal() {
+      document.getElementById('settingsModal').style.display = 'none';
+    }
+
+    function saveSettings() {
+      const token = document.getElementById('metaTokenInput').value.trim();
+      const phoneId = document.getElementById('metaPhoneIdInput').value.trim();
+      const wabaId = document.getElementById('metaWabaIdInput').value.trim();
+
+      if (token && phoneId) {
+        localStorage.setItem('meta_access_token', token);
+        localStorage.setItem('meta_phone_id', phoneId);
+        if (wabaId) localStorage.setItem('meta_waba_id', wabaId);
+        updateApiBadge(true);
+        showAlert('✅ Meta Cloud API credentials saved and connected!', 'success');
+      } else {
+        localStorage.removeItem('meta_access_token');
+        localStorage.removeItem('meta_phone_id');
+        updateApiBadge(false);
+        showAlert('Switched to Demo Gateway mode.', 'success');
+      }
+      closeSettingsModal();
+    }
+
+    function updateApiBadge(isLive) {
+      const badge = document.getElementById('apiStatusBadge');
+      const text = document.getElementById('apiStatusText');
+      if (isLive) {
+        badge.style.background = 'rgba(16, 185, 129, 0.15)';
+        badge.style.color = '#059669';
+        text.innerText = 'Meta API: Connected (Live)';
+      } else {
+        badge.style.background = 'rgba(14, 165, 233, 0.1)';
+        badge.style.color = 'var(--brand-primary)';
+        text.innerText = 'Meta API: Demo Gateway';
+      }
+    }
   </script>
+
 </body>
 </html>

@@ -1,0 +1,30 @@
+[
+  {
+    "campaign_id": "CAMP_1788956087_55ef33",
+    "name": "Test_Promo",
+    "media_type": "video",
+    "created_at": "2026-09-09 17:44:47",
+    "total_targets": 2,
+    "delivered": 2,
+    "failed": 0,
+    "status": "COMPLETED",
+    "results": [
+      {
+        "success": true,
+        "recipient": "919820144521",
+        "message_id": "wamid.HBgL77cbce814c214f02",
+        "status": "DELIVERED_SIMULATED",
+        "timestamp": "2026-09-09 17:44:47",
+        "note": "Delivered in Test/Mock Mode. Add real Meta Token & Phone ID in Settings for live WhatsApp delivery."
+      },
+      {
+        "success": true,
+        "recipient": "919876543210",
+        "message_id": "wamid.HBgLa22e0dc1d4ac4e82",
+        "status": "DELIVERED_SIMULATED",
+        "timestamp": "2026-09-09 17:44:47",
+        "note": "Delivered in Test/Mock Mode. Add real Meta Token & Phone ID in Settings for live WhatsApp delivery."
+      }
+    ]
+  }
+]
