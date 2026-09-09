@@ -540,19 +540,140 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
   border-color: var(--text-subtle);
 }
 
-/* Header Compact Buttons */
+/* ==========================================================================
+   MARKETIQX MODERN HEADER SYSTEM
+   ========================================================================== */
+header, .site-header {
+  height: 72px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 28px !important;
+  background: var(--bg-card) !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* Brand Logo Container */
+.header-brand {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  text-decoration: none !important;
+  flex-shrink: 0 !important;
+  margin-right: 36px !important;
+}
+
+.brand-title {
+  font-size: 1.35rem !important;
+  font-weight: 800 !important;
+  color: #0ea5e9 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+/* Nav links: single line, no wrapping */
+.public-header-nav, .desktop-nav {
+  display: flex !important;
+  align-items: center !important;
+  gap: 22px !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+  margin: 0 auto 0 0 !important;
+}
+
+.public-header-nav a, .desktop-nav a {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: var(--text-muted) !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  padding: 6px 0 !important;
+  transition: color 0.15s ease !important;
+  display: inline-block !important;
+  line-height: 1 !important;
+}
+
+.public-header-nav a:hover, .desktop-nav a:hover,
+.public-header-nav a.active, .desktop-nav a.active {
+  color: #0ea5e9 !important;
+}
+
+/* Header Right Actions */
+.header-actions-group, .header-actions {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-shrink: 0 !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+  margin-left: auto !important;
+}
+
+/* Phone button pill */
+.header-phone-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  color: var(--text-main) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: 8px !important;
+  padding: 8px 14px !important;
+  height: 38px !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+}
+
+.header-phone-pill:hover {
+  background: var(--bg-card-hover) !important;
+  border-color: var(--text-subtle) !important;
+}
+
+/* Buttons in Header: strictly horizontal, fixed height, no wrap */
 header .btn-primary,
 header .btn-secondary,
 .site-header .btn-primary,
 .site-header .btn-secondary,
 .header-actions .btn-primary,
 .header-actions .btn-secondary {
-  font-size: 0.78rem !important;
-  padding: 5px 12px !important;
-  border-radius: 6px !important;
-  gap: 5px !important;
-  line-height: 1.25 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: row !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  font-size: 0.84rem !important;
   font-weight: 600 !important;
+  height: 38px !important;
+  padding: 0 16px !important;
+  border-radius: 8px !important;
+  gap: 6px !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+  line-height: 1 !important;
+}
+
+header .btn-secondary,
+.site-header .btn-secondary {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-main) !important;
+}
+
+header .btn-primary,
+.site-header .btn-primary {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7) !important;
+  border: none !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.25) !important;
 }
 
 /* Page Body Container */

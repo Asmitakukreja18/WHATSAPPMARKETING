@@ -27,29 +27,28 @@
   </div>
 
   <!-- Header -->
-  <header style="background: var(--bg-card); border-bottom: 1px solid var(--border-subtle); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 40; backdrop-filter: blur(12px);">
-    <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-main);">
+  <header>
+    <a href="index.html" class="header-brand">
       <div class="brand-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
       </div>
-      <div style="font-size: 1.3rem; font-weight: 800; color: #0ea5e9;">Marketiqx</div>
+      <span class="brand-title">Marketiqx</span>
     </a>
 
-    <nav class="public-header-nav" style="display: flex; align-items: center; gap: 18px; font-size: 0.9rem; font-weight: 600;">
-      <a href="index.html" style="color: var(--text-muted); text-decoration: none;">Platform</a>
-      <a href="whatsapp-marketing-services.html" style="color: var(--text-muted); text-decoration: none;">WhatsApp Broadcasts</a>
-      <a href="whatsapp-business-api.html" style="color: var(--text-muted); text-decoration: none;">Business API</a>
-      <a href="pricing-sms-voice-email-wa.html" style="color: var(--brand-cyan); font-weight: 700; text-decoration: none;">Pricing</a>
-      <a href="case-studies.html" style="color: var(--text-muted); text-decoration: none;">Case Studies</a>
-      <a href="about-us.html" style="color: var(--text-muted); text-decoration: none;">About</a>
-      <a href="contact.html" style="color: var(--text-muted); text-decoration: none;">Contact</a>
-      <a href="demo_regi.html" style="color: var(--brand-emerald); font-weight: 700; text-decoration: none;">Free Demo</a>
+    <nav class="public-header-nav">
+      <a href="index.html">Platform</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="pricing-sms-voice-email-wa.html" class="active">Pricing</a>
+      <a href="about-us.html">About Us</a>
+      <a href="leadership.html">Leadership</a>
+      <a href="contact.html">Contact</a>
+      <a href="demo_regi.html" style="color: #0ea5e9; font-weight: 700;">Free Demo</a>
     </nav>
 
-    <div style="display: flex; align-items: center; gap: 8px;">
-      <a href="tel:+919820144521" class="btn-secondary" style="font-size: 0.78rem; padding: 5px 10px; text-decoration: none;">📞 +91 98201 44521</a>
-      <a href="login.html" class="btn-secondary" style="font-size: 0.78rem; padding: 5px 12px; text-decoration: none;">🔑 Login</a>
-      <a href="dashboard.html" class="btn-primary" style="font-size: 0.78rem; padding: 5px 12px; text-decoration: none;">🚀 Dashboard</a>
+    <div class="header-actions-group">
+      <a href="tel:+919820144521" class="header-phone-pill">📞 +91 98201 44521</a>
+      <a href="login.html" class="btn-secondary">🔑 Login</a>
+      <a href="dashboard.html" class="btn-primary">🚀 Dashboard</a>
     </div>
   </header>
 
