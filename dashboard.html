@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketiqx Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-body: #f8fafc;
+      --bg-sidebar: #0f172a;
+      --bg-card: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-sidebar: #94a3b8;
+      --text-sidebar-active: #ffffff;
+      --border-color: #e2e8f0;
+      --brand-primary: #0ea5e9;
+      --brand-hover: #0284c7;
+      --brand-success: #10b981;
+      --radius-lg: 16px;
+      --radius-md: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background-color: var(--bg-sidebar);
+      color: var(--text-sidebar);
+      display: flex;
+      flex-direction: column;
+      padding: 24px 16px;
+    }
+
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 40px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-item {
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-sidebar);
+    }
+
+    .nav-item:hover, .nav-item.active {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--text-sidebar-active);
+    }
+
+    .nav-item.active {
+      font-weight: 600;
+      border-left: 3px solid var(--brand-primary);
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    input, select, textarea {
+      padding: 12px 16px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--brand-primary);
+    }
+
+    .btn {
+      padding: 12px 24px;
+      background-color: var(--brand-primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn:hover {
+      background-color: var(--brand-hover);
+    }
+
+    /* Status Alert */
+    .alert {
+      padding: 16px;
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+      font-weight: 500;
+      display: none;
+    }
+
+    .alert.success {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--brand-success);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+    
+    .alert.error {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      Marketiqx
+    </div>
+    
+    <a href="#" class="nav-item active">
+      <span>✉️</span> Send Message
+    </a>
+    <a href="#" class="nav-item">
+      <span>📊</span> Campaigns
+    </a>
+    <a href="#" class="nav-item">
+      <span>👥</span> Contacts
+    </a>
+    <div style="flex: 1;"></div>
+    <a href="#" class="nav-item">
+      <span>⚙️</span> Settings
+    </a>
+    <a href="index.html" class="nav-item" style="color: #ef4444;">
+      <span>🚪</span> Logout
+    </a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="header">
+      <h1>Send WhatsApp Message</h1>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 600;">Status: <span style="color: var(--brand-success);">Connected</span></span>
+      </div>
+    </header>
+
+    <div class="card" style="max-width: 600px;">
+      <div id="status-alert" class="alert"></div>
+
+      <form id="sendMessageForm">
+        <div class="form-group">
+          <label for="recipient">Recipient WhatsApp Number (with country code)</label>
+          <input type="text" id="recipient" placeholder="e.g. 919876543210" required>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Do not include '+' or '00', just the country code and number.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="template">Select Template</label>
+          <select id="template">
+            <option value="hello_world">hello_world (Meta Default)</option>
+            <option value="tpl_growth_audit_confirm">tpl_growth_audit_confirm</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-top: 32px;">
+          <button type="submit" class="btn" id="submitBtn">Send Message 🚀</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('sendMessageForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const alertBox = document.getElementById('status-alert');
+      const recipient = document.getElementById('recipient').value.trim();
+      const template = document.getElementById('template').value;
+
+      btn.disabled = true;
+      btn.innerText = 'Sending...';
+      alertBox.style.display = 'none';
+      alertBox.className = 'alert';
+
+      try {
+        const res = await fetch('/api/whatsapp/send-single', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            recipient_phone: recipient,
+            template_id: template
+          })
+        });
+
+        const data = await res.json();
+        
+        alertBox.style.display = 'block';
+        if (data.success) {
+          alertBox.classList.add('success');
+          alertBox.innerText = `✅ Message successfully queued! Message ID: ${data.message_id || 'N/A'}`;
+        } else {
+          alertBox.classList.add('error');
+          alertBox.innerText = `❌ Failed: ${data.error || 'Unknown error occurred'}`;
+        }
+      } catch (err) {
+        alertBox.style.display = 'block';
+        alertBox.classList.add('error');
+        alertBox.innerText = `❌ Network Error: Could not reach the server.`;
+      } finally {
+        btn.disabled = false;
+        btn.innerText = 'Send Message 🚀';
+      }
+    });
+  </script>
+</body>
+</html>
