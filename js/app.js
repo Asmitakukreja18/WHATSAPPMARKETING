@@ -2,7 +2,7 @@
 
 class WhatsAppMarketingApp {
   constructor() {
-    this.currentMode = 'app'; // 'app' (Dashboard) or 'web' (Public Website)
+    this.currentMode = 'web'; // 'web' (Public Website by default) or 'app' (Dashboard)
     this.activeTab = 'dashboard';
     
     // Explicitly set light theme

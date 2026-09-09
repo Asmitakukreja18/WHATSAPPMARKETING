@@ -1,145 +1,1069 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marketiqx | Dashboard Login</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-body: #f8fafc;
-      --bg-card: #ffffff;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --border-color: #e2e8f0;
-      --brand-primary: #0ea5e9;
-      --brand-hover: #0284c7;
-      --radius-lg: 16px;
-      --radius-md: 8px;
-    }
+  <title>Marketiqx │ Enterprise WhatsApp Marketing & CPaaS Platform</title>
+  <meta name="description" content="Marketiqx - Next-generation CPaaS platform for high-throughput WhatsApp marketing, Meta Business API, SmartQueue anti-drop delivery, and omni-channel automation.">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-body);
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .login-container {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 48px;
-      width: 100%;
-      max-width: 440px;
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
-      text-align: center;
-    }
-
-    .brand {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .brand-icon {
-      color: var(--brand-primary);
-    }
-
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 40px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    label {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    input {
-      padding: 14px 16px;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    input:focus {
-      border-color: var(--brand-primary);
-    }
-
-    .btn {
-      width: 100%;
-      padding: 14px;
-      background-color: var(--brand-primary);
-      color: white;
-      border: none;
-      border-radius: var(--radius-md);
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.2s;
-      font-family: 'Inter', sans-serif;
-      margin-top: 10px;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn:hover {
-      background-color: var(--brand-hover);
-    }
-  </style>
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <div class="login-container">
-    <div class="brand">
-      <svg class="brand-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-      Marketiqx
+  <!-- TOP VIEW SWITCHER BANNER -->
+  <div class="view-switch-banner">
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+      <span class="brand-badge" style="background: var(--brand-emerald-glow); color: var(--brand-emerald);">Marketiqx Cloud Platform</span>
+      <span style="font-size: 0.8rem; color: var(--text-muted);">Enterprise 24/7 Helpline: <strong>+91 98201 44521</strong></span>
     </div>
-    <div class="subtitle">Log in to your WhatsApp Dashboard</div>
 
-    <form onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
-      <div class="form-group">
-        <label for="email">Username or Email</label>
-        <input type="text" id="email" value="admin@marketiqx.com" placeholder="admin or admin@marketiqx.com" required>
-      </div>
-
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" value="admin123" placeholder="••••••••" required>
-      </div>
-
-      <button type="submit" class="btn">Login to Dashboard 🚀</button>
-    </form>
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <a href="login.html" style="font-size: 0.85rem; color: var(--brand-cyan); font-weight: 700; text-decoration: none;">🔑 Client Portal / Login</a>
+    </div>
   </div>
 
+  <!-- ==========================================================================
+       VIEW 1: PUBLIC MARKETING & SALES WEBSITE
+       ========================================================================== -->
+  <div id="view-public-website" class="public-website-view active">
+    
+    <!-- Public Header -->
+    <header style="background: var(--bg-card); border-bottom: 1px solid var(--border-subtle); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 40; backdrop-filter: blur(12px);">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        </div>
+        <div style="font-size: 1.3rem; font-weight: 800; color: #0ea5e9;">Marketiqx</div>
+      </div>
+
+      <nav class="public-header-nav" style="display: flex; align-items: center; gap: 18px; font-size: 0.9rem; font-weight: 600;">
+        <a href="#web-hero" style="color: var(--text-main);">Platform</a>
+        <a href="whatsapp-marketing-services.html" style="color: var(--text-muted);">WhatsApp Marketing</a>
+        <a href="whatsapp-business-api.html" style="color: var(--text-muted);">Business API</a>
+        <a href="pricing-sms-voice-email-wa.html" style="color: var(--text-muted);">Pricing</a>
+        <a href="case-studies.html" style="color: var(--text-muted);">Case Studies</a>
+        <a href="about-us.html" style="color: var(--text-muted);">About Us</a>
+        <a href="contact.html" style="color: var(--text-muted);">Contact</a>
+        <a href="demo_regi.html" style="color: var(--brand-cyan); font-weight: 700;">Free Demo</a>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="login.html" class="btn-secondary" style="font-size: 0.85rem; padding: 8px 16px; text-decoration: none;">🔑 Login</a>
+        <a href="login.html" class="btn-primary" style="font-size: 0.85rem; padding: 8px 16px; text-decoration: none;">
+          <span>🚀 Dashboard</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Public Hero Section -->
+    <section id="web-hero" style="padding: 70px 40px; text-align: center; background: radial-gradient(circle at 50% 30%, rgba(8, 145, 178, 0.15) 0%, transparent 65%);">
+      <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: var(--brand-emerald-glow); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-full); color: var(--brand-emerald); font-weight: 700; font-size: 0.85rem; margin-bottom: 20px;">
+        <span>✓✓ 99.4% Verified Inbox Delivery SLA</span>
+        <span>•</span>
+        <span>Marketiqx SmartQueue™ Anti-Drop Engine</span>
+      </div>
+
+      <h1 style="font-size: 3.2rem; font-weight: 800; letter-spacing: -0.03em; max-width: 900px; margin: 0 auto 18px; line-height: 1.15;">
+        Intelligent Conversations at Scale with <span class="gradient-text">Marketiqx</span>
+      </h1>
+
+      <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 720px; margin: 0 auto 28px; line-height: 1.6;">
+        Empower your business with high-throughput WhatsApp marketing broadcasts, verified Meta Business API green badges, and omnichannel automation engineered for 5x customer engagement.
+      </p>
+
+      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+        <a href="demo_regi.html" class="btn-primary" style="padding: 12px 28px; font-size: 1rem; text-decoration: none;">
+          <span>Get Free Demo & 100 Test Credits 🎁</span>
+        </a>
+        <a href="login.html" class="btn-secondary" style="padding: 12px 28px; font-size: 1rem; text-decoration: none;">
+          <span>Login to Dashboard 📊</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Core Capabilities Pillars -->
+    <section id="web-services" class="public-section">
+      <div class="public-section-title">
+        <span class="brand-badge" style="margin-bottom: 8px;">WhatsApp Marketing Architecture</span>
+        <h2>Enterprise CPaaS & Omnichannel Capabilities</h2>
+        <p>A unified cloud communications framework built for reliability, sub-second delivery, and seamless CRM integrations.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        <div class="panel-card" style="padding: 26px;">
+          <div style="font-size: 2rem; margin-bottom: 12px;">💬</div>
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">WhatsApp Marketing WhatsApp Broadcasts</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">Dispatch high-volume personalized promotional campaigns with dynamic variables, image/video headers, interactive catalogs, and CTA buttons.</p>
+          <ul style="font-size: 0.82rem; color: var(--text-subtle); display: flex; flex-direction: column; gap: 6px;">
+            <li>✓ SmartQueue™ Anti-Ban Throttling</li>
+            <li>✓ 100% Non-WhatsApp Auto Refund</li>
+            <li>✓ Real-Time Blue Tick Read Receipts</li>
+          </ul>
+        </div>
+
+        <div class="panel-card" style="padding: 26px;">
+          <div style="font-size: 2rem; margin-bottom: 12px;">🛡️</div>
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">Official Meta Business API</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">Direct Meta Cloud API pipeline with fast-tracked Official Green Badge verification, automated 24/7 AI chatbots, and multi-agent shared inboxes.</p>
+          <ul style="font-size: 0.82rem; color: var(--text-subtle); display: flex; flex-direction: column; gap: 6px;">
+            <li>✓ Verified Official Green Tick Badge</li>
+            <li>✓ Unlimited Daily Broadcast Tiers</li>
+            <li>✓ Sub-Second Webhook Latency</li>
+          </ul>
+        </div>
+
+        <div class="panel-card" style="padding: 26px;">
+          <div style="font-size: 2rem; margin-bottom: 12px;">📱</div>
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">ReachSMS & 2-Second OTPs</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">High-speed transactional and promotional SMS routes with TRAI DLT compliance management and multi-carrier automated failover.</p>
+          <ul style="font-size: 0.82rem; color: var(--text-subtle); display: flex; flex-direction: column; gap: 6px;">
+            <li>✓ Instant 2-Second OTP Delivery</li>
+            <li>✓ DLT Entity & Header Registration</li>
+            <li>✓ Global Telecom Interconnects</li>
+          </ul>
+        </div>
+
+        <div class="panel-card" style="padding: 26px;">
+          <div style="font-size: 2rem; margin-bottom: 12px;">✨</div>
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">RCS Messaging & Voice OBD</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">Interactive Google RCS rich messaging with branded headers, product carousels, automated IVR phone broadcasts, and DTMF feedback capture.</p>
+          <ul style="font-size: 0.82rem; color: var(--text-subtle); display: flex; flex-direction: column; gap: 6px;">
+            <li>✓ Verified Google RCS Sender</li>
+            <li>✓ Automated Voice OBD Surveys</li>
+            <li>✓ 1-Tap Quick Action Buttons</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="web-case-studies" class="public-section" style="background: var(--bg-card-subtle); border-radius: var(--radius-xl);">
+      <div class="public-section-title">
+        <span class="brand-badge" style="background: var(--brand-violet-glow); color: var(--brand-violet); margin-bottom: 8px;">Customer Success Stories</span>
+        <h2>Verified ROI with WhatsApp Marketing</h2>
+        <p>See how fast-growing brands generate millions in incremental revenue using our smart delivery network.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+        
+        <!-- Case 1 -->
+        <div class="case-study-card">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span class="brand-badge" style="background: var(--brand-emerald-glow); color: var(--brand-emerald);">Omnichannel Retail</span>
+              <strong style="color: var(--brand-cyan); font-size: 0.85rem;">5.2x ROI</strong>
+            </div>
+            <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Nova Luxe Apparel</h3>
+            <div class="case-metric-highlight">
+              <span>📈</span> +48% Festive Sales Lift
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px;"><strong>Challenge:</strong> Traditional SMS campaigns suffered from low click-through rates and high customer acquisition costs.</p>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;"><strong>Solution:</strong> Deployed WhatsApp Marketing SmartQueue with interactive catalog carousels and personalized 1-tap checkout links.</p>
+          </div>
+          <div style="background: var(--bg-body); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--brand-emerald); margin-bottom: 4px;">VERIFIED OUTCOME</div>
+            <div style="font-size: 0.85rem; font-weight: 600;">₹24.6 Lakhs in sales generated in 48 hours with 94.2% read rate.</div>
+          </div>
+        </div>
+
+        <!-- Case 2 -->
+        <div class="case-study-card">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span class="brand-badge" style="background: var(--brand-cyan-glow); color: var(--brand-cyan);">D2C Brands</span>
+              <strong style="color: var(--brand-cyan); font-size: 0.85rem;">41% Recovered</strong>
+            </div>
+            <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">UrbanBlend Direct</h3>
+            <div class="case-metric-highlight">
+              <span>🛒</span> 41% Cart Recovery Rate
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px;"><strong>Challenge:</strong> High shopping cart abandonment rate on Shopify store with generic email follow-ups ignored.</p>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;"><strong>Solution:</strong> Automated WhatsApp Marketing Webhook sending 15-minute checkout links with dynamic discount codes.</p>
+          </div>
+          <div style="background: var(--bg-body); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--brand-emerald); margin-bottom: 4px;">VERIFIED OUTCOME</div>
+            <div style="font-size: 0.85rem; font-weight: 600;">8,420 carts recovered automatically, adding ₹6.8 Lakhs monthly MRR.</div>
+          </div>
+        </div>
+
+        <!-- Case 3 -->
+        <div class="case-study-card">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span class="brand-badge" style="background: var(--brand-amber-glow); color: var(--brand-amber);">Prime Real Estate</span>
+              <strong style="color: var(--brand-amber); font-size: 0.85rem;">185+ Visits</strong>
+            </div>
+            <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Skyline & Apex Living Dubai</h3>
+            <div class="case-metric-highlight">
+              <span>🏢</span> 185+ Private Site Bookings
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px;"><strong>Challenge:</strong> Engaging high-net-worth property investors in India and GCC without spam flags or number blocks.</p>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;"><strong>Solution:</strong> Sent interactive WhatsApp rich brochures with video walkthroughs and instant 1-tap site booking.</p>
+          </div>
+          <div style="background: var(--bg-body); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--brand-emerald); margin-bottom: 4px;">VERIFIED OUTCOME</div>
+            <div style="font-size: 0.85rem; font-weight: 600;">AED 6.4M in pre-launch token advances closed within the opening weekend.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="web-about-us" class="public-section">
+      <div class="public-section-title">
+        <span class="brand-badge" style="margin-bottom: 8px;">About WhatsApp Marketing</span>
+        <h2>Engineering the Future of Conversational Marketing</h2>
+        <p>Trusted by 15,000+ scaling enterprises across India, Middle East, Europe, and Southeast Asia.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; margin-bottom: 40px;">
+        <div>
+          <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; color: var(--text-main);">Built on Enterprise Reliability & Direct Telecom Pipes</h3>
+          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
+            WhatsApp Marketing is an advanced conversational marketing and CPaaS infrastructure provider. We eliminate carrier bottlenecks, reduce spam delivery drops, and maintain an industry-leading 99.4% inbox placement rate.
+          </p>
+          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
+            With dual enterprise tech centers in <strong>Netaji Subhash Place (Delhi)</strong> and <strong>Business Bay (Dubai)</strong>, our platform processes over 50 Million+ monthly conversations with 24/7 uptime and military-grade encryption.
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div style="padding: 16px; background: var(--bg-card-subtle); border-radius: var(--radius-md); border-left: 3px solid var(--brand-cyan);">
+              <div style="font-size: 1.4rem; font-weight: 800; color: var(--brand-cyan);">15,000+</div>
+              <div style="font-size: 0.8rem; color: var(--text-subtle);">Active Business Clients</div>
+            </div>
+            <div style="padding: 16px; background: var(--bg-card-subtle); border-radius: var(--radius-md); border-left: 3px solid var(--brand-emerald);">
+              <div style="font-size: 1.4rem; font-weight: 800; color: var(--brand-emerald);">99.4%</div>
+              <div style="font-size: 0.8rem; color: var(--text-subtle);">Guaranteed Delivery SLA</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-card" style="padding: 30px;">
+          <h4 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 16px;">Security & Enterprise Compliance</h4>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="font-size: 1.3rem;">🛡️</div>
+              <div>
+                <strong style="font-size: 0.9rem;">Official Meta Tech Provider</strong>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Direct Cloud API connectivity with guaranteed fast-track Green Tick approval.</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="font-size: 1.3rem;">🔒</div>
+              <div>
+                <strong style="font-size: 0.9rem;">ISO 27001 & SOC-2 Certified</strong>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">256-bit encryption with zero-log customer phone number masking.</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="font-size: 1.3rem;">⚡</div>
+              <div>
+                <strong style="font-size: 0.9rem;">TRAI DLT & Global Telephony</strong>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Direct interconnects with Airtel, Jio, Vodafone-Idea, and Etisalat.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Calculator -->
+    <section id="web-pricing" style="padding: 60px 40px; background: var(--bg-card-subtle);">
+      <div style="max-width: 1100px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 30px;">
+          <h2 style="font-size: 2rem; font-weight: 800;">WhatsApp Marketing Instant Volume Calculator</h2>
+          <p style="color: var(--text-muted);">Flexible packages starting from 1 Lakh to 50 Lakh+ high-speed messages</p>
+        </div>
+
+        <div class="panel-card" style="padding: 30px; margin-bottom: 30px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
+            <span style="font-size: 1.1rem; font-weight: 700;">Selected Message Volume:</span>
+            <span id="web-slider-label" style="font-size: 1.8rem; font-weight: 800; color: var(--brand-cyan);">5,00,000 Messages</span>
+          </div>
+          <input type="range" min="100000" max="5000000" step="50000" value="500000" oninput="document.getElementById('web-slider-label').textContent = parseInt(this.value).toLocaleString() + ' Messages'; document.getElementById('web-cost-val').textContent = '₹' + Math.round(parseInt(this.value) * 0.10).toLocaleString();" style="width: 100%; accent-color: var(--brand-cyan); height: 8px; cursor: pointer;">
+          
+          <div style="display: flex; justify-content: space-between; margin-top: 20px; align-items: center; flex-wrap: wrap; gap: 14px;">
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-subtle);">Estimated Total Cost:</div>
+              <strong id="web-cost-val" style="font-size: 1.8rem; color: var(--brand-emerald); font-weight: 800;">₹50,000</strong>
+            </div>
+            <button class="btn-primary" style="padding: 10px 24px;" onclick="app.openQuotationModal('WhatsApp Marketing Volume')">
+              Get Official Quotation 📑
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Try Free Demo Registration Section -->
+    <section id="web-demo-regi" class="public-section">
+      <div class="interactive-form-card" style="max-width: 850px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 28px;">
+          <span class="brand-badge" style="background: var(--brand-emerald-glow); color: var(--brand-emerald); margin-bottom: 10px;">Free Instant Onboarding</span>
+          <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 8px;">Register for Free Demo & 100 Test Credits</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Experience lightning-fast bulk delivery, live blue tick reporting, and anti-ban routing with zero commitment.</p>
+        </div>
+
+        <form id="public-demo-regi-form" onsubmit="event.preventDefault(); app.handleDemoRegistration(event);">
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" id="demo-name" class="input-field" placeholder="e.g. Rajesh Kumar" required value="Rajesh Kumar">
+            </div>
+            <div class="form-group">
+              <label>Business Email *</label>
+              <input type="email" id="demo-email" class="input-field" placeholder="e.g. rajesh@apexretail.com" required value="rajesh@apexretail.com">
+            </div>
+            <div class="form-group">
+              <label>WhatsApp Contact Number *</label>
+              <input type="tel" id="demo-phone" class="input-field" placeholder="e.g. +91 98201 44521" required value="+91 98201 44521">
+            </div>
+            <div class="form-group">
+              <label>Company / Organization Name</label>
+              <input type="text" id="demo-company" class="input-field" placeholder="e.g. Apex Global Enterprises" value="Apex Global Enterprises">
+            </div>
+            <div class="form-group">
+              <label>Monthly Message Requirement</label>
+              <select id="demo-volume" class="input-field">
+                <option value="100k">1 Lakh to 3 Lakh Messages</option>
+                <option value="500k" selected>5 Lakh to 10 Lakh Messages</option>
+                <option value="2m">20 Lakh to 50 Lakh Messages</option>
+                <option value="5m+">50 Lakh+ Enterprise Volume</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Select Primary Industry</label>
+              <select id="demo-industry" class="input-field">
+                <option value="retail">Retail & E-Commerce</option>
+                <option value="realestate">Real Estate & Construction</option>
+                <option value="edtech">Education & Coaching</option>
+                <option value="finance">BFSI & Insurance</option>
+                <option value="health">Healthcare & Clinics</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+            <div style="font-size: 0.85rem; color: var(--brand-emerald); font-weight: 600; display: flex; align-items: center; gap: 6px;">
+              <span>🎁</span> 100 Free Test Credits credited instantly to your dashboard
+            </div>
+            <button type="submit" class="btn-primary" style="padding: 12px 32px; font-size: 1rem;">
+              <span>🚀 Activate Free Demo & Open Workspace</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="web-contact" class="public-section" style="background: var(--bg-card-subtle); border-radius: var(--radius-xl);">
+      <div class="public-section-title">
+        <span class="brand-badge" style="margin-bottom: 8px;">24/7 Enterprise Assistance</span>
+        <h2>Connect with WhatsApp Marketing Specialists</h2>
+        <p>Available 24/7 for custom API integrations, high-volume pricing quotes, and technical onboarding.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 40px;">
+        
+        <!-- Delhi Office -->
+        <div class="office-card">
+          <div style="font-size: 2rem; margin-bottom: 8px;">🏛️</div>
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 6px; color: var(--text-main);">Delhi Tech Innovation Hub</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px;">
+            8th Floor, Aggarwal Corporate Height, 803, Netaji Subhash Place, Pitampura, Delhi – 110034, India
+          </p>
+          <div style="font-size: 0.85rem; color: var(--text-subtle); display: flex; flex-direction: column; gap: 6px;">
+            <div>📞 <strong>+91 98201 44521</strong></div>
+            <div>✉️ <strong>support@whatsappmarketing.io</strong></div>
+            <div>🕒 Mon - Sat: 9:30 AM – 7:00 PM IST</div>
+          </div>
+        </div>
+
+        <!-- Dubai Office -->
+        <div class="office-card">
+          <div style="font-size: 2rem; margin-bottom: 8px;">🏙️</div>
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 6px; color: var(--text-main);">Dubai Enterprise Center</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px;">
+            The Binary by Omniyat, Office No. 2106, 21st Floor, Business Bay – Dubai, United Arab Emirates
+          </p>
+          <div style="font-size: 0.85rem; color: var(--text-subtle); display: flex; flex-direction: column; gap: 6px;">
+            <div>📞 <strong>+971 50 123 4567</strong></div>
+            <div>✉️ <strong>dubai@whatsappmarketing.io</strong></div>
+            <div>🕒 Sun - Thu: 9:00 AM – 6:00 PM GST</div>
+          </div>
+        </div>
+
+        <!-- Quick Inquiry Form -->
+        <div class="office-card" style="border: 2px solid var(--border-glow);">
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 10px; color: var(--brand-cyan);">Send Quick Inquiry</h3>
+          <form onsubmit="event.preventDefault(); app.handleContactSubmit(event);">
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <input type="text" id="contact-name" class="input-field" placeholder="Your Name" required value="Rajesh Kumar">
+              <input type="tel" id="contact-phone" class="input-field" placeholder="Phone Number" required value="+91 98201 44521">
+              <textarea id="contact-msg" class="input-field" rows="3" placeholder="Tell us about your message volume or requirements...">Hi WhatsApp Marketing team, I want to discuss high-volume WhatsApp broadcasting rates.</textarea>
+              <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                <span>Send Message 🚀</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Public Footer -->
+    <footer id="web-about" style="padding: 50px 40px; background: var(--bg-sidebar); border-top: 1px solid var(--border-subtle); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px;">
+      <div>
+        <div style="font-size: 1.15rem; font-weight: 800; margin-bottom: 10px;">WhatsApp <strong>Marketing</strong></div>
+        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 14px;">Next-Generation CPaaS Platform for India & Global Markets. Enterprise WhatsApp Broadcasts, Meta Business API, Bulk SMS, RCS & Voice OBD solutions.</p>
+        <div style="font-size: 0.8rem; color: var(--brand-emerald); font-weight: 700;">✓ Meta Tech Provider • ISO 27001 Certified</div>
+      </div>
+      <div>
+        <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 12px; color: var(--text-main);">Enterprise Services</h4>
+        <ul style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
+          <li><a href="whatsapp-marketing-services.html" style="color: var(--text-muted); text-decoration: none;">Bulk WhatsApp Broadcasts</a></li>
+          <li><a href="whatsapp-business-api.html" style="color: var(--text-muted); text-decoration: none;">WhatsApp Business API (Green Tick)</a></li>
+          <li><a href="bulk-sms.html" style="color: var(--text-muted); text-decoration: none;">ReachSMS & 2-Sec OTP</a></li>
+          <li><a href="rcs-messaging-services.html" style="color: var(--text-muted); text-decoration: none;">Google RCS Messaging</a></li>
+          <li><a href="bulk-voicecall.html" style="color: var(--text-muted); text-decoration: none;">Voice OBD & IVR Broadcasts</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 12px; color: var(--text-main);">Company & Proof</h4>
+        <ul style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
+          <li><a href="about-us.html" style="color: var(--text-muted); text-decoration: none;">About WhatsApp Marketing</a></li>
+          <li><a href="leadership.html" style="color: var(--text-muted); text-decoration: none;">Leadership & Founders</a></li>
+          <li><a href="case-studies.html" style="color: var(--text-muted); text-decoration: none;">Customer Case Studies</a></li>
+          <li><a href="blogs.html" style="color: var(--text-muted); text-decoration: none;">Growth Blogs & API Guides</a></li>
+          <li><a href="pricing-sms-voice-email-wa.html" style="color: var(--text-muted); text-decoration: none;">Volume Pricing Plans</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 12px; color: var(--text-main);">Tech Hubs</h4>
+        <p style="color: var(--text-muted); font-size: 0.82rem; line-height: 1.6; margin-bottom: 10px;">
+          📍 <strong>Delhi:</strong> Aggarwal Corporate Height, NSP, Pitampura – 110034<br>
+          📍 <strong>Dubai:</strong> The Binary by Omniyat, Business Bay, UAE
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;">
+          📞 <strong>+91 98201 44521</strong><br>
+          ✉️ <strong>support@whatsappmarketing.io</strong>
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+
+
+
+  <!-- ==========================================================================
+       VIEW 2: USER APP DASHBOARD (Post-Login SaaS Workspace)
+       ========================================================================== -->
+  <div id="view-app-dashboard" class="app-dashboard-view active">
+    
+    <div class="app-container">
+      
+      <!-- DASHBOARD SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="brand-logo">
+            <div class="brand-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <div>
+              <span>WhatsApp <strong>Marketing</strong></span>
+              <span class="brand-badge">SaaS Workspace</span>
+            </div>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="nav-section-title">Core Management</div>
+          
+          <div class="nav-item active" data-tab="dashboard">
+            <div class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></div>
+            <span>Dashboard Overview</span>
+          </div>
+
+          <div class="nav-item" data-tab="contacts">
+            <div class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+            <span>Contact Management</span>
+            <span class="nav-badge">Lists</span>
+          </div>
+
+          <div class="nav-item" data-tab="composer">
+            <div class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+            <span>Message Composer</span>
+            <span class="nav-badge live">Anti-Ban</span>
+          </div>
+
+          <div class="nav-item" data-tab="campaigns">
+            <div class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></div>
+            <span>Campaign Execution</span>
+          </div>
+
+          <div class="nav-section-title">Reports & Tracking</div>
+
+          <div class="nav-item" data-tab="logs">
+            <div class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg></div>
+            <span>Reports & Number Logs</span>
+            <span class="nav-badge live">Live Status</span>
+          </div>
+
+          <div class="nav-item" data-tab="credits">
+            <div class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg></div>
+            <span>Credits & Billing</span>
+          </div>
+
+          <div class="nav-item" data-tab="inbox">
+            <div class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+            <span>Live Shared Inbox</span>
+          </div>
+
+          <div class="nav-item" data-tab="integrations">
+            <div class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M13 6h3a2 2 0 0 1 2 2v7"></path><line x1="6" y1="9" x2="6" y2="21"></line></svg></div>
+            <span>Integrations & Webhooks</span>
+          </div>
+
+          <div class="nav-item" data-tab="filter">
+            <div class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg></div>
+            <span>Number Filter Tool</span>
+          </div>
+        </nav>
+
+        <!-- Sidebar Footer: User Profile & Credit Balance -->
+        <div class="sidebar-footer">
+          <div class="credits-compact-box">
+            <div class="credits-header-row">
+              <span>Available Credits:</span>
+              <span style="color: var(--brand-emerald); font-weight:700;">Live Active</span>
+            </div>
+            <div class="credits-val" id="sidebar-credits-val">3,850,000</div>
+          </div>
+
+          <div class="business-pill">
+            <div class="business-avatar">RK</div>
+            <div class="business-info">
+              <div class="business-name">
+                <span>Rajesh Kumar</span>
+                <svg class="verified-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              </div>
+              <div class="business-phone">Apex Global Retail</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- DASHBOARD MAIN WRAPPER -->
+      <main class="main-wrapper">
+        
+        <!-- TOP HEADER -->
+        <header class="top-header">
+          <div class="header-left">
+            <button class="mobile-toggle" id="mobile-toggle">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+            <div class="page-title-box">
+              <h1 id="header-title">Dashboard Overview & Analytics</h1>
+              <div class="page-subtitle" id="header-subtitle">Live campaign delivery summary, credit usage tracking, and Meta API health</div>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <!-- Remaining Credits Badge -->
+            <div class="header-status-pill" style="color: var(--brand-cyan); border-color: rgba(6, 182, 212, 0.3); background: var(--brand-cyan-glow);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+              <span id="header-remaining-credits">38.5 Lakh Credits</span>
+            </div>
+
+            <div class="header-status-pill">
+              <span class="pulse-dot"></span>
+              <span>Delivery SLA: 99.2% ✓✓</span>
+            </div>
+
+            <button class="header-action-btn" id="theme-toggle-btn" title="Toggle Light/Dark Theme">
+              <span id="theme-icon"></span>
+            </button>
+
+            <button class="btn-primary" onclick="app.switchTab('composer')">
+              <span>+ Create Campaign</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- DASHBOARD CONTENT PANES -->
+        <div class="page-content">
+
+          <!-- TAB 1: DASHBOARD OVERVIEW & ANALYTICS -->
+          <div class="tab-pane active" id="tab-dashboard">
+            <div class="hero-banner">
+              <div class="hero-text">
+                <h2>
+                  <span>Account Summary — Rajesh Kumar (Apex Retail)</span>
+                  <span class="app-badge-pill badge-emerald">Verified Green Badge</span>
+                </h2>
+                <p>Welcome back! Your WhatsApp Business API account is running at full capacity with 99.2% verified delivery SLA and 3.85 Million available credits.</p>
+              </div>
+              <div class="hero-meta">
+                <div class="hero-meta-item">
+                  <div class="hero-meta-label">Total Outbound</div>
+                  <div class="hero-meta-val" style="color: var(--brand-cyan);">1,150,000</div>
+                </div>
+                <div class="hero-meta-item">
+                  <div class="hero-meta-label">Success Rate</div>
+                  <div class="hero-meta-val" style="color: var(--brand-emerald);">99.2%</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- KPI Cards Grid -->
+            <div class="kpi-grid" id="kpi-container"></div>
+
+            <!-- Charts & Funnel -->
+            <div class="analytics-row">
+              <div class="panel-card">
+                <div class="panel-header">
+                  <div>
+                    <h2 class="panel-title">Real-Time Message Dispatch Traffic</h2>
+                    <div class="panel-subtitle">Hourly delivery stream across all customer campaigns</div>
+                  </div>
+                  <span class="stat-pill">Live Stream</span>
+                </div>
+                <div class="chart-container">
+                  <canvas id="hourly-chart-canvas"></canvas>
+                </div>
+              </div>
+
+              <div class="panel-card">
+                <div class="panel-header">
+                  <div>
+                    <h2 class="panel-title">Campaign Delivery Breakdown</h2>
+                    <div class="panel-subtitle">Status metrics summary</div>
+                  </div>
+                </div>
+
+                <div class="funnel-list">
+                  <div class="funnel-item">
+                    <div class="funnel-labels"><span>Total Sent</span><span>1,150,000 (100%)</span></div>
+                    <div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width: 100%; background: var(--brand-cyan);"></div></div>
+                  </div>
+                  <div class="funnel-item">
+                    <div class="funnel-labels"><span>Successfully Delivered</span><span>1,140,800 (99.2%)</span></div>
+                    <div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width: 99.2%; background: var(--brand-emerald);"></div></div>
+                  </div>
+                  <div class="funnel-item">
+                    <div class="funnel-labels"><span>Read (Blue Tick)</span><span>1,051,100 (91.4%)</span></div>
+                    <div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width: 91.4%; background: var(--brand-violet);"></div></div>
+                  </div>
+                  <div class="funnel-item">
+                    <div class="funnel-labels"><span>Failed / Non-WhatsApp</span><span>9,200 (0.8%)</span></div>
+                    <div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width: 5%; background: var(--brand-coral);"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: CONTACT MANAGEMENT -->
+          <div class="tab-pane" id="tab-contacts">
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h2 class="panel-title">Contact Lists & Segment Groups</h2>
+                  <div class="panel-subtitle">Upload mobile numbers, create target groups, and isolate active WhatsApp contacts</div>
+                </div>
+                <button class="btn-primary" onclick="app.openUploadContactsModal()">+ Upload / Add Contacts</button>
+              </div>
+
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Group Name</th>
+                      <th>Total Contacts</th>
+                      <th>Valid WhatsApp</th>
+                      <th>Invalid</th>
+                      <th>Created Date</th>
+                      <th>Tags</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="contact-groups-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: MESSAGE COMPOSER & LIVE WHATSAPP PREVIEW -->
+          <div class="tab-pane" id="tab-composer">
+            <div class="composer-grid-layout" style="display: grid; grid-template-columns: 1.4fr 0.9fr; gap: 24px; align-items: flex-start;">
+              
+              <div>
+                <div class="panel-card" style="margin-bottom: 20px;">
+                  <div class="panel-header">
+                    <div>
+                      <h2 class="panel-title">Message Composer</h2>
+                      <div class="panel-subtitle">Craft dynamic personalized text with multimedia & CTA buttons</div>
+                    </div>
+                    <span class="badge-emerald app-badge-pill">99.2% Delivery SLA</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Select Target Contact List</label>
+                    <select class="form-select" id="composer-target-group"></select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Campaign Title</label>
+                    <input type="text" class="form-input" id="bulk-campaign-name" value="Weekend Festive Offer - Flat 50% Off">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Multimedia Header URL (Image / PDF Catalogue / Video)</label>
+                    <input type="text" class="form-input" id="bulk-media-url" value="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&auto=format&fit=crop&q=80">
+                  </div>
+
+                  <div class="form-group">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                      <label class="form-label" style="margin-bottom: 0;">Message Content & Variables</label>
+                      <div style="display: flex; gap: 4px;">
+                        <button type="button" class="btn-secondary var-tag-btn" style="padding: 2px 6px; font-size: 0.72rem;" data-var="{Name}">+{Name}</button>
+                        <button type="button" class="btn-secondary var-tag-btn" style="padding: 2px 6px; font-size: 0.72rem;" data-var="{Code}">+{Code}</button>
+                        <button type="button" class="btn-secondary var-tag-btn" style="padding: 2px 6px; font-size: 0.72rem;" data-var="{Amount}">+{Amount}</button>
+                      </div>
+                    </div>
+                    <textarea class="form-textarea" id="bulk-msg-text" rows="5">🛍️ Hello {Name}! Exclusive Festive Sale at our store.
+
+Enjoy FLAT 50% OFF on all new arrivals this weekend! Show this message at counter or order online with code {Code}.
+
+✨ Free gifts on purchase above {Amount}!</textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Footer Text</label>
+                    <input type="text" class="form-input" id="bulk-footer-text" value="Apex Global Secure Checkout • Reply STOP to opt out">
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px;">
+                    <div>
+                      <label class="form-label">Action Button 1 (CTA / Website)</label>
+                      <input type="text" class="form-input" id="bulk-btn-1" value="Shop 50% Off 🛍️">
+                    </div>
+                    <div>
+                      <label class="form-label">Action Button 2 (Support / Location)</label>
+                      <input type="text" class="form-input" id="bulk-btn-2" value="Store Location 📍">
+                    </div>
+                  </div>
+
+                  <!-- Dispatch Progress Box -->
+                  <div id="dispatch-progress-card" style="display: none; margin-bottom: 20px; background: rgba(6, 182, 212, 0.1); border: 1px solid var(--brand-cyan); border-radius: var(--radius-md); padding: 16px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                      <strong style="color: var(--brand-cyan); font-size: 0.9rem;">⚡ 1-Click Campaign Dispatcher</strong>
+                      <span id="dispatch-progress-text" style="font-size: 0.85rem; color: var(--text-main);">Processing...</span>
+                    </div>
+                    <div class="funnel-bar-bg" style="height: 10px;">
+                      <div id="dispatch-progress-bar" class="funnel-bar-fill" style="width: 0%; background: linear-gradient(90deg, var(--brand-cyan), var(--brand-emerald));"></div>
+                    </div>
+                  </div>
+
+                  <button class="btn-primary" id="btn-start-dispatch" style="width: 100%; justify-content: center; padding: 12px; font-size: 1rem;">
+                    <span>🚀 1-Click Send Campaign to Contacts</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Right: Real-time Live Phone Mockup -->
+              <div class="phone-sticky-container" style="position: sticky; top: 96px; display: flex; flex-direction: column; align-items: center;">
+                <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase;">
+                  📱 Live WhatsApp Screen Preview
+                </div>
+
+                <div class="phone-mockup-wrapper">
+                  <div class="phone-notch"></div>
+                  <div class="phone-screen">
+                    <div class="phone-header">
+                      <div class="phone-avatar">AP</div>
+                      <div class="phone-header-info">
+                        <div class="phone-header-name">
+                          <span>Apex Global Retail</span>
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="#25d366"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div style="font-size: 0.65rem; color: #8696a0;">Official Business Account</div>
+                      </div>
+                    </div>
+
+                    <div class="phone-chat-area">
+                      <div class="wa-template-card">
+                        <div id="preview-wa-media" class="wa-media-header"></div>
+                        <div id="preview-wa-body" class="wa-card-body"></div>
+                        <div id="preview-wa-footer" class="wa-card-footer"></div>
+                        <div id="preview-wa-buttons" class="wa-buttons-group"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- TAB 4: CAMPAIGN EXECUTION & HISTORY -->
+          <div class="tab-pane" id="tab-campaigns">
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h2 class="panel-title">Campaign Execution & History</h2>
+                  <div class="panel-subtitle">Track sent, delivered, failed counts and credit deductions per campaign</div>
+                </div>
+                <button class="btn-primary" onclick="app.switchTab('composer')">+ Launch New Campaign</button>
+              </div>
+
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Campaign Title</th>
+                      <th>Target Audience</th>
+                      <th>Status</th>
+                      <th>Sent</th>
+                      <th>Delivered</th>
+                      <th>Failed</th>
+                      <th>Credits Spent</th>
+                      <th>Revenue</th>
+                      <th>Report</th>
+                    </tr>
+                  </thead>
+                  <tbody id="campaigns-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5: REPORTS & NUMBER LOGS (PER-NUMBER LOGS) -->
+          <div class="tab-pane" id="tab-logs">
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h2 class="panel-title">Reports & Detailed Number Logs</h2>
+                  <div class="panel-subtitle">Check exactly which numbers were delivered, failed (with reasons), and credit deductions</div>
+                </div>
+                <button class="btn-primary" onclick="app.showToast('Downloaded Complete Log Report (Excel)', 'success')">
+                  Export to Excel 📊
+                </button>
+              </div>
+
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Phone Number</th>
+                      <th>Recipient</th>
+                      <th>Campaign</th>
+                      <th>Delivery Status</th>
+                      <th>Credits Deducted</th>
+                      <th>Failure Reason</th>
+                      <th>Date & Time</th>
+                    </tr>
+                  </thead>
+                  <tbody id="detailed-logs-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 6: CREDITS TRACKING & BILLING -->
+          <div class="tab-pane" id="tab-credits">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 24px;">
+              <div class="panel-card">
+                <div style="font-size: 0.8rem; color: var(--text-subtle); margin-bottom: 4px;">REMAINING CREDITS</div>
+                <div style="font-size: 2rem; font-weight: 800; color: var(--brand-cyan);" id="billing-remaining-credits">3,850,000</div>
+                <div style="font-size: 0.8rem; color: var(--brand-emerald); margin-top: 4px;">Ready for immediate broadcast</div>
+              </div>
+              <div class="panel-card">
+                <div style="font-size: 0.8rem; color: var(--text-subtle); margin-bottom: 4px;">TOTAL CREDITS USED</div>
+                <div style="font-size: 2rem; font-weight: 800; color: var(--brand-violet);" id="billing-used-credits">1,150,000</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Across 3 campaigns</div>
+              </div>
+              <div class="panel-card">
+                <div style="font-size: 0.8rem; color: var(--text-subtle); margin-bottom: 4px;">ESTIMATED WALLET VALUE</div>
+                <div style="font-size: 2rem; font-weight: 800; color: var(--brand-emerald);" id="billing-wallet-val">₹46,200.00</div>
+                <div style="font-size: 0.8rem; color: var(--text-subtle); margin-top: 4px;">Effective Rate: ₹0.12 / msg</div>
+              </div>
+            </div>
+
+            <div class="panel-card">
+              <h2 class="panel-title" style="margin-bottom: 16px;">Recharge Credits & Buy Top-up Packs</h2>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+                <div style="background: var(--bg-card-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px;">
+                  <h3 style="font-size: 1.1rem; font-weight: 700;">1 Lakh Credits Pack</h3>
+                  <div style="font-size: 1.5rem; font-weight: 800; color: var(--brand-cyan); margin: 6px 0;">₹14,000</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px;">₹0.14 per message • 99.2% SLA</div>
+                  <button class="btn-secondary" style="width: 100%; justify-content: center;" onclick="app.rechargeCredits('₹14,000', 100000)">Buy Pack ⚡</button>
+                </div>
+
+                <div style="background: var(--bg-card-subtle); border: 1px solid var(--brand-cyan); border-radius: var(--radius-md); padding: 18px; box-shadow: 0 0 15px var(--brand-cyan-glow);">
+                  <span class="app-badge-pill badge-hot" style="margin-bottom: 6px;">Best Value</span>
+                  <h3 style="font-size: 1.1rem; font-weight: 700;">4 Lakh Credits Pack</h3>
+                  <div style="font-size: 1.5rem; font-weight: 800; color: var(--brand-cyan); margin: 6px 0;">₹48,000</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px;">₹0.12 per message • High Priority</div>
+                  <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="app.rechargeCredits('₹48,000', 400000)">Recharge Now 🚀</button>
+                </div>
+
+                <div style="background: var(--bg-card-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px;">
+                  <h3 style="font-size: 1.1rem; font-weight: 700;">10 Lakh Enterprise Pack</h3>
+                  <div style="font-size: 1.5rem; font-weight: 800; color: var(--brand-cyan); margin: 6px 0;">₹1,00,000</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px;">₹0.10 per message • Dedicated SLA</div>
+                  <button class="btn-secondary" style="width: 100%; justify-content: center;" onclick="app.rechargeCredits('₹1,00,000', 1000000)">Buy Enterprise 🏢</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 7: LIVE SHARED INBOX -->
+          <div class="tab-pane" id="tab-inbox">
+            <div class="inbox-layout">
+              <div class="inbox-sidebar">
+                <div class="inbox-search-header"><input type="text" class="search-input" placeholder="Search conversations..."></div>
+                <div class="inbox-contacts-list" id="inbox-contacts-list"></div>
+              </div>
+              <div class="inbox-chat-view">
+                <div class="chat-header">
+                  <div class="chat-user-details">
+                    <div class="contact-avatar">RS</div>
+                    <div>
+                      <div style="font-weight: 700;">Rahul Sharma</div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">+91 98201 44521</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="chat-messages-body" id="chat-messages-body"></div>
+                <div class="chat-input-bar">
+                  <input type="text" class="chat-input-box" id="chat-msg-input" placeholder="Type a response...">
+                  <button class="btn-primary" id="chat-send-btn" style="border-radius: 50%; width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="inbox-detail-sidebar">
+                <h3 style="font-size: 1rem; margin-bottom: 14px;">Customer Info</h3>
+                <div class="crm-info-card"><div class="crm-label">Name</div><div class="crm-value">Rahul Sharma</div></div>
+                <div class="crm-info-card" style="margin-top: 8px;"><div class="crm-label">Phone</div><div class="crm-value">+91 98201 44521</div></div>
+                <div class="crm-info-card" style="margin-top: 8px;"><div class="crm-label">Tags</div><div style="display: flex; gap: 4px; margin-top: 4px;"><span class="feature-tag">VIP</span><span class="feature-tag">Delhi</span></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 8: INTEGRATIONS (360dialog) -->
+          <div class="tab-pane" id="tab-integrations">
+            <div class="integrations-hero">
+              <h2>Connect WhatsApp to <span class="gradient-text">Your CRMs & Stores</span></h2>
+              <p>Connect Shopify, HubSpot, Zapier, Razorpay and custom Webhooks directly to your WhatsApp Business API number.</p>
+            </div>
+            <div class="integrations-grid" id="integrations-grid"></div>
+          </div>
+
+          <!-- TAB 9: NUMBER FILTER TOOL -->
+          <div class="tab-pane" id="tab-filter">
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h2 class="panel-title">WhatsApp Number Filter & Cleaner</h2>
+                  <div class="panel-subtitle">Isolate active WhatsApp accounts from raw number lists with 1-click clean</div>
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                <div>
+                  <label class="form-label">Raw Number Input</label>
+                  <textarea class="form-textarea" id="filter-raw-numbers" rows="12" placeholder="+919599300365&#10;+919820144521&#10;+15550001111&#10;+971501234567"></textarea>
+                  <button class="btn-primary" id="btn-run-filter" style="width: 100%; margin-top: 12px; justify-content: center;">⚡ Run Filter Check</button>
+                </div>
+                <div>
+                  <label class="form-label" style="color: var(--brand-emerald);">✅ Active WhatsApp (<span id="filter-valid-count">0</span>)</label>
+                  <textarea class="form-textarea" id="filter-valid-numbers" rows="12" readonly style="border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.03);"></textarea>
+                  <button class="btn-secondary" style="width: 100%; margin-top: 12px; justify-content: center;" onclick="navigator.clipboard.writeText(document.getElementById('filter-valid-numbers').value); app.showToast('Copied valid numbers!', 'success');">Copy Valid</button>
+                </div>
+                <div>
+                  <label class="form-label" style="color: var(--brand-coral);">❌ Non-WhatsApp (<span id="filter-invalid-count">0</span>)</label>
+                  <textarea class="form-textarea" id="filter-invalid-numbers" rows="12" readonly style="border-color: rgba(244, 63, 94, 0.3); background: rgba(244, 63, 94, 0.03);"></textarea>
+                  <button class="btn-secondary" style="width: 100%; margin-top: 12px; justify-content: center;" onclick="document.getElementById('filter-invalid-numbers').value = ''; app.showToast('Cleared non-WhatsApp numbers', 'info');">Dismiss</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+
+  </div>
+
+  <!-- MODAL: UPLOAD CONTACTS -->
+  <div class="modal-backdrop" id="upload-contacts-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 class="modal-title">Upload & Add New Contact List</h2>
+        <button class="modal-close-btn" onclick="app.closeModal('upload-contacts-modal')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Contact List / Group Name</label>
+          <input type="text" class="form-input" id="new-group-name" placeholder="e.g., Festive Leads Batch 2">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Paste Numbers or Upload CSV/Excel</label>
+          <textarea class="form-textarea" id="new-group-numbers" rows="6" placeholder="+919599300365&#10;+919820144521&#10;+971501234567"></textarea>
+          <div class="form-help">Enter one number per line with country code (+91, +1, +971, +44).</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="app.closeModal('upload-contacts-modal')">Cancel</button>
+        <button class="btn-primary" onclick="app.addNewContactGroup()">Save & Validate List ⚡</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: QUOTATION & DEMO -->
+  <div class="modal-backdrop" id="quotation-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 class="modal-title">Get Free Demo & Instant Quotation</h2>
+        <button class="modal-close-btn" onclick="app.closeModal('quotation-modal')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Required Volume</label>
+          <input type="text" class="form-input" id="quote-tier-input" value="4,00,000 Messages">
+        </div>
+        <div class="form-group">
+          <label class="form-label">WhatsApp Phone Number</label>
+          <input type="tel" class="form-input" id="quote-phone" placeholder="+91 98201 44521">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="app.closeModal('quotation-modal')">Cancel</button>
+        <button class="btn-primary" onclick="app.submitQuotationRequest()">Submit Request 🚀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
