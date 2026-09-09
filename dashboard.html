@@ -37,6 +37,8 @@
       color: var(--text-main);
       display: flex;
       min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden;
     }
 
     /* Sidebar */
@@ -51,6 +53,37 @@
       top: 0;
       height: 100vh;
       flex-shrink: 0;
+      z-index: 100;
+      transition: transform 0.25s ease;
+      box-sizing: border-box;
+    }
+
+    .mobile-dashboard-header {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: var(--bg-sidebar);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 99;
+    }
+
+    .sidebar-overlay.active {
+      display: block;
     }
 
     .brand {
@@ -138,13 +171,13 @@
     /* Main Content */
     .main-content {
       flex: 1;
-      padding: 36px 40px;
+      padding: 30px 32px;
       display: flex;
       flex-direction: column;
       gap: 24px;
-      max-width: 1280px;
-      margin: 0 auto;
+      min-width: 0;
       width: 100%;
+      box-sizing: border-box;
     }
 
     .header {
@@ -156,7 +189,7 @@
     }
 
     .header-title h1 {
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       font-weight: 800;
       color: var(--text-main);
     }
@@ -190,21 +223,61 @@
     /* Grid Layout */
     .dashboard-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 380px);
       gap: 24px;
+      align-items: start;
+      width: 100%;
+      min-width: 0;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1280px) {
       .dashboard-grid {
         grid-template-columns: 1fr;
       }
+      .phone-preview-wrapper {
+        max-width: 340px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 992px) {
       body {
         flex-direction: column;
       }
+
+      .mobile-dashboard-header {
+        display: flex;
+      }
+
       .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
+        position: fixed;
+        left: -290px;
+        top: 0;
+        bottom: 0;
+        width: 280px;
+        height: 100vh;
+        z-index: 1000;
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .sidebar.open {
+        transform: translateX(290px);
+      }
+
+      .mobile-close-btn {
+        display: block !important;
+      }
+
+      .main-content {
+        padding: 20px 16px;
+      }
+
+      .card {
+        padding: 20px 16px;
+      }
+
+      .header-title h1 {
+        font-size: 1.4rem;
       }
     }
 
@@ -641,11 +714,28 @@
     }
   </script>
 
+  <!-- Mobile Dashboard Header -->
+  <div class="mobile-dashboard-header">
+    <div style="display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; color: #0ea5e9;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      Marketiqx
+    </div>
+    <button onclick="toggleMobileSidebar()" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 8px; padding: 7px 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;">
+      <span>☰</span> Menu
+    </button>
+  </div>
+
+  <!-- Sidebar Overlay for Mobile -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
   <!-- Sidebar -->
   <aside class="sidebar">
-    <div class="brand">
-      <svg class="brand-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-      Marketiqx
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px;">
+      <div class="brand" style="margin-bottom: 0; padding: 0;">
+        <svg class="brand-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        Marketiqx
+      </div>
+      <button class="mobile-close-btn" onclick="toggleMobileSidebar()" style="display: none; background: rgba(255,255,255,0.1); border: none; color: white; width: 32px; height: 32px; border-radius: 8px; font-size: 1.1rem; cursor: pointer;">✕</button>
     </div>
 
     <div class="user-profile">
@@ -1110,7 +1200,19 @@
       window.location.href = 'index.html';
     }
 
+    function toggleMobileSidebar() {
+      const sb = document.querySelector('.sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      if (sb) sb.classList.toggle('open');
+      if (overlay) overlay.classList.toggle('active');
+    }
+
     function switchTab(tabId) {
+      const sb = document.querySelector('.sidebar');
+      if (sb && sb.classList.contains('open')) {
+        toggleMobileSidebar();
+      }
+
       document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
       document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
 

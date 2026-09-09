@@ -94,20 +94,20 @@
       <div class="interactive-form-card" style="border: 2px solid var(--border-glow);">
         <h2 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 14px; color: var(--brand-cyan);">Send Quick Inquiry</h2>
         <form onsubmit="event.preventDefault(); submitInquiry();">
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <div>
-              <label style="font-size: 0.8rem; font-weight: 600;">Your Name *</label>
-              <input type="text" id="contact-name" class="input-field" placeholder="Full Name" required value="Rajesh Kumar">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div class="form-group">
+              <label class="form-label">Your Name *</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="Full Name" required value="Rajesh Kumar">
             </div>
-            <div>
-              <label style="font-size: 0.8rem; font-weight: 600;">Mobile / WhatsApp Number *</label>
-              <input type="tel" id="contact-phone" class="input-field" placeholder="+91 98201 44521" required value="+91 98201 44521">
+            <div class="form-group">
+              <label class="form-label">Mobile / WhatsApp Number *</label>
+              <input type="tel" id="contact-phone" class="form-input" placeholder="+91 98201 44521" required value="+91 98201 44521">
             </div>
-            <div>
-              <label style="font-size: 0.8rem; font-weight: 600;">Message / Requirements</label>
-              <textarea id="contact-msg" class="input-field" rows="3" placeholder="Tell us your volume requirements...">Hi Marketiqx team, I want to discuss high-volume WhatsApp broadcasting rates.</textarea>
+            <div class="form-group">
+              <label class="form-label">Message / Requirements</label>
+              <textarea id="contact-msg" class="form-textarea" rows="3" placeholder="Tell us your volume requirements...">Hi Marketiqx team, I want to discuss high-volume WhatsApp broadcasting rates.</textarea>
             </div>
-            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 12px; cursor: pointer;">
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 12px; cursor: pointer; margin-top: 4px;">
               <span>Send Message 🚀</span>
             </button>
           </div>
@@ -194,5 +194,6 @@
       alert('✅ Thank you! Our Marketiqx specialist will call you at +91 98201 44521 within 15 minutes.');
     }
   </script>
+  <script src="js/site.js"></script>
 </body>
 </html>

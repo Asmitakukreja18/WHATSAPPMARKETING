@@ -312,24 +312,24 @@
         <form id="public-demo-regi-form" onsubmit="event.preventDefault(); app.handleDemoRegistration(event);">
           <div class="form-grid-2col">
             <div class="form-group">
-              <label>Full Name *</label>
-              <input type="text" id="demo-name" class="input-field" placeholder="e.g. Rajesh Kumar" required value="Rajesh Kumar">
+              <label class="form-label">Full Name *</label>
+              <input type="text" id="demo-name" class="form-input" placeholder="e.g. Rajesh Kumar" required value="Rajesh Kumar">
             </div>
             <div class="form-group">
-              <label>Business Email *</label>
-              <input type="email" id="demo-email" class="input-field" placeholder="e.g. rajesh@apexretail.com" required value="rajesh@apexretail.com">
+              <label class="form-label">Business Email *</label>
+              <input type="email" id="demo-email" class="form-input" placeholder="e.g. rajesh@apexretail.com" required value="rajesh@apexretail.com">
             </div>
             <div class="form-group">
-              <label>WhatsApp Contact Number *</label>
-              <input type="tel" id="demo-phone" class="input-field" placeholder="e.g. +91 98201 44521" required value="+91 98201 44521">
+              <label class="form-label">WhatsApp Contact Number *</label>
+              <input type="tel" id="demo-phone" class="form-input" placeholder="e.g. +91 98201 44521" required value="+91 98201 44521">
             </div>
             <div class="form-group">
-              <label>Company / Organization Name</label>
-              <input type="text" id="demo-company" class="input-field" placeholder="e.g. Apex Global Enterprises" value="Apex Global Enterprises">
+              <label class="form-label">Company / Organization Name</label>
+              <input type="text" id="demo-company" class="form-input" placeholder="e.g. Apex Global Enterprises" value="Apex Global Enterprises">
             </div>
             <div class="form-group">
-              <label>Monthly Message Requirement</label>
-              <select id="demo-volume" class="input-field">
+              <label class="form-label">Monthly Message Requirement</label>
+              <select id="demo-volume" class="form-select">
                 <option value="100k">1 Lakh to 3 Lakh Messages</option>
                 <option value="500k" selected>5 Lakh to 10 Lakh Messages</option>
                 <option value="2m">20 Lakh to 50 Lakh Messages</option>
@@ -337,8 +337,8 @@
               </select>
             </div>
             <div class="form-group">
-              <label>Select Primary Industry</label>
-              <select id="demo-industry" class="input-field">
+              <label class="form-label">Select Primary Industry</label>
+              <select id="demo-industry" class="form-select">
                 <option value="retail">Retail & E-Commerce</option>
                 <option value="realestate">Real Estate & Construction</option>
                 <option value="edtech">Education & Coaching</option>
@@ -1095,5 +1095,6 @@ Enjoy FLAT 50% OFF on all new arrivals this weekend! Show this message at counte
   <!-- Scripts -->
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>
