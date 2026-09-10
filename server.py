@@ -137,9 +137,12 @@ class NextReachBackendHandler(http.server.SimpleHTTPRequestHandler):
             name = payload.get('name', '').strip()
             phone = payload.get('phone', '').strip()
             email = payload.get('email', '').strip()
+            website = payload.get('website', '').strip()
             service = payload.get('service', 'Growth Audit & Paid Media')
-            ad_spend = payload.get('ad_spend', '₹1L - ₹5L/month')
-            notes = payload.get('notes', '')
+            ad_spend = payload.get('ad_spend', '₹50,000 - ₹2,00,000 / month')
+            model = payload.get('model', '')
+            bottleneck = payload.get('bottleneck', '')
+            notes = payload.get('notes', '') or bottleneck
 
             if not name or not phone:
                 return self._send_json_response(400, {
@@ -153,8 +156,11 @@ class NextReachBackendHandler(http.server.SimpleHTTPRequestHandler):
                 "name": name,
                 "phone": phone,
                 "email": email,
+                "website": website,
                 "service": service,
                 "ad_spend": ad_spend,
+                "business_model": model,
+                "bottleneck": bottleneck,
                 "notes": notes,
                 "status": "NEW_INQUIRY",
                 "wa_notification_sent": True
