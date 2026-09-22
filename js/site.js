@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Marketiqx Shared Mobile Navigation & Responsive Experience
  * Automatically handles mobile hamburger navigation, responsive drawers,
  * and seamless interactions across all pages.
@@ -75,8 +75,8 @@
 
           <div class="mobile-nav-section-title">Quick Access</div>
           <div class="mobile-nav-actions">
-            <a href="tel:+919820144521" class="mobile-phone-btn">
-              📞 24/7 Helpline: +91 98201 44521
+            <a href="tel:+917499181193" class="mobile-phone-btn">
+              📞 24/7 Helpline: +91 74991 81193
             </a>
             <div class="mobile-actions-row">
               <a href="login.html" class="btn-secondary" style="flex: 1; text-align: center; justify-content: center;">🔑 Login</a>

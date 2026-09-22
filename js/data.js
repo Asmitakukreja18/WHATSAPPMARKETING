@@ -1,4 +1,4 @@
-// WhatsApp Marketing - Enterprise CPaaS & Conversational Marketing Platform Store
+﻿// WhatsApp Marketing - Enterprise CPaaS & Conversational Marketing Platform Store
 
 const DASHBOARD_DATA = {
   // Current Logged-in Account Profile
@@ -6,7 +6,7 @@ const DASHBOARD_DATA = {
     name: "Rajesh Kumar",
     company: "Apex Global Enterprises",
     email: "rajesh@whatsappmarketing.io",
-    phone: "+91 98201 44521",
+    phone: "+91 74991 81193",
     role: "Director of Growth",
     avatar: "RK",
     avatarBg: "#0891b2",
@@ -21,7 +21,7 @@ const DASHBOARD_DATA = {
     wabaStatus: {
       wabaId: "RDMS-WABA-88492019",
       phoneId: "RDMS-PHID-77291038",
-      number: "+91 98201 44521",
+      number: "+91 74991 81193",
       verified: true,
       greenBadge: true,
       qualityScore: "EXCELLENT (99.9%)",
@@ -83,7 +83,7 @@ const DASHBOARD_DATA = {
 
   // Detailed Per-Number Delivery Logs
   detailedLogs: [
-    { phone: "+91 98201 44521", recipient: "Amit Verma", campaign: "Festive Flash Sale 50%", status: "Read (Blue Tick)", credits: 1, error: "None", time: "12:05:14 PM" },
+    { phone: "+91 74991 81193", recipient: "Amit Verma", campaign: "Festive Flash Sale 50%", status: "Read (Blue Tick)", credits: 1, error: "None", time: "12:05:14 PM" },
     { phone: "+91 95993 00365", recipient: "Rahul Sharma", campaign: "Festive Flash Sale 50%", status: "Delivered", credits: 1, error: "None", time: "12:05:12 PM" },
     { phone: "+91 99887 76655", recipient: "Priya Patel", campaign: "Festive Flash Sale 50%", status: "Read (Blue Tick)", credits: 1, error: "None", time: "12:05:10 PM" },
     { phone: "+91 98765 43210", recipient: "Vikas Gupta", campaign: "Festive Flash Sale 50%", status: "Delivered", credits: 1, error: "None", time: "12:05:08 PM" },
@@ -199,7 +199,7 @@ const DASHBOARD_DATA = {
     {
       id: "chat_01",
       name: "Amit Verma",
-      phone: "+91 98201 44521",
+      phone: "+91 74991 81193",
       avatar: "AV",
       unread: 1,
       lastTime: "12:10 PM",

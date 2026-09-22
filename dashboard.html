@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -807,10 +807,10 @@
                 <label for="recipientsInput">Recipient Numbers (with Country Code)</label>
                 <span class="helper-tag" onclick="pasteSampleNumbers()">+ Paste 4 Sample Numbers</span>
               </div>
-              <textarea id="recipientsInput" rows="3" placeholder="Enter numbers separated by comma or new line:&#10;919820144521, 919876543210, 919599300365" required oninput="updateRecipientsCount()"></textarea>
+              <textarea id="recipientsInput" rows="3" placeholder="Enter numbers separated by comma or new line:&#10;917499181193, 919876543210, 919599300365" required oninput="updateRecipientsCount()"></textarea>
               <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
                 <span class="recipients-count" id="recipientsCount">🎯 0 numbers detected</span>
-                <span style="font-size: 0.75rem; color: var(--text-muted);">Format: CountryCode + Number (e.g. 919820144521)</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Format: CountryCode + Number (e.g. 917499181193)</span>
               </div>
             </div>
 
@@ -978,7 +978,7 @@
             </thead>
             <tbody id="logsTableBody">
               <tr>
-                <td><strong>+919820144521</strong></td>
+                <td><strong>+917499181193</strong></td>
                 <td><span style="font-size: 0.75rem; background: #e0f2fe; color: #0284c7; padding: 2px 6px; border-radius: 4px;">TEXT</span></td>
                 <td>Welcome to Marketiqx Platform!</td>
                 <td>Just now</td>
@@ -1340,7 +1340,7 @@
     }
 
     function pasteSampleNumbers() {
-      document.getElementById('recipientsInput').value = "919820144521, 919876543210, 919599300365, 919811223344";
+      document.getElementById('recipientsInput').value = "917499181193, 919876543210, 919599300365, 919811223344";
       updateRecipientsCount();
     }
 

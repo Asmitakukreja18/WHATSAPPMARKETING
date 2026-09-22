@@ -52,9 +52,15 @@
 
   --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
   --shadow-glow: 0 0 20px -3px rgba(8, 145, 178, 0.2);
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: 0.2s var(--ease-out-smooth);
+  --transition-normal: 0.35s var(--ease-out-smooth);
   --sidebar-width: 260px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /* Dark Theme Support (Optional Toggle) */
