@@ -3,29 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marketiqx | WhatsApp Marketing Platform & AI Broadcast Engine</title>
-  <meta name="description" content="Supercharge your business with Marketiqx: Official Meta WhatsApp Business API, high-throughput bulk broadcasts, intelligent AI chatbots, CRM sync, and real-time delivery tracking.">
+  <title>Marketiqx | Official WhatsApp Marketing Platform & AI Broadcast Engine</title>
+  <meta name="description" content="Official Meta Cloud API Partner. Supercharge your business with Marketiqx: High-speed bulk broadcasts, AI chatbots, CRM integrations, and live delivery telemetry.">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=106.0">
-
   <style>
     :root {
-      --wa-green: #25D366;
-      --wa-dark-green: #128C7E;
-      --wa-teal: #075E54;
-      --brand-navy: #001A3D;
-      --brand-accent: #0ea5e9;
-      --brand-hover: #0284c7;
-      --bg-cream: #FAF8F5;
+      --bg-body: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-sidebar: #0f172a;
       --text-main: #0f172a;
       --text-muted: #64748b;
       --border-color: #e2e8f0;
+      --brand-primary: #0ea5e9;
+      --brand-hover: #0284c7;
+      --brand-success: #10b981;
+      --brand-warning: #f59e0b;
+      --brand-danger: #ef4444;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --radius-sm: 6px;
     }
 
     * {
@@ -35,8 +36,8 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #ffffff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-body);
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
@@ -44,31 +45,32 @@
 
     /* Top Utility Bar */
     .top-utility-bar {
-      background: #0f172a;
+      background: var(--bg-sidebar);
       color: #94a3b8;
       font-size: 0.82rem;
-      padding: 8px 24px;
+      padding: 9px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .top-utility-bar a {
-      color: #38bdf8;
+      color: var(--brand-primary);
       text-decoration: none;
       font-weight: 600;
     }
 
-    /* Navigation Bar */
+    /* Main Navigation Bar */
     .site-header {
       position: sticky;
       top: 0;
-      background: #ffffff;
+      background: var(--bg-card);
       border-bottom: 1px solid var(--border-color);
       z-index: 1000;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
     }
 
     .header-container {
@@ -81,16 +83,20 @@
       gap: 20px;
     }
 
-    .brand-logo-wrap {
+    /* Brand matching Dashboard & Login */
+    .brand-link {
       display: flex;
       align-items: center;
+      gap: 10px;
       text-decoration: none;
+      color: var(--text-main);
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
     }
 
-    .brand-logo-img {
-      height: 48px;
-      width: auto;
-      object-fit: contain;
+    .brand-icon {
+      color: var(--brand-primary);
     }
 
     .nav-links {
@@ -108,7 +114,7 @@
     }
 
     .nav-links a:hover, .nav-links a.active {
-      color: var(--wa-dark-green);
+      color: var(--brand-primary);
     }
 
     .nav-actions {
@@ -117,49 +123,51 @@
       gap: 12px;
     }
 
-    .btn-login {
-      padding: 9px 18px;
-      border: 1.5px solid var(--border-color);
-      border-radius: 8px;
+    .btn-secondary {
+      padding: 10px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text-main);
       text-decoration: none;
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: #0f172a;
-      transition: all 0.2s;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      transition: all 0.2s;
     }
 
-    .btn-login:hover {
-      background: #f1f5f9;
+    .btn-secondary:hover {
+      background: var(--bg-body);
       border-color: #cbd5e1;
     }
 
-    .btn-cta {
+    .btn-primary {
       padding: 10px 20px;
-      background: #25D366;
-      color: #001A3D;
-      border-radius: 8px;
+      background: var(--brand-primary);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.92rem;
       text-decoration: none;
-      font-weight: 800;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.25);
+      transition: all 0.2s;
     }
 
-    .btn-cta:hover {
-      background: #20bd5a;
+    .btn-primary:hover {
+      background: var(--brand-hover);
       transform: translateY(-1px);
     }
 
     /* Hero Section */
     .hero-section {
-      background: radial-gradient(circle at 50% 10%, rgba(37, 211, 102, 0.08) 0%, #FAF8F5 70%);
-      padding: 70px 24px 80px;
+      background: radial-gradient(circle at 50% 15%, rgba(14, 165, 233, 0.1) 0%, var(--bg-body) 65%);
+      padding: 72px 24px 84px;
       border-bottom: 1px solid var(--border-color);
     }
 
@@ -168,46 +176,47 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
+      gap: 50px;
       align-items: center;
     }
 
-    .hero-badge {
+    .badge-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 6px 14px;
-      background: rgba(37, 211, 102, 0.15);
-      color: #0f5132;
-      border: 1px solid rgba(37, 211, 102, 0.3);
       border-radius: 9999px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      margin-bottom: 20px;
+      background: rgba(14, 165, 233, 0.12);
+      color: var(--brand-primary);
+      border: 1px solid rgba(14, 165, 233, 0.25);
+      margin-bottom: 22px;
     }
 
     .hero-title {
-      font-size: 3.2rem;
+      font-size: 3.3rem;
       font-weight: 800;
       line-height: 1.15;
-      color: var(--brand-navy);
-      margin-bottom: 20px;
-      letter-spacing: -0.5px;
+      color: var(--text-main);
+      margin-bottom: 22px;
+      letter-spacing: -0.8px;
     }
 
     .hero-title .highlight {
-      background: linear-gradient(120deg, rgba(37, 211, 102, 0.2) 0%, rgba(37, 211, 102, 0.4) 100%);
-      padding: 0 8px;
-      border-radius: 6px;
-      color: #065f46;
+      color: var(--brand-primary);
+      background: rgba(14, 165, 233, 0.12);
+      padding: 2px 10px;
+      border-radius: 8px;
+      display: inline-block;
     }
 
     .hero-subtitle {
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       color: var(--text-muted);
       line-height: 1.65;
-      margin-bottom: 32px;
-      max-width: 600px;
+      margin-bottom: 34px;
+      max-width: 620px;
     }
 
     .hero-buttons {
@@ -215,20 +224,20 @@
       align-items: center;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 36px;
+      margin-bottom: 40px;
     }
 
     .hero-stats-row {
       display: flex;
-      gap: 28px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      gap: 32px;
+      padding-top: 26px;
+      border-top: 1px solid var(--border-color);
     }
 
     .hero-stat-item h4 {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 800;
-      color: var(--brand-navy);
+      color: var(--text-main);
       margin-bottom: 2px;
     }
 
@@ -238,12 +247,12 @@
       font-weight: 600;
     }
 
-    /* Hero Live Demo Card */
+    /* Live Preview Card */
     .hero-card {
-      background: #ffffff;
-      border: 1.5px solid var(--brand-navy);
-      border-radius: 20px;
-      box-shadow: 0 20px 40px -10px rgba(0, 26, 61, 0.12);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.08);
       padding: 28px;
     }
 
@@ -251,14 +260,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1.5px solid #e2e8f0;
+      border-bottom: 1px solid var(--border-color);
       padding-bottom: 16px;
       margin-bottom: 20px;
     }
 
     .wa-chat-preview {
-      background: #efeae2;
-      border-radius: 12px;
+      background: #f1f5f9;
+      border-radius: var(--radius-md);
       padding: 16px;
       display: flex;
       flex-direction: column;
@@ -267,51 +276,50 @@
     }
 
     .wa-bubble {
-      max-width: 85%;
-      padding: 10px 14px;
-      border-radius: 10px;
+      max-width: 86%;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
       font-size: 0.88rem;
-      position: relative;
     }
 
     .wa-bubble.inbound {
       background: #ffffff;
       align-self: flex-start;
-      border-top-left-radius: 2px;
+      border: 1px solid var(--border-color);
     }
 
     .wa-bubble.outbound {
-      background: #d9fdd3;
+      background: #e0f2fe;
       align-self: flex-end;
-      border-top-right-radius: 2px;
+      border: 1px solid #bae6fd;
     }
 
     .wa-btn-pill {
       display: block;
       background: #ffffff;
-      color: #0ea5e9;
+      color: var(--brand-primary);
       font-weight: 700;
       font-size: 0.82rem;
       text-align: center;
       padding: 8px 12px;
-      border-radius: 8px;
-      margin-top: 6px;
-      border: 1px solid rgba(14, 165, 233, 0.2);
+      border-radius: var(--radius-sm);
+      margin-top: 8px;
+      border: 1px solid rgba(14, 165, 233, 0.3);
       text-decoration: none;
     }
 
-    /* Section Headers */
+    /* Features Grid */
     .section-header {
       text-align: center;
       max-width: 780px;
-      margin: 0 auto 50px;
+      margin: 0 auto 52px;
     }
 
     .section-tag {
       display: inline-block;
       font-size: 0.8rem;
       font-weight: 800;
-      color: #16a34a;
+      color: var(--brand-primary);
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 10px;
@@ -320,9 +328,10 @@
     .section-title {
       font-size: 2.4rem;
       font-weight: 800;
-      color: var(--brand-navy);
+      color: var(--text-main);
       line-height: 1.2;
       margin-bottom: 14px;
+      letter-spacing: -0.5px;
     }
 
     .section-desc {
@@ -330,7 +339,6 @@
       color: var(--text-muted);
     }
 
-    /* Feature Grid */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -341,27 +349,26 @@
     }
 
     .feature-card {
-      background: #ffffff;
-      border: 1.5px solid var(--border-color);
-      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
       padding: 32px;
       transition: all 0.25s ease;
-      position: relative;
     }
 
     .feature-card:hover {
-      border-color: #25D366;
-      box-shadow: 0 12px 30px -10px rgba(37, 211, 102, 0.2);
+      border-color: var(--brand-primary);
+      box-shadow: 0 12px 30px -10px rgba(14, 165, 233, 0.15);
       transform: translateY(-3px);
     }
 
     .feature-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 12px;
-      background: rgba(37, 211, 102, 0.12);
-      color: #15803d;
-      font-size: 1.6rem;
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      background: rgba(14, 165, 233, 0.12);
+      color: var(--brand-primary);
+      font-size: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -371,7 +378,7 @@
     .feature-card h3 {
       font-size: 1.25rem;
       font-weight: 800;
-      color: var(--brand-navy);
+      color: var(--text-main);
       margin-bottom: 10px;
     }
 
@@ -381,10 +388,10 @@
       line-height: 1.6;
     }
 
-    /* Flow Steps */
+    /* Workflow Section */
     .flow-section {
-      background: #FAF8F5;
-      padding: 80px 24px;
+      background: var(--bg-card);
+      padding: 84px 24px;
       border-top: 1px solid var(--border-color);
       border-bottom: 1px solid var(--border-color);
     }
@@ -398,34 +405,35 @@
     }
 
     .flow-step-card {
-      background: #ffffff;
-      border: 1.5px solid var(--border-color);
-      border-radius: 14px;
-      padding: 24px;
-      position: relative;
+      background: var(--bg-body);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 26px;
     }
 
     .step-number {
       font-size: 2.2rem;
       font-weight: 800;
-      color: rgba(37, 211, 102, 0.4);
+      color: var(--brand-primary);
       margin-bottom: 8px;
+      opacity: 0.8;
     }
 
-    /* Comparison / Cost Table */
+    /* Pricing Sheet */
     .pricing-table-container {
       max-width: 1000px;
       margin: 0 auto;
-      background: #ffffff;
-      border: 1.5px solid var(--border-color);
-      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
       overflow: hidden;
+      box-shadow: 0 10px 30px -5px rgba(0,0,0,0.04);
     }
 
     .pricing-table-header {
-      background: #0f172a;
+      background: var(--bg-sidebar);
       color: #ffffff;
-      padding: 24px;
+      padding: 24px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -436,7 +444,7 @@
     .rate-row {
       display: grid;
       grid-template-columns: 2fr 1.2fr 1.8fr;
-      padding: 18px 24px;
+      padding: 20px 28px;
       border-bottom: 1px solid var(--border-color);
       align-items: center;
       font-size: 0.95rem;
@@ -446,19 +454,19 @@
       border-bottom: none;
     }
 
-    /* CTA Banner */
+    /* CTA Section */
     .cta-banner {
-      background: linear-gradient(135deg, #001A3D 0%, #064e3b 100%);
+      background: var(--bg-sidebar);
       color: #ffffff;
-      padding: 70px 24px;
+      padding: 80px 24px;
       text-align: center;
     }
 
     /* Footer */
     .site-footer {
-      background: #090d16;
+      background: #090e17;
       color: #94a3b8;
-      padding: 60px 24px 30px;
+      padding: 64px 24px 32px;
       font-size: 0.9rem;
     }
 
@@ -492,10 +500,9 @@
     }
 
     .footer-col a:hover {
-      color: #25D366;
+      color: var(--brand-primary);
     }
 
-    /* Mobile Responsive */
     @media (max-width: 900px) {
       .hero-container {
         grid-template-columns: 1fr;
@@ -504,7 +511,7 @@
         display: none;
       }
       .hero-title {
-        font-size: 2.4rem;
+        font-size: 2.3rem;
       }
       .footer-grid {
         grid-template-columns: 1fr;
@@ -520,11 +527,11 @@
 
   <!-- Top Utility Bar -->
   <div class="top-utility-bar">
-    <div style="display: flex; align-items: center; gap: 12px;">
-      <span style="background: rgba(37, 211, 102, 0.2); color: #25D366; padding: 2px 8px; border-radius: 4px; font-weight: 700;">LIVE</span>
-      <span>Official Meta Cloud API • High-Speed WhatsApp Broadcast & AI Engine</span>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="background: rgba(14, 165, 233, 0.2); color: var(--brand-primary); padding: 3px 8px; border-radius: 4px; font-weight: 700;">LIVE</span>
+      <span>Official Meta Cloud API • High-Speed WhatsApp Broadcast &amp; AI Engine</span>
     </div>
-    <div style="display: flex; align-items: center; gap: 16px;">
+    <div style="display: flex; align-items: center; gap: 18px;">
       <span>Helpline: <strong style="color: #ffffff;">+91 74991 81193</strong></span>
       <a href="login.html">🔑 Client Login</a>
       <a href="dashboard.html">🚀 Dashboard</a>
@@ -534,8 +541,9 @@
   <!-- Header -->
   <header class="site-header">
     <div class="header-container">
-      <a href="index.html" class="brand-logo-wrap">
-        <img src="images/logo.png" alt="Marketiqx WhatsApp Marketing Logo" class="brand-logo-img">
+      <a href="index.html" class="brand-link">
+        <svg class="brand-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        <span>Marketiqx</span>
       </a>
 
       <nav class="nav-links">
@@ -550,14 +558,14 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="demo_regi.html" class="btn-login" style="color: #0ea5e9; border-color: rgba(14, 165, 233, 0.4);">
+        <a href="demo_regi.html" class="btn-secondary" style="color: var(--brand-primary); border-color: rgba(14, 165, 233, 0.35);">
           🎁 Free Demo
         </a>
-        <a href="login.html" class="btn-login">
+        <a href="login.html" class="btn-secondary">
           🔑 Login
         </a>
-        <a href="dashboard.html" class="btn-cta">
-          <span>🚀 Launch App</span>
+        <a href="dashboard.html" class="btn-primary">
+          <span>🚀 Dashboard</span>
         </a>
       </div>
     </div>
@@ -567,8 +575,8 @@
   <section class="hero-section">
     <div class="hero-container">
       <div>
-        <div class="hero-badge">
-          <span>🛡️</span> Official Meta Cloud API • 99.4% Delivery SLA
+        <div class="badge-pill">
+          <span>⚡</span> Official Meta Cloud API • 99.4% Delivery SLA
         </div>
 
         <h1 class="hero-title">
@@ -580,11 +588,11 @@
         </p>
 
         <div class="hero-buttons">
-          <a href="dashboard.html" class="btn-cta" style="padding: 14px 28px; font-size: 1rem;">
+          <a href="dashboard.html" class="btn-primary" style="padding: 14px 28px; font-size: 1rem;">
             <span>🚀 Open Live Dashboard →</span>
           </a>
-          <a href="demo_regi.html" class="btn-login" style="padding: 14px 24px; font-size: 1rem; background: #ffffff;">
-            <span>🎁 Claim 100 Free Demo Credits</span>
+          <a href="demo_regi.html" class="btn-secondary" style="padding: 14px 24px; font-size: 1rem;">
+            <span>🎁 Claim 100 Free Credits</span>
           </a>
         </div>
 
@@ -595,15 +603,15 @@
           </div>
           <div class="hero-stat-item">
             <h4>3.2x</h4>
-            <p>Higher Open Rates vs SMS</p>
+            <p>Higher Open Rates</p>
           </div>
           <div class="hero-stat-item">
             <h4>0 Ban</h4>
-            <p>SmartQueue™ Anti-Ban</p>
+            <p>SmartQueue™ Throttling</p>
           </div>
           <div class="hero-stat-item">
             <h4>&lt; 2s</h4>
-            <p>AI Response Latency</p>
+            <p>AI Bot Latency</p>
           </div>
         </div>
       </div>
@@ -613,10 +621,10 @@
         <div class="hero-card">
           <div class="hero-card-header">
             <div style="display: flex; align-items: center; gap: 8px;">
-              <span style="display: inline-block; width: 10px; height: 10px; background: #25D366; border-radius: 50%;"></span>
-              <strong style="color: #001A3D; font-size: 0.95rem;">Live WhatsApp AI Broadcast</strong>
+              <span style="display: inline-block; width: 10px; height: 10px; background: var(--brand-success); border-radius: 50%;"></span>
+              <strong style="color: var(--text-main); font-size: 0.95rem;">Live WhatsApp AI Broadcast</strong>
             </div>
-            <span style="background: rgba(37, 211, 102, 0.15); color: #047857; font-size: 0.78rem; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">Meta Verified</span>
+            <span style="background: rgba(16, 185, 129, 0.1); color: var(--brand-success); border: 1px solid rgba(16, 185, 129, 0.25); font-size: 0.78rem; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">Meta Verified</span>
           </div>
 
           <div class="wa-chat-preview">
@@ -633,16 +641,16 @@
               ✅ <strong>1,000 Free</strong> monthly service chats!
               
               <a href="pricing-sms-voice-email-wa.html" class="wa-btn-pill">📊 View Full Pricing Matrix</a>
-              <a href="demo_regi.html" class="wa-btn-pill" style="color: #059669;">🎁 Claim Free 100 Test Credits</a>
-              <div style="font-size: 0.65rem; color: #555; text-align: right; margin-top: 4px;">10:42 AM • AI Chatbot ✓✓</div>
+              <a href="demo_regi.html" class="wa-btn-pill" style="color: var(--brand-primary); font-weight: 700;">🎁 Claim Free 100 Test Credits</a>
+              <div style="font-size: 0.65rem; color: #64748b; text-align: right; margin-top: 4px;">10:42 AM • AI Chatbot ✓✓</div>
             </div>
           </div>
 
           <div style="display: flex; gap: 10px;">
-            <a href="login.html" class="btn-login" style="flex: 1; text-align: center; justify-content: center;">
+            <a href="login.html" class="btn-secondary" style="flex: 1; text-align: center; justify-content: center;">
               🔑 Portal Login
             </a>
-            <a href="dashboard.html" class="btn-cta" style="flex: 1; text-align: center; justify-content: center;">
+            <a href="dashboard.html" class="btn-primary" style="flex: 1; text-align: center; justify-content: center;">
               ✉️ Send Broadcast
             </a>
           </div>
@@ -652,7 +660,7 @@
   </section>
 
   <!-- Complete Features Grid -->
-  <section style="padding: 90px 24px; background: #ffffff;" id="features">
+  <section style="padding: 90px 24px; background: var(--bg-body);" id="features">
     <div class="section-header">
       <span class="section-tag">Enterprise WhatsApp Architecture</span>
       <h2 class="section-title">Everything You Need To Automate &amp; Scale</h2>
@@ -740,7 +748,7 @@
   </section>
 
   <!-- Official Meta Cost Breakdown -->
-  <section style="padding: 90px 24px; background: #ffffff;">
+  <section style="padding: 90px 24px; background: var(--bg-body);">
     <div class="section-header">
       <span class="section-tag">Transparent Meta Cloud API Rates</span>
       <h2 class="section-title">Official Meta Conversation Pricing (India)</h2>
@@ -753,16 +761,16 @@
           <h3 style="font-size: 1.3rem; font-weight: 800;">Official Meta Cloud API Rate Sheet</h3>
           <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 4px;">Standard Meta rates for India region (+ standard Marketiqx routing)</p>
         </div>
-        <a href="demo_regi.html" class="btn-cta" style="font-size: 0.85rem; padding: 8px 16px;">🎁 Claim Free Demo</a>
+        <a href="demo_regi.html" class="btn-primary" style="font-size: 0.85rem; padding: 8px 16px;">🎁 Claim Free Demo</a>
       </div>
 
       <div class="rate-row">
         <div>
-          <strong style="color: var(--brand-navy);">Marketing Conversations</strong>
+          <strong style="color: var(--text-main);">Marketing Conversations</strong>
           <div style="font-size: 0.8rem; color: var(--text-muted);">Offers, product launches, discounts &amp; retargeting</div>
         </div>
         <div>
-          <span style="font-size: 1.25rem; font-weight: 800; color: #16a34a;">₹0.78 - ₹0.85</span>
+          <span style="font-size: 1.25rem; font-weight: 800; color: var(--brand-primary);">₹0.78 - ₹0.85</span>
           <span style="font-size: 0.75rem; color: var(--text-muted);">/ conversation</span>
         </div>
         <div style="font-size: 0.85rem; color: var(--text-muted);">
@@ -772,11 +780,11 @@
 
       <div class="rate-row">
         <div>
-          <strong style="color: var(--brand-navy);">Utility &amp; Transactional</strong>
+          <strong style="color: var(--text-main);">Utility &amp; Transactional</strong>
           <div style="font-size: 0.8rem; color: var(--text-muted);">Order updates, tracking links, OTPs &amp; invoices</div>
         </div>
         <div>
-          <span style="font-size: 1.25rem; font-weight: 800; color: #0ea5e9;">₹0.11 - ₹0.15</span>
+          <span style="font-size: 1.25rem; font-weight: 800; color: var(--brand-primary);">₹0.11 - ₹0.15</span>
           <span style="font-size: 0.75rem; color: var(--text-muted);">/ conversation</span>
         </div>
         <div style="font-size: 0.85rem; color: var(--text-muted);">
@@ -786,11 +794,11 @@
 
       <div class="rate-row">
         <div>
-          <strong style="color: var(--brand-navy);">Service / Support (Inbound)</strong>
+          <strong style="color: var(--text-main);">Service / Support (Inbound)</strong>
           <div style="font-size: 0.8rem; color: var(--text-muted);">Customer initiated inquiries &amp; AI bot chats</div>
         </div>
         <div>
-          <span style="font-size: 1.25rem; font-weight: 800; color: #8b5cf6;">1,000 Free</span>
+          <span style="font-size: 1.25rem; font-weight: 800; color: var(--brand-success);">1,000 Free</span>
           <span style="font-size: 0.75rem; color: var(--text-muted);">per month</span>
         </div>
         <div style="font-size: 0.85rem; color: var(--text-muted);">
@@ -803,15 +811,15 @@
   <!-- CTA Banner -->
   <section class="cta-banner">
     <div style="max-width: 800px; margin: 0 auto;">
-      <h2 style="font-size: 2.6rem; font-weight: 800; margin-bottom: 16px;">Ready to Scale Your WhatsApp Marketing?</h2>
+      <h2 style="font-size: 2.6rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.5px;">Ready to Scale Your WhatsApp Marketing?</h2>
       <p style="font-size: 1.1rem; color: #cbd5e1; margin-bottom: 32px; line-height: 1.6;">
         Launch broadcasts, integrate AI chatbots, and connect your CRM with zero technical headaches.
       </p>
       <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-        <a href="dashboard.html" class="btn-cta" style="padding: 14px 32px; font-size: 1rem;">
+        <a href="dashboard.html" class="btn-primary" style="padding: 14px 32px; font-size: 1rem;">
           🚀 Open Live Dashboard
         </a>
-        <a href="demo_regi.html" class="btn-login" style="padding: 14px 28px; font-size: 1rem; color: #ffffff; border-color: rgba(255,255,255,0.3); background: transparent;">
+        <a href="demo_regi.html" class="btn-secondary" style="padding: 14px 28px; font-size: 1rem; color: #ffffff; border-color: rgba(255,255,255,0.25); background: transparent;">
           🎁 Register for Free Demo
         </a>
       </div>
@@ -822,7 +830,10 @@
   <footer class="site-footer">
     <div class="footer-grid">
       <div class="footer-col">
-        <img src="images/logo.png" alt="Marketiqx Logo" style="height: 42px; margin-bottom: 16px;">
+        <div style="display: flex; align-items: center; gap: 10px; color: #ffffff; font-size: 1.3rem; font-weight: 800; margin-bottom: 16px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          Marketiqx
+        </div>
         <p style="line-height: 1.6; margin-bottom: 16px;">
           Marketiqx is an official WhatsApp Cloud API &amp; AI revenue engine empowering brands across India with bulk broadcasts, conversational bots, and CRM sync.
         </p>
