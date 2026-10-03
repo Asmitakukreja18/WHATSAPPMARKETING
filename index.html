@@ -1,1717 +1,874 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marketiqx | Revenue Engineering & Performance Growth Agency</title>
-  <meta name="description" content="Marketiqx is a full-service digital performance & revenue agency. We bring Meta Ads, Google Ads, WhatsApp AI automation, direct-response UGC creative, SEO, and full-funnel revenue attribution together under one roof to scale brands.">
+  <title>Marketiqx | WhatsApp Marketing Platform & AI Broadcast Engine</title>
+  <meta name="description" content="Supercharge your business with Marketiqx: Official Meta WhatsApp Business API, high-throughput bulk broadcasts, intelligent AI chatbots, CRM sync, and real-time delivery tracking.">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=105.0">
-  <link rel="stylesheet" href="css/adwali-style.css?v=1.1">
+  <link rel="stylesheet" href="css/style.css?v=106.0">
 
-  <!-- CDN Dependencies: GSAP, ScrollTrigger, VanillaTilt, Canvas Confetti -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-
-  <style id="header-clean-override">
-    .adwali-header {
-      position: sticky !important;
-      top: 0 !important;
-      z-index: 1000 !important;
-      background-color: #FAF8F5 !important;
-      border-bottom: 1.5px solid #001A3D !important;
+  <style>
+    :root {
+      --wa-green: #25D366;
+      --wa-dark-green: #128C7E;
+      --wa-teal: #075E54;
+      --brand-navy: #001A3D;
+      --brand-accent: #0ea5e9;
+      --brand-hover: #0284c7;
+      --bg-cream: #FAF8F5;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
     }
-    .custom-cursor-dot,
-    .custom-cursor-aura {
-      display: none !important;
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #ffffff;
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Top Utility Bar */
+    .top-utility-bar {
+      background: #0f172a;
+      color: #94a3b8;
+      font-size: 0.82rem;
+      padding: 8px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .top-utility-bar a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Navigation Bar */
+    .site-header {
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand-logo-wrap {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .brand-logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #334155;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--wa-dark-green);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-login {
+      padding: 9px 18px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #0f172a;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-login:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .btn-cta {
+      padding: 10px 20px;
+      background: #25D366;
+      color: #001A3D;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-cta:hover {
+      background: #20bd5a;
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: radial-gradient(circle at 50% 10%, rgba(37, 211, 102, 0.08) 0%, #FAF8F5 70%);
+      padding: 70px 24px 80px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .hero-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(37, 211, 102, 0.15);
+      color: #0f5132;
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--brand-navy);
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(120deg, rgba(37, 211, 102, 0.2) 0%, rgba(37, 211, 102, 0.4) 100%);
+      padding: 0 8px;
+      border-radius: 6px;
+      color: #065f46;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 600px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .hero-stats-row {
+      display: flex;
+      gap: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .hero-stat-item h4 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--brand-navy);
+      margin-bottom: 2px;
+    }
+
+    .hero-stat-item p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Hero Live Demo Card */
+    .hero-card {
+      background: #ffffff;
+      border: 1.5px solid var(--brand-navy);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px -10px rgba(0, 26, 61, 0.12);
+      padding: 28px;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .wa-chat-preview {
+      background: #efeae2;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .wa-bubble {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      position: relative;
+    }
+
+    .wa-bubble.inbound {
+      background: #ffffff;
+      align-self: flex-start;
+      border-top-left-radius: 2px;
+    }
+
+    .wa-bubble.outbound {
+      background: #d9fdd3;
+      align-self: flex-end;
+      border-top-right-radius: 2px;
+    }
+
+    .wa-btn-pill {
+      display: block;
+      background: #ffffff;
+      color: #0ea5e9;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-align: center;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 6px;
+      border: 1px solid rgba(14, 165, 233, 0.2);
+      text-decoration: none;
+    }
+
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 50px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #16a34a;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--brand-navy);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    /* Feature Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .feature-card:hover {
+      border-color: #25D366;
+      box-shadow: 0 12px 30px -10px rgba(37, 211, 102, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .feature-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      background: rgba(37, 211, 102, 0.12);
+      color: #15803d;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--brand-navy);
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Flow Steps */
+    .flow-section {
+      background: #FAF8F5;
+      padding: 80px 24px;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .flow-step-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-radius: 14px;
+      padding: 24px;
+      position: relative;
+    }
+
+    .step-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: rgba(37, 211, 102, 0.4);
+      margin-bottom: 8px;
+    }
+
+    /* Comparison / Cost Table */
+    .pricing-table-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .pricing-table-header {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .rate-row {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.8fr;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border-color);
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .rate-row:last-child {
+      border-bottom: none;
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, #001A3D 0%, #064e3b 100%);
+      color: #ffffff;
+      padding: 70px 24px;
+      text-align: center;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #090d16;
+      color: #94a3b8;
+      padding: 60px 24px 30px;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: #25D366;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 900px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero-title {
+        font-size: 2.4rem;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .rate-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
     }
   </style>
-
 </head>
 <body>
 
-  <!-- ==========================================================================
-       1. BRAND PRELOADER
-       ========================================================================== -->
-  <div class="nr-preloader" id="nrPreloader">
-    <div class="nr-loader-brand">
-      <img src="images/logo.png" alt="Marketiqx Logo" style="height: 60px; margin-bottom: 20px;">
-      <div class="nr-loader-title">INITIALIZING REVENUE ENGINE</div>
-      <div class="nr-loader-bar">
-        <div class="nr-loader-fill" id="loaderFill"></div>
-      </div>
-      <div class="nr-loader-percent" id="loaderPercent">0%</div>
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span style="background: rgba(37, 211, 102, 0.2); color: #25D366; padding: 2px 8px; border-radius: 4px; font-weight: 700;">LIVE</span>
+      <span>Official Meta Cloud API • High-Speed WhatsApp Broadcast & AI Engine</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <span>Helpline: <strong style="color: #ffffff;">+91 74991 81193</strong></span>
+      <a href="login.html">🔑 Client Login</a>
+      <a href="dashboard.html">🚀 Dashboard</a>
     </div>
   </div>
-  <script>
-    (function() {
-      var p = 0;
-      var f = document.getElementById('loaderFill');
-      var t = document.getElementById('loaderPercent');
-      var pl = document.getElementById('nrPreloader');
-      var iv = setInterval(function() {
-        p += Math.floor(Math.random() * 25) + 15;
-        if (p > 100) p = 100;
-        if (f) f.style.width = p + '%';
-        if (t) t.textContent = p + '%';
-        if (p >= 100) {
-          clearInterval(iv);
-          setTimeout(function() {
-            if (pl) {
-              pl.classList.add('fade-out');
-              setTimeout(function() { pl.style.display = 'none'; }, 300);
-            }
-          }, 80);
-        }
-      }, 20);
-      setTimeout(function() {
-        clearInterval(iv);
-        if (pl) {
-          pl.classList.add('fade-out');
-          setTimeout(function() { pl.style.display = 'none'; }, 200);
-        }
-      }, 700);
-    })();
-  </script>
 
-  <!-- ==========================================================================
-       2. TOP NAVIGATION BAR (Adwali Minimal Pill Style)
-       ========================================================================== -->
-  <header class="adwali-header" id="mainNavbar">
-    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-      <a href="index.html" class="brand-link" style="display: flex; align-items: center; text-decoration: none;">
-        <img src="images/logo.png" alt="Next Reach DMS Logo" class="adwali-brand-logo">
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo-wrap">
+        <img src="images/logo.png" alt="Marketiqx WhatsApp Marketing Logo" class="brand-logo-img">
       </a>
 
-      <nav class="adwali-nav-links" id="mainNavLinks">
-        <a href="index.html">Home</a>
-
-        <!-- SERVICES DROPDOWN -->
-        <div class="adwali-nav-item">
-          <a href="services.html" class="adwali-dropdown-trigger">
-            Services <span style="font-size: 0.8rem;">⌄</span>
-          </a>
-          <div class="adwali-dropdown-menu">
-            <a href="services.html#paid-media"><span>🎯</span> Paid Media &amp; Meta Ads</a>
-            <a href="whatsapp-marketing-services.html"><span>🤖</span> WhatsApp AI Automation</a>
-            <a href="whatsapp-business-api.html"><span>💬</span> Meta WhatsApp API</a>
-            <a href="services.html#seo"><span>🔍</span> SEO &amp; Organic Growth</a>
-            <a href="rcs-messaging-services.html"><span>📱</span> RCS Interactive Messaging</a>
-            <a href="services.html#content"><span>🎥</span> UGC Video &amp; Creatives</a>
-            <a href="services.html#web"><span>🖥️</span> Web &amp; Funnel Design</a>
-          </div>
-        </div>
-
-        <!-- INDUSTRIES DROPDOWN -->
-        <div class="adwali-nav-item">
-          <a href="about.html#industries" class="adwali-dropdown-trigger">
-            Industries <span style="font-size: 0.8rem;">⌄</span>
-          </a>
-          <div class="adwali-dropdown-menu">
-            <a href="case-studies.html?cat=ecommerce"><span>🛒</span> E-Commerce &amp; D2C</a>
-            <a href="case-studies.html?cat=realestate"><span>🏰</span> Real Estate</a>
-            <a href="case-studies.html?cat=healthcare"><span>🩺</span> Healthcare &amp; Pharma</a>
-            <a href="case-studies.html?cat=saas"><span>💻</span> SaaS &amp; B2B Tech</a>
-            <a href="case-studies.html?cat=travel"><span>✈️</span> Travel &amp; Tourism</a>
-          </div>
-        </div>
-
+      <nav class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="whatsapp-business-api.html">WhatsApp API</a>
+        <a href="whatsapp-marketing-services.html">Bulk Broadcast</a>
+        <a href="#ai-chatbot">AI Chatbots</a>
+        <a href="#crm-integrations">CRM Sync</a>
+        <a href="pricing-sms-voice-email-wa.html">Pricing</a>
         <a href="case-studies.html">Case Studies</a>
-        <a href="#google-reviews">Reviews</a>
-        <a href="process.html">Process</a>
-        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </nav>
 
-      <div style="display: flex; align-items: center; gap: 16px;">
-        <a href="audit.html" class="adwali-pill-btn adwali-nav-cta">
-          <span>Book a Free Consultation</span>
+      <div class="nav-actions">
+        <a href="demo_regi.html" class="btn-login" style="color: #0ea5e9; border-color: rgba(14, 165, 233, 0.4);">
+          🎁 Free Demo
         </a>
-        <button class="adwali-mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
-          <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-          <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display: none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
+        <a href="login.html" class="btn-login">
+          🔑 Login
+        </a>
+        <a href="dashboard.html" class="btn-cta">
+          <span>🚀 Launch App</span>
+        </a>
       </div>
     </div>
   </header>
 
-  <!-- ==========================================================================
-       3. HERO SECTION (Adwali High-Impact Typography & Striped Highlight)
-       ========================================================================== -->
-  <section class="adwali-hero">
-    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-      <div class="adwali-hero-grid">
-        
-        <div>
-          <span class="adwali-sec-label">PERFORMANCE REVENUE &amp; GROWTH POD</span>
-          
-          <h1 class="adwali-hero-title">
-            Revenue,<br>
-            <span class="adwali-highlight">engineered.</span>
-          </h1>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div>
+        <div class="hero-badge">
+          <span>🛡️</span> Official Meta Cloud API • 99.4% Delivery SLA
+        </div>
 
-          <p class="adwali-hero-sub">
-            Marketiqx is a full-service performance growth agency. We bring Meta Ads, Google Ads, WhatsApp AI automation, direct-response UGC creative, SEO, and full-funnel revenue attribution together under one roof to scale ambitious brands.
-          </p>
+        <h1 class="hero-title">
+          Scale Your Revenue with <span class="highlight">WhatsApp Marketing</span> &amp; AI Bots.
+        </h1>
 
-          <div class="adwali-hero-actions">
-            <a href="audit.html" class="adwali-pill-btn">
-              <span>Book a Free Consultation →</span>
+        <p class="hero-subtitle">
+          Broadcast personalized bulk WhatsApp campaigns, deploy 24/7 intelligent AI chatbots, connect with your favorite CRMs, and track blue-tick delivery reports — all from one powerful enterprise dashboard.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="dashboard.html" class="btn-cta" style="padding: 14px 28px; font-size: 1rem;">
+            <span>🚀 Open Live Dashboard →</span>
+          </a>
+          <a href="demo_regi.html" class="btn-login" style="padding: 14px 24px; font-size: 1rem; background: #ffffff;">
+            <span>🎁 Claim 100 Free Demo Credits</span>
+          </a>
+        </div>
+
+        <div class="hero-stats-row">
+          <div class="hero-stat-item">
+            <h4>99.4%</h4>
+            <p>Delivery SLA</p>
+          </div>
+          <div class="hero-stat-item">
+            <h4>3.2x</h4>
+            <p>Higher Open Rates vs SMS</p>
+          </div>
+          <div class="hero-stat-item">
+            <h4>0 Ban</h4>
+            <p>SmartQueue™ Anti-Ban</p>
+          </div>
+          <div class="hero-stat-item">
+            <h4>&lt; 2s</h4>
+            <p>AI Response Latency</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Card Preview -->
+      <div>
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="display: inline-block; width: 10px; height: 10px; background: #25D366; border-radius: 50%;"></span>
+              <strong style="color: #001A3D; font-size: 0.95rem;">Live WhatsApp AI Broadcast</strong>
+            </div>
+            <span style="background: rgba(37, 211, 102, 0.15); color: #047857; font-size: 0.78rem; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">Meta Verified</span>
+          </div>
+
+          <div class="wa-chat-preview">
+            <div class="wa-bubble inbound">
+              Hi! Can you share the latest pricing for bulk WhatsApp marketing?
+              <div style="font-size: 0.65rem; color: #888; text-align: right; margin-top: 2px;">10:42 AM</div>
+            </div>
+
+            <div class="wa-bubble outbound">
+              Hello! 👋 Welcome to Marketiqx. Here is our official Meta Cloud API breakdown:
+              <br><br>
+              ✅ <strong>Marketing:</strong> ₹0.78/conv<br>
+              ✅ <strong>Utility/OTP:</strong> ₹0.11/conv<br>
+              ✅ <strong>1,000 Free</strong> monthly service chats!
+              
+              <a href="pricing-sms-voice-email-wa.html" class="wa-btn-pill">📊 View Full Pricing Matrix</a>
+              <a href="demo_regi.html" class="wa-btn-pill" style="color: #059669;">🎁 Claim Free 100 Test Credits</a>
+              <div style="font-size: 0.65rem; color: #555; text-align: right; margin-top: 4px;">10:42 AM • AI Chatbot ✓✓</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px;">
+            <a href="login.html" class="btn-login" style="flex: 1; text-align: center; justify-content: center;">
+              🔑 Portal Login
             </a>
-            <a href="case-studies.html" class="adwali-pill-btn" style="background: #FFFFFF; color: #001A3D !important; border: 1.5px solid #001A3D;">
-              <span>View Case Studies (4.6x ROAS)</span>
+            <a href="dashboard.html" class="btn-cta" style="flex: 1; text-align: center; justify-content: center;">
+              ✉️ Send Broadcast
             </a>
           </div>
         </div>
-
-        <div>
-          <div class="adwali-hero-card">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1.5px solid #E2E8F0; padding-bottom: 16px; margin-bottom: 20px;">
-              <span style="font-weight: 800; font-size: 0.9rem; letter-spacing: 1px; color: #001A3D; text-transform: uppercase;">⚡ LIVE GROWTH ENGINE</span>
-              <span style="background: #FFF4ED; color: #FF6B00; font-weight: 700; font-size: 0.8rem; padding: 4px 12px; border-radius: 9999px;">ACTIVE SPRINT</span>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
-              <div style="background: #FAF8F5; border: 1.5px solid #001A3D; border-radius: 16px; padding: 20px;">
-                <div style="font-size: 2.2rem; font-weight: 800; color: #FF6B00; line-height: 1;">4.8x</div>
-                <div style="font-size: 0.85rem; font-weight: 700; color: #001A3D; margin-top: 6px;">Blended Meta &amp; Google ROAS</div>
-              </div>
-              <div style="background: #FAF8F5; border: 1.5px solid #001A3D; border-radius: 16px; padding: 20px;">
-                <div style="font-size: 2.2rem; font-weight: 800; color: #001A3D; line-height: 1;">99.4%</div>
-                <div style="font-size: 0.85rem; font-weight: 700; color: #001A3D; margin-top: 6px;">WhatsApp Cloud Delivery</div>
-              </div>
-            </div>
-
-            <div style="background: #001A3D; color: #FFFFFF; border-radius: 16px; padding: 20px;">
-              <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 6px;">🚀 Official Meta Business Partner</div>
-              <div style="font-size: 0.85rem; color: #94A3B8; line-height: 1.5;">Direct CAPI Gateway, SmartQueue™ Anti-Ban Engine, and dedicated 5-member Growth Pod in your Slack.</div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ==========================================================================
-       3.5 ABOUT MARKETIQX & OUR STORY SECTION (Screenshots 1, 2, 3)
-       ========================================================================== -->
-  <section class="adwali-about-sec">
-    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-      
-      <div class="adwali-breadcrumbs">
-        Home / <span>The Marketiqx baat.</span>
+  <!-- Complete Features Grid -->
+  <section style="padding: 90px 24px; background: #ffffff;" id="features">
+    <div class="section-header">
+      <span class="section-tag">Enterprise WhatsApp Architecture</span>
+      <h2 class="section-title">Everything You Need To Automate &amp; Scale</h2>
+      <p class="section-desc">Designed for brands, e-commerce, real estate, and educational institutions looking to achieve direct-to-consumer scale on WhatsApp.</p>
+    </div>
+
+    <div class="features-grid">
+      <!-- 1. Bulk Messaging -->
+      <div class="feature-card">
+        <div class="feature-icon">🚀</div>
+        <h3>High-Throughput Bulk Messaging</h3>
+        <p>Send 10,000 to 1,000,000+ messages per campaign with SmartQueue™ anti-ban throttling, dynamic variable tags ({{name}}, {{coupon}}), and 100% non-WhatsApp credit refunds.</p>
       </div>
 
-      <span class="adwali-sec-label">ABOUT MARKETIQX</span>
+      <!-- 2. AI Chatbot -->
+      <div class="feature-card" id="ai-chatbot">
+        <div class="feature-icon">🤖</div>
+        <h3>24/7 Multilingual AI Chatbots</h3>
+        <p>Powered by Google Gemini 2.0 Flash &amp; OpenAI. Handles inquiries in Hindi, Hinglish, and English, auto-qualifies high-ticket leads, and books appointments instantly.</p>
+      </div>
 
-      <h2 class="adwali-sec-title">
-        <span class="adwali-underline-pink">The Marketiqx</span> <span class="adwali-highlight">baat.</span>
-      </h2>
+      <!-- 3. CRM Integration -->
+      <div class="feature-card" id="crm-integrations">
+        <div class="feature-icon">🔄</div>
+        <h3>2-Way CRM API Sync</h3>
+        <p>Real-time automated sync with Zoho CRM, HubSpot, LeadSquared, Salesforce, and Google Sheets webhooks. Never lose a hot WhatsApp lead again.</p>
+      </div>
 
-      <p style="font-size: 1.28rem; line-height: 1.65; color: var(--ad-muted); max-width: 960px; margin-bottom: 28px;">
-        We're a full-service digital marketing agency out of Amravati &amp; Jaipur, built for brands that refuse to stay quiet. We mix strategy, creativity, and a lot of hustle to get our clients found, seen, and chosen. <strong>Har brand ki growth baat.</strong>
+      <!-- 4. Contact & List Management -->
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>Audience &amp; Contact Management</h3>
+        <p>Upload Excel/CSV contacts in seconds. Tag audiences by lifecycle stage (VIP, Cold Lead, Customer) and run tailored retargeting broadcasts.</p>
+      </div>
+
+      <!-- 5. Media Rich Campaigns -->
+      <div class="feature-card">
+        <div class="feature-icon">📸</div>
+        <h3>Rich Media &amp; CTA Buttons</h3>
+        <p>Deliver high-resolution images, video teasers (16 MB), PDF brochures &amp; invoices (100 MB), interactive quick-reply pills, and phone call buttons.</p>
+      </div>
+
+      <!-- 6. Real-Time Delivery Reports -->
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Blue-Tick Live Analytics</h3>
+        <p>Monitor campaign throughput with instant telemetry: Sent, Delivered, Read (Blue Ticks), Failed, and link click CTR tracked down to the individual recipient.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Complete Workflow -->
+  <section class="flow-section">
+    <div class="section-header">
+      <span class="section-tag">User Flow</span>
+      <h2 class="section-title">From Login to Broadcast in 4 Simple Steps</h2>
+      <p class="section-desc">Launch your first enterprise WhatsApp broadcast campaign in under 3 minutes.</p>
+    </div>
+
+    <div class="flow-steps">
+      <div class="flow-step-card">
+        <div class="step-number">01</div>
+        <h4 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">Login &amp; Connect</h4>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Access Marketiqx portal, verify your Meta WABA ID and Phone Number ID in the settings tab.</p>
+      </div>
+
+      <div class="flow-step-card">
+        <div class="step-number">02</div>
+        <h4 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">Upload Contacts</h4>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Paste mobile numbers or upload CSV contact lists with custom tags and variables.</p>
+      </div>
+
+      <div class="flow-step-card">
+        <div class="step-number">03</div>
+        <h4 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">Compose &amp; Media</h4>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Craft your offer text, attach images/PDFs, configure CTA buttons, and preview live on a mock smartphone.</p>
+      </div>
+
+      <div class="flow-step-card">
+        <div class="step-number">04</div>
+        <h4 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">Send &amp; Track</h4>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Dispatch instantly with SmartQueue™ or schedule for later. Monitor delivery logs in real-time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Official Meta Cost Breakdown -->
+  <section style="padding: 90px 24px; background: #ffffff;">
+    <div class="section-header">
+      <span class="section-tag">Transparent Meta Cloud API Rates</span>
+      <h2 class="section-title">Official Meta Conversation Pricing (India)</h2>
+      <p class="section-desc">Pay only for actual 24-hour conversations delivered to your customers.</p>
+    </div>
+
+    <div class="pricing-table-container">
+      <div class="pricing-table-header">
+        <div>
+          <h3 style="font-size: 1.3rem; font-weight: 800;">Official Meta Cloud API Rate Sheet</h3>
+          <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 4px;">Standard Meta rates for India region (+ standard Marketiqx routing)</p>
+        </div>
+        <a href="demo_regi.html" class="btn-cta" style="font-size: 0.85rem; padding: 8px 16px;">🎁 Claim Free Demo</a>
+      </div>
+
+      <div class="rate-row">
+        <div>
+          <strong style="color: var(--brand-navy);">Marketing Conversations</strong>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">Offers, product launches, discounts &amp; retargeting</div>
+        </div>
+        <div>
+          <span style="font-size: 1.25rem; font-weight: 800; color: #16a34a;">₹0.78 - ₹0.85</span>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">/ conversation</span>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">
+          24-hr unlimited message window per user
+        </div>
+      </div>
+
+      <div class="rate-row">
+        <div>
+          <strong style="color: var(--brand-navy);">Utility &amp; Transactional</strong>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">Order updates, tracking links, OTPs &amp; invoices</div>
+        </div>
+        <div>
+          <span style="font-size: 1.25rem; font-weight: 800; color: #0ea5e9;">₹0.11 - ₹0.15</span>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">/ conversation</span>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">
+          Critical transaction status delivery
+        </div>
+      </div>
+
+      <div class="rate-row">
+        <div>
+          <strong style="color: var(--brand-navy);">Service / Support (Inbound)</strong>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">Customer initiated inquiries &amp; AI bot chats</div>
+        </div>
+        <div>
+          <span style="font-size: 1.25rem; font-weight: 800; color: #8b5cf6;">1,000 Free</span>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">per month</span>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">
+          Free tier included on all Meta WABA accounts
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h2 style="font-size: 2.6rem; font-weight: 800; margin-bottom: 16px;">Ready to Scale Your WhatsApp Marketing?</h2>
+      <p style="font-size: 1.1rem; color: #cbd5e1; margin-bottom: 32px; line-height: 1.6;">
+        Launch broadcasts, integrate AI chatbots, and connect your CRM with zero technical headaches.
       </p>
-
-      <div style="margin-bottom: 40px;">
-        <a href="audit.html" class="adwali-pill-btn">
-          <span>Book a Free Consultation →</span>
+      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+        <a href="dashboard.html" class="btn-cta" style="padding: 14px 32px; font-size: 1rem;">
+          🚀 Open Live Dashboard
         </a>
-      </div>
-
-      <!-- OUR STORY GRID -->
-      <div class="adwali-story-grid">
-        
-        <div>
-          <span class="adwali-sec-label">OUR STORY</span>
-          <h3 style="font-size: 2.8rem; font-weight: 800; color: #001A3D; margin-top: 10px; line-height: 1.15;">
-            The Marketiqx story.
-          </h3>
-        </div>
-
-        <div>
-          <div class="adwali-story-text">
-            <p>
-              Marketiqx started with a simple frustration: too many agencies were great at sending reports full of numbers that looked impressive and meant nothing. Impressions, reach, vanity metrics. Meanwhile the client's actual sales weren't moving.
-            </p>
-            <p>
-              So we built the opposite. An agency obsessed with the numbers that pay the bills: leads, sales, revenue, rankings that bring real buyers. Everything we do ties back to growth you can actually feel.
-            </p>
-            <p>
-              Today we're a full-service team covering SEO, ads, social, content, web, branding, video, and official Meta WhatsApp AI automation, working with brands across 80+ industries. One team, one obsession: making our clients grow.
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- THE MARKETIQX STORY IN NUMBERS STATS GRID -->
-      <div style="margin-top: 60px; padding-top: 40px; border-top: 1px dashed var(--ad-border-subtle);">
-        <span class="adwali-sec-label">THE MARKETIQX STORY IN NUMBERS</span>
-
-        <div class="adwali-stats-grid">
-          <div class="adwali-stat-card">
-            <div class="adwali-stat-num">150+</div>
-            <div class="adwali-stat-label">Brands served</div>
-          </div>
-          <div class="adwali-stat-card">
-            <div class="adwali-stat-num">80+</div>
-            <div class="adwali-stat-label">Industries</div>
-          </div>
-          <div class="adwali-stat-card">
-            <div class="adwali-stat-num">10</div>
-            <div class="adwali-stat-label">Core services</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       4. WHAT WE STAND FOR / HOW WE WORK SECTION (Adwali Screenshot 3)
-       ========================================================================== -->
-  <section class="adwali-work-sec">
-    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-      
-      <span class="adwali-sec-label">WHAT WE STAND FOR</span>
-      
-      <h2 class="adwali-sec-title">
-        How we <span class="adwali-highlight">work.</span>
-      </h2>
-
-      <div class="adwali-cards-grid">
-        
-        <div class="adwali-card">
-          <span class="adwali-card-num">01</span>
-          <h3 class="adwali-card-title">Results over vanity</h3>
-          <p class="adwali-card-body">We chase revenue, leads, and rankings, not likes that look nice but pay nothing.</p>
-        </div>
-
-        <div class="adwali-card">
-          <span class="adwali-card-num">02</span>
-          <h3 class="adwali-card-title">Straight talk</h3>
-          <p class="adwali-card-body">No jargon, no smoke. We tell you what is working, what is not, and what it costs.</p>
-        </div>
-
-        <div class="adwali-card">
-          <span class="adwali-card-num">03</span>
-          <h3 class="adwali-card-title">Creativity with a point</h3>
-          <p class="adwali-card-body">Every idea has a job to do. Pretty is not enough; it has to work.</p>
-        </div>
-
-        <div class="adwali-card">
-          <span class="adwali-card-num">04</span>
-          <h3 class="adwali-card-title">Meta &amp; WhatsApp First</h3>
-          <p class="adwali-card-body">We combine high-ROAS Meta Ads with official WhatsApp AI engines for maximum conversion.</p>
-        </div>
-
-        <div class="adwali-card">
-          <span class="adwali-card-num">05</span>
-          <h3 class="adwali-card-title">Built for the long game</h3>
-          <p class="adwali-card-body">We build brands and pipelines that last, not shortcuts that fall apart later.</p>
-        </div>
-
-        <div class="adwali-card">
-          <span class="adwali-card-num">06</span>
-          <h3 class="adwali-card-title">One team, no silos</h3>
-          <p class="adwali-card-body">SEO, ads, content, design, all talking to each other, so nothing works in isolation.</p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       5. NOTE FROM THE FOUNDER SECTION (Adwali Screenshot 5)
-       ========================================================================== -->
-  <section class="adwali-founder-sec">
-    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-      <div class="adwali-founder-grid">
-        
-        <div class="adwali-founder-photo-card">
-          <div class="adwali-founder-img-wrapper">
-            <div class="adwali-founder-circle-bg"></div>
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&h=600&fit=crop&crop=faces" alt="Founder Portrait" class="adwali-founder-img">
-          </div>
-          <div class="adwali-founder-tag">Shubham · founder</div>
-        </div>
-
-        <div class="adwali-founder-note-card">
-          <div>
-            <span class="adwali-sec-label">NOTE FROM THE FOUNDER</span>
-            <h2 style="font-size: 2.5rem; font-weight: 800; color: #001A3D; margin-bottom: 20px;">
-              Why we do this <span class="adwali-highlight">work.</span>
-            </h2>
-
-            <p class="adwali-founder-quote">
-              I started Marketiqx because I was tired of watching brands pour money into marketing that looked busy but changed nothing. We keep it simple here: treat every brand like our own, chase real numbers, and say it straight when something isn't working.
-            </p>
-            <p class="adwali-founder-quote" style="margin-bottom: 0;">
-              If that's the kind of team you want in your corner, come say hi.
-            </p>
-          </div>
-
-          <div class="adwali-founder-signature-row">
-            <div>
-              <div class="adwali-founder-name-title">Shubham Sharma</div>
-              <div class="adwali-founder-sub">Founder, Marketiqx</div>
-            </div>
-            <div class="adwali-signature-font">Shubham</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       6. PROVEN CASE STUDIES & WORKS SECTION
-       ========================================================================== -->
-  <section style="padding: 80px 0;">
-    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-      
-      <span class="adwali-sec-label">SELECTED REVENUE CASE STUDIES</span>
-      <h2 class="adwali-sec-title">
-        Real Brands. <span class="adwali-highlight">Real Revenue.</span>
-      </h2>
-
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 40px;">
-        
-        <!-- Case 1: D's Wrapping Studio -->
-        <div class="adwali-card" onclick="openProjectModal('dswrappingstudio')" style="cursor: pointer;">
-          <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
-            <img src="images/Screenshot 2026-09-26 134031.png" alt="D's Wrapping Studio" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <span style="font-size: 0.8rem; font-weight: 800; color: #FF6B00; text-transform: uppercase;">🎁 LUXURY GIFTING &amp; BESPOKE HAMPERS • CUSTOM OCCASIONS</span>
-          <h3 class="adwali-card-title" style="margin-top: 6px;">D's Wrapping Studio: Luxury Hampers &amp; Bespoke Gifting</h3>
-          <p class="adwali-card-body">Thoughtfully curated luxury hampers, personalized gifts, bespoke wrapping studio, and event gifting funnels with automated WhatsApp enquiry engine.</p>
-          <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
-        </div>
-
-        <!-- Case 2: Amar Shoe Stores -->
-        <div class="adwali-card" onclick="openProjectModal('amarshoestores')" style="cursor: pointer;">
-          <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
-            <img src="images/Screenshot 2026-09-26 134103.png" alt="Amar Shoe Stores" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <span style="font-size: 0.8rem; font-weight: 800; color: #FF6B00; text-transform: uppercase;">👟 LUXURY FOOTWEAR &amp; SNEAKERS • ITALIAN LEATHER &amp; FORMALS</span>
-          <h3 class="adwali-card-title" style="margin-top: 6px;">Amar Shoe Stores: Amravati's Premier Multi-Brand Footwear Hub</h3>
-          <p class="adwali-card-body">Amravati's most trusted shoe store for high-performance sneakers, handcrafted Italian leather formals, bridal juttis, and WhatsApp digital store desk.</p>
-          <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
-        </div>
-
-        <!-- Case 3: Kavita Sarees & Kids Wear -->
-        <div class="adwali-card" onclick="openProjectModal('kavitasarees')" style="cursor: pointer;">
-          <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
-            <img src="images/Screenshot 2026-09-25 162349.png" alt="Kavita Sarees & Kids Wear" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <span style="font-size: 0.8rem; font-weight: 800; color: #FF6B00; text-transform: uppercase;">🥻 LUXURY RETAIL &amp; BRIDAL • HANDLOOM SILK &amp; KIDS WEAR</span>
-          <h3 class="adwali-card-title" style="margin-top: 6px;">Kavita Sarees &amp; Kids Wear: Premier Bridal &amp; Wholesale Hub</h3>
-          <p class="adwali-card-body">Engineered omnichannel retail &amp; wholesale lead engine for Handloom Paithani, Kanjeevaram, and Bridal Lehengas with WhatsApp Direct Shop.</p>
-          <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
-        </div>
-
-        <!-- Case 4: Siddhi Marketing -->
-        <div class="adwali-card" onclick="openProjectModal('siddhimarketing')" style="cursor: pointer;">
-          <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
-            <img src="images/Screenshot 2026-09-25 165625.png" alt="Siddhi Marketing" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <span style="font-size: 0.8rem; font-weight: 800; color: #FF6B00; text-transform: uppercase;">⚡ RETAIL &amp; CONSUMER TECH • SMART TVS, ACS &amp; GADGETS</span>
-          <h3 class="adwali-card-title" style="margin-top: 6px;">Siddhi Marketing: Authorized Multi-Brand Electronics Showroom</h3>
-          <p class="adwali-card-body">Scaled consumer electronics retail with zero-down payment EMI funnels, local geo-targeted video ads, and digital visiting card lead engine.</p>
-          <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
-        </div>
-
-        <!-- Case 5: Marketiqx -->
-        <div class="adwali-card" onclick="openProjectModal('marketiqx')" style="cursor: pointer;">
-          <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
-            <img src="images/work-marketiqx.png" alt="Marketiqx" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <span style="font-size: 0.8rem; font-weight: 800; color: #FF6B00; text-transform: uppercase;">💼 WHATSAPP SAAS • META CLOUD API</span>
-          <h3 class="adwali-card-title" style="margin-top: 6px;">Marketiqx: Meta Verified WhatsApp Cloud Platform</h3>
-          <p class="adwali-card-body">Engineered high-throughput SaaS platform, Meta Cloud API multi-agent inbox, and 5.2x trial-to-paid conversion.</p>
-          <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
-        </div>
-
-        <!-- Case 6: Let's Explore -->
-        <div class="adwali-card" onclick="openProjectModal('letsexplore')" style="cursor: pointer;">
-          <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
-            <img src="images/work-letsexplore.png" alt="Let's Explore DMC" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <span style="font-size: 0.8rem; font-weight: 800; color: #FF6B00; text-transform: uppercase;">✈️ TRAVEL &amp; TOURISM • AI TRIP PLANNER</span>
-          <h3 class="adwali-card-title" style="margin-top: 6px;">Let's Explore DMC: AI Trip Planning Engine</h3>
-          <p class="adwali-card-body">Designed international holiday package portal, AI Trip Planner, and 4.8x blended Meta &amp; Google ROAS.</p>
-          <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
-        </div>
-
-        <!-- Case 7: Mobile Station -->
-        <div class="adwali-card" onclick="openProjectModal('mobilestation')" style="cursor: pointer;">
-          <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
-            <img src="images/Screenshot 2026-09-16 163951.png" alt="Mobile Station" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <span style="font-size: 0.8rem; font-weight: 800; color: #FF6B00; text-transform: uppercase;">📱 PREMIUM RETAIL &amp; D2C • APPLE &amp; FLAGSHIP PHONES</span>
-          <h3 class="adwali-card-title" style="margin-top: 6px;">Mobile Station: Omnichannel Retail &amp; Repair Hub</h3>
-          <p class="adwali-card-body">Scaled flagship smartphone retail with hyper-local geo-fencing ads and ₹2.4 Cr monthly turnaround.</p>
-          <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
-        </div>
-
-        <!-- Case 8: MedEx Pharma -->
-        <div class="adwali-card" onclick="openProjectModal('medex')" style="cursor: pointer;">
-          <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
-            <img src="images/work-medex.png" alt="MedEx Pharma" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <span style="font-size: 0.8rem; font-weight: 800; color: #FF6B00; text-transform: uppercase;">🏥 GLOBAL B2B PHARMA • WHO-GMP EXPORT</span>
-          <h3 class="adwali-card-title" style="margin-top: 6px;">MedEx Pharma: WHO-GMP Bulk Export Hub</h3>
-          <p class="adwali-card-body">Built international B2B pharmaceutical sourcing portal across 14+ countries with ₹5.8 Cr B2B export ARR.</p>
-          <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       6.5 GOOGLE REVIEWS SECTION (Verified Google Business Ratings & Client Feedback)
-       ========================================================================== -->
-  <section class="nr-google-sec" id="google-reviews">
-    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-      
-      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-        <span class="adwali-sec-label" style="margin-bottom: 0;">GOOGLE REVIEWS &amp; VERIFIED RATINGS</span>
-      </div>
-
-      <h2 class="adwali-sec-title">
-        What Founders Say on <span class="adwali-highlight">Google.</span>
-      </h2>
-
-      <p style="font-size: 1.15rem; line-height: 1.6; color: var(--ad-muted); max-width: 820px; margin-bottom: 32px;">
-        Real reviews from D2C founders, retail showroom directors, and growth heads scaling their revenue with Marketiqx.
-      </p>
-
-      <!-- GOOGLE BUSINESS PROFILE RATING SUMMARY CARD -->
-      <div class="nr-google-header-card">
-        
-        <div class="nr-google-brand-block">
-          <div class="nr-google-g-logo">
-            <svg viewBox="0 0 24 24" width="30" height="30">
-              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
-              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
-              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
-              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
-            </svg>
-          </div>
-          <div>
-            <h3 class="nr-google-brand-title">
-              Marketiqx 
-              <span class="nr-google-verified-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="#1A73E8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                Google Verified
-              </span>
-            </h3>
-            <div class="nr-google-brand-sub">Performance Revenue &amp; WhatsApp AI Growth Pod • 100+ Brands Scaled</div>
-          </div>
-        </div>
-
-        <div class="nr-google-score-summary">
-          <div class="nr-google-rating-num">4.9</div>
-          <div>
-            <div class="nr-google-stars">
-              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-            </div>
-            <div class="nr-google-count-lbl">Based on <strong>148 verified Google reviews</strong></div>
-          </div>
-        </div>
-
-        <div class="nr-google-header-actions">
-          <button type="button" class="nr-google-btn-primary" onclick="openGoogleReviewsModal()">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-7v4h4l-5 7z"/></svg>
-            See all 148 reviews on Google
-          </button>
-          <button type="button" class="nr-google-btn-secondary" onclick="openWriteReviewPrompt()">
-            ⭐ Write a Review
-          </button>
-        </div>
-
-      </div>
-
-      <!-- CATEGORY FILTER CHIPS -->
-      <div class="nr-google-filter-bar">
-        <button class="nr-google-filter-chip active" data-filter="all" onclick="filterGoogleReviews('all', this)">
-          ⭐ All Reviews (148)
-        </button>
-        <button class="nr-google-filter-chip" data-filter="meta" onclick="filterGoogleReviews('meta', this)">
-          🎯 Meta &amp; Google Ads (62)
-        </button>
-        <button class="nr-google-filter-chip" data-filter="whatsapp" onclick="filterGoogleReviews('whatsapp', this)">
-          🤖 WhatsApp AI Automation (44)
-        </button>
-        <button class="nr-google-filter-chip" data-filter="d2c" onclick="filterGoogleReviews('d2c', this)">
-          🛒 D2C Brand Scaling (28)
-        </button>
-        <button class="nr-google-filter-chip" data-filter="retail" onclick="filterGoogleReviews('retail', this)">
-          🏬 Local Retail Footfall (14)
-        </button>
-      </div>
-
-      <!-- SLIDER CONTAINER WITH NAVIGATION ARROWS -->
-      <div class="nr-google-slider-wrap">
-        
-        <div class="nr-google-slider-nav">
-          <span style="font-size: 0.88rem; font-weight: 700; color: #64748B; margin-right: 6px;">Scroll reviews →</span>
-          <button type="button" class="nr-google-nav-arrow" onclick="scrollGoogleReviews(-1)" aria-label="Previous Reviews">‹</button>
-          <button type="button" class="nr-google-nav-arrow" onclick="scrollGoogleReviews(1)" aria-label="Next Reviews">›</button>
-        </div>
-
-        <!-- REVIEWS SCROLL TRACK -->
-        <div class="nr-google-track" id="nrGoogleTrack">
-          
-          <!-- REVIEW 1: Vikramaditya Singhania -->
-          <div class="nr-google-card" data-category="meta d2c">
-            <div>
-              <div class="nr-google-card-header">
-                <div class="nr-google-user-profile">
-                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #1A73E8, #0D47A1);">VS</div>
-                  <div class="nr-google-user-details">
-                    <h4>Vikramaditya Singhania</h4>
-                    <div class="nr-google-user-role">Founder &amp; CEO · Singhania Heritage D2C</div>
-                    <div class="nr-google-user-badge">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                      Local Guide · 14 reviews
-                    </div>
-                  </div>
-                </div>
-                <div class="nr-google-card-badge-right">
-                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
-                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
-                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
-                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
-                  </svg>
-                </div>
-              </div>
-
-              <div class="nr-google-star-row">
-                <span class="nr-google-stars-gold">★★★★★</span>
-                <span class="nr-google-time-tag">2 weeks ago</span>
-              </div>
-
-              <span class="nr-google-service-chip">Meta Ads &amp; ROAS Surge</span>
-
-              <p class="nr-google-text">
-                “Marketiqx completely transformed our customer acquisition. In 45 days, our blended Meta ad ROAS jumped from 1.8x to 4.6x with zero ad-fatigue. Their direct-response video hooks and server-side CAPI tracking made every ad rupee count. Truly elite growth engineers!”
-              </p>
-            </div>
-
-            <div class="nr-google-reply-box">
-              <div class="nr-google-reply-header">
-                <span>Response from Marketiqx</span>
-                <span style="font-size: 0.74rem; color: #94A3B8;">1 week ago</span>
-              </div>
-              Thank you Vikramaditya! Helping Singhania Heritage scale sustainably while maintaining high profitability has been fantastic. Looking forward to our festive sprint!
-            </div>
-          </div>
-
-          <!-- REVIEW 2: Neha Sharma -->
-          <div class="nr-google-card" data-category="whatsapp d2c">
-            <div>
-              <div class="nr-google-card-header">
-                <div class="nr-google-user-profile">
-                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #34A853, #1B5E20);">NS</div>
-                  <div class="nr-google-user-details">
-                    <h4>Neha Sharma</h4>
-                    <div class="nr-google-user-role">Head of Growth · UrbanVogue Apparels</div>
-                    <div class="nr-google-user-badge" style="color: #1A73E8;">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#1A73E8"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                      Verified Client
-                    </div>
-                  </div>
-                </div>
-                <div class="nr-google-card-badge-right">
-                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
-                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
-                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
-                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
-                  </svg>
-                </div>
-              </div>
-
-              <div class="nr-google-star-row">
-                <span class="nr-google-stars-gold">★★★★★</span>
-                <span class="nr-google-time-tag">1 month ago</span>
-              </div>
-
-              <span class="nr-google-service-chip" style="background: #E8F5E9; color: #2E7D32;">WhatsApp AI Automation</span>
-
-              <p class="nr-google-text">
-                “The WhatsApp AI chatbot and SmartQueue broadcast system they deployed is pure gold. We handled over 35,000 customer inquiries during our flash sale without a single drop or number block. Our cart recovery rate shot up by 42% through instant WhatsApp checkout reminders.”
-              </p>
-            </div>
-
-            <div class="nr-google-reply-box">
-              <div class="nr-google-reply-header">
-                <span>Response from Marketiqx</span>
-                <span style="font-size: 0.74rem; color: #94A3B8;">3 weeks ago</span>
-              </div>
-              Thank you Neha! Automation that directly adds to bottom-line sales is always our top focus. Thrilled with your team's results!
-            </div>
-          </div>
-
-          <!-- REVIEW 3: Anand Toshniwal -->
-          <div class="nr-google-card" data-category="retail">
-            <div>
-              <div class="nr-google-card-header">
-                <div class="nr-google-user-profile">
-                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #EA4335, #C62828);">AT</div>
-                  <div class="nr-google-user-details">
-                    <h4>Anand Toshniwal</h4>
-                    <div class="nr-google-user-role">Managing Director · Toshniwal Footwear &amp; Retail</div>
-                    <div class="nr-google-user-badge">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                      Local Guide · 28 reviews
-                    </div>
-                  </div>
-                </div>
-                <div class="nr-google-card-badge-right">
-                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
-                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
-                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
-                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
-                  </svg>
-                </div>
-              </div>
-
-              <div class="nr-google-star-row">
-                <span class="nr-google-stars-gold">★★★★★</span>
-                <span class="nr-google-time-tag">3 weeks ago</span>
-              </div>
-
-              <span class="nr-google-service-chip" style="background: #FFF3E0; color: #E65100;">Local Retail Footfall</span>
-
-              <p class="nr-google-text">
-                “Being a premium multi-brand retail store, we were losing walk-ins to online marketplaces. Marketiqx built a geo-fenced 10km video campaign and a WhatsApp digital shoe catalog. Footfall surged by 210% and festival turnover crossed ₹1.8 Cr. Outstanding team!”
-              </p>
-            </div>
-
-            <div class="nr-google-reply-box">
-              <div class="nr-google-reply-header">
-                <span>Response from Marketiqx</span>
-                <span style="font-size: 0.74rem; color: #94A3B8;">2 weeks ago</span>
-              </div>
-              Much appreciated Anand Ji! Hyper-local geo-targeting combined with WhatsApp VIP concierge is an unbeatable formula for retail showrooms.
-            </div>
-          </div>
-
-          <!-- REVIEW 4: Pooja Deshmukh -->
-          <div class="nr-google-card" data-category="d2c meta">
-            <div>
-              <div class="nr-google-card-header">
-                <div class="nr-google-user-profile">
-                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #8E24AA, #4A148C);">PD</div>
-                  <div class="nr-google-user-details">
-                    <h4>Pooja Deshmukh</h4>
-                    <div class="nr-google-user-role">Co-Founder · Zivara Luxury Hampers &amp; Studio</div>
-                    <div class="nr-google-user-badge">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                      Local Guide · 9 reviews
-                    </div>
-                  </div>
-                </div>
-                <div class="nr-google-card-badge-right">
-                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
-                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
-                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
-                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
-                  </svg>
-                </div>
-              </div>
-
-              <div class="nr-google-star-row">
-                <span class="nr-google-stars-gold">★★★★★</span>
-                <span class="nr-google-time-tag">1 month ago</span>
-              </div>
-
-              <span class="nr-google-service-chip">D2C Funnel &amp; Reels Ads</span>
-
-              <p class="nr-google-text">
-                “Unlike past agencies that only sent vanity reports of impressions, Marketiqx focuses 100% on revenue that hits the bank account. Their team works like an in-house marketing pod directly in our Slack. Delivered our highest-ever festive quarter!”
-              </p>
-            </div>
-
-            <div class="nr-google-reply-box">
-              <div class="nr-google-reply-header">
-                <span>Response from Marketiqx</span>
-                <span style="font-size: 0.74rem; color: #94A3B8;">1 month ago</span>
-              </div>
-              Thanks Pooja! Results over vanity is operating principle #1 at Marketiqx. Thrilled to see Zivara shine across India.
-            </div>
-          </div>
-
-          <!-- REVIEW 5: Siddharth Mehta -->
-          <div class="nr-google-card" data-category="meta">
-            <div>
-              <div class="nr-google-card-header">
-                <div class="nr-google-user-profile">
-                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #F57C00, #E65100);">SM</div>
-                  <div class="nr-google-user-details">
-                    <h4>Siddharth Mehta</h4>
-                    <div class="nr-google-user-role">Chief Growth Officer · FinScale Technologies</div>
-                    <div class="nr-google-user-badge" style="color: #1A73E8;">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#1A73E8"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                      Verified Client
-                    </div>
-                  </div>
-                </div>
-                <div class="nr-google-card-badge-right">
-                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
-                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
-                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
-                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
-                  </svg>
-                </div>
-              </div>
-
-              <div class="nr-google-star-row">
-                <span class="nr-google-stars-gold">★★★★★</span>
-                <span class="nr-google-time-tag">2 months ago</span>
-              </div>
-
-              <span class="nr-google-service-chip" style="background: #E3F2FD; color: #1565C0;">Performance Marketing &amp; CAC</span>
-
-              <p class="nr-google-text">
-                “Our customer acquisition cost (CAC) dropped by 38% within 90 days. Their deep understanding of high-intent Google Search campaigns and Meta Advantage+ funnels is remarkable. Straight talk, weekly transparency, and zero fluff.”
-              </p>
-            </div>
-
-            <div class="nr-google-reply-box">
-              <div class="nr-google-reply-header">
-                <span>Response from Marketiqx</span>
-                <span style="font-size: 0.74rem; color: #94A3B8;">2 months ago</span>
-              </div>
-              Thank you Siddharth! Slashing CAC while scaling qualified pipeline volume was a great win. Excited for the upcoming product expansion!
-            </div>
-          </div>
-
-          <!-- REVIEW 6: Dr. Rajesh Khandelwal -->
-          <div class="nr-google-card" data-category="whatsapp">
-            <div>
-              <div class="nr-google-card-header">
-                <div class="nr-google-user-profile">
-                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #00897B, #004D40);">RK</div>
-                  <div class="nr-google-user-details">
-                    <h4>Dr. Rajesh Khandelwal</h4>
-                    <div class="nr-google-user-role">Managing Director · MedEx Healthcare Exports</div>
-                    <div class="nr-google-user-badge">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                      Local Guide · 17 reviews
-                    </div>
-                  </div>
-                </div>
-                <div class="nr-google-card-badge-right">
-                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
-                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
-                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
-                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
-                  </svg>
-                </div>
-              </div>
-
-              <div class="nr-google-star-row">
-                <span class="nr-google-stars-gold">★★★★★</span>
-                <span class="nr-google-time-tag">3 weeks ago</span>
-              </div>
-
-              <span class="nr-google-service-chip" style="background: #E0F2F1; color: #00695C;">B2B Lead Engines &amp; Exports</span>
-
-              <p class="nr-google-text">
-                “Marketiqx re-engineered our global sourcing portal and built an automated quotation desk on WhatsApp. International bulk RFQ inquiries grew by 3.2x across 14 countries in 60 days. They understand enterprise B2B pipelines inside and out.”
-              </p>
-            </div>
-
-            <div class="nr-google-reply-box">
-              <div class="nr-google-reply-header">
-                <span>Response from Marketiqx</span>
-                <span style="font-size: 0.74rem; color: #94A3B8;">2 weeks ago</span>
-              </div>
-              Thank you Dr. Khandelwal! Structuring compliant WHO-GMP export pipelines has been a tremendous milestone.
-            </div>
-          </div>
-
-          <!-- REVIEW 7: Aman Preet Singh -->
-          <div class="nr-google-card" data-category="d2c whatsapp">
-            <div>
-              <div class="nr-google-card-header">
-                <div class="nr-google-user-profile">
-                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #D81B60, #880E4F);">AS</div>
-                  <div class="nr-google-user-details">
-                    <h4>Aman Preet Singh</h4>
-                    <div class="nr-google-user-role">Founder &amp; CEO · Royal Heritage Tours &amp; DMC</div>
-                    <div class="nr-google-user-badge" style="color: #1A73E8;">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#1A73E8"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                      Verified Client
-                    </div>
-                  </div>
-                </div>
-                <div class="nr-google-card-badge-right">
-                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
-                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
-                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
-                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
-                  </svg>
-                </div>
-              </div>
-
-              <div class="nr-google-star-row">
-                <span class="nr-google-stars-gold">★★★★★</span>
-                <span class="nr-google-time-tag">5 days ago</span>
-              </div>
-
-              <span class="nr-google-service-chip" style="background: #FCE4EC; color: #C2185B;">AI Trip Planner &amp; Leads</span>
-
-              <p class="nr-google-text">
-                “Their interactive Gemini AI Trip Planner and automated WhatsApp itinerary concierge converted 65% of incoming travelers into booked high-ticket tour packages. 4.8x blended ROAS and our inquiry calendar is fully booked!”
-              </p>
-            </div>
-
-            <div class="nr-google-reply-box">
-              <div class="nr-google-reply-header">
-                <span>Response from Marketiqx</span>
-                <span style="font-size: 0.74rem; color: #94A3B8;">4 days ago</span>
-              </div>
-              Thank you Aman! When innovative AI tech meets direct WhatsApp sales, conversion rates soar. Proud of our ongoing collaboration!
-            </div>
-          </div>
-
-          <!-- REVIEW 8: Tanvi Agrawal -->
-          <div class="nr-google-card" data-category="retail">
-            <div>
-              <div class="nr-google-card-header">
-                <div class="nr-google-user-profile">
-                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #0288D1, #01579B);">TA</div>
-                  <div class="nr-google-user-details">
-                    <h4>Tanvi Agrawal</h4>
-                    <div class="nr-google-user-role">Brand Director · Agrawal Silk &amp; Bridal Studio</div>
-                    <div class="nr-google-user-badge">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                      Local Guide · 31 reviews
-                    </div>
-                  </div>
-                </div>
-                <div class="nr-google-card-badge-right">
-                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
-                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
-                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
-                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
-                  </svg>
-                </div>
-              </div>
-
-              <div class="nr-google-star-row">
-                <span class="nr-google-stars-gold">★★★★★</span>
-                <span class="nr-google-time-tag">1 week ago</span>
-              </div>
-
-              <span class="nr-google-service-chip" style="background: #E1F5FE; color: #0277BD;">Bridal Trousseau &amp; Video Leads</span>
-
-              <p class="nr-google-text">
-                “We wanted brides and wedding shoppers across Maharashtra to discover our handloom Paithani collection. Marketiqx's video ads and 1-click video appointment booking funnel brought our best wedding season turnover yet. 5 stars!”
-              </p>
-            </div>
-
-            <div class="nr-google-reply-box">
-              <div class="nr-google-reply-header">
-                <span>Response from Marketiqx</span>
-                <span style="font-size: 0.74rem; color: #94A3B8;">5 days ago</span>
-              </div>
-              Thank you Tanvi! Handloom silk deserves the grandest digital showcase, and your season results reflect that brilliance.
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- DEMO PRESENTATION NOTICE / FOOTNOTE -->
-      <div class="nr-google-demo-notice">
-        <span>⭐ Verified Google Business Profile Rating: <strong>4.9 / 5.0 (148 Reviews)</strong></span>
-        <span>•</span>
-        <span>Marketiqx Amravati &amp; Jaipur Locations</span>
-        <span>•</span>
-        <span><a href="javascript:void(0)" onclick="openGoogleReviewsModal()" style="color: #1A73E8; font-weight: 700; text-decoration: underline;">Open Google Knowledge Panel &amp; Ratings Breakdown →</a></span>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       7. QUESTIONS, ANSWERED (Adwali Accordion Screenshot 1 & 4)
-       ========================================================================== -->
-  <section class="adwali-faq-sec">
-    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-      
-      <h2 class="adwali-sec-title" style="text-align: center; margin-bottom: 40px;">
-        Questions, <span class="adwali-highlight">answered.</span>
-      </h2>
-
-      <div class="adwali-faq-container">
-        
-        <div class="adwali-faq-item active">
-          <button class="adwali-faq-header" type="button">
-            <h3 class="adwali-faq-question-text">What does Marketiqx do?</h3>
-            <span class="adwali-faq-toggle-icon">−</span>
-          </button>
-          <div class="adwali-faq-answer-box">
-            <p class="adwali-faq-answer-text">
-              Marketiqx is a full-service digital marketing &amp; revenue agency in India. We bring SEO, paid ads, social media, content, branding, web design, and official Meta WhatsApp AI engines together under one roof to grow brands globally.
-            </p>
-          </div>
-        </div>
-
-        <div class="adwali-faq-item">
-          <button class="adwali-faq-header" type="button">
-            <h3 class="adwali-faq-question-text">Where is Marketiqx based?</h3>
-            <span class="adwali-faq-toggle-icon">+</span>
-          </button>
-          <div class="adwali-faq-answer-box">
-            <p class="adwali-faq-answer-text">
-              Marketiqx is based in India (Amravati, Jaipur, Delhi, Mumbai), serving ambitious D2C, B2B, and enterprise brands across 100+ countries. Har brand ki growth baat.
-            </p>
-          </div>
-        </div>
-
-        <div class="adwali-faq-item">
-          <button class="adwali-faq-header" type="button">
-            <h3 class="adwali-faq-question-text">What makes Marketiqx different?</h3>
-            <span class="adwali-faq-toggle-icon">+</span>
-          </button>
-          <div class="adwali-faq-answer-box">
-            <p class="adwali-faq-answer-text">
-              We chase revenue, leads, and rankings, not likes that look nice but pay nothing. Straight talk, zero jargon, Meta &amp; WhatsApp Cloud automation, and dedicated 5-member Growth Pods assigned directly to your Slack.
-            </p>
-          </div>
-        </div>
-
-        <div class="adwali-faq-item">
-          <button class="adwali-faq-header" type="button">
-            <h3 class="adwali-faq-question-text">How do I work with Marketiqx?</h3>
-            <span class="adwali-faq-toggle-icon">+</span>
-          </button>
-          <div class="adwali-faq-answer-box">
-            <p class="adwali-faq-answer-text">
-              Book a free consultation. Thirty minutes, zero pressure, and you'll leave with actionable revenue ideas you can use either way.
-            </p>
-          </div>
-        </div>
-
-        <div class="adwali-faq-item">
-          <button class="adwali-faq-header" type="button">
-            <h3 class="adwali-faq-question-text">How quickly can we launch and start seeing ROAS surge?</h3>
-            <span class="adwali-faq-toggle-icon">+</span>
-          </button>
-          <div class="adwali-faq-answer-box">
-            <p class="adwali-faq-answer-text">
-              During Days 1–7 (Sprint Onboarding), we audit your ad accounts, configure Server-Side CAPI tracking, script 8–15 direct-response UGC hooks, and deploy your WhatsApp bot. Initial ad batches go live within 7–10 days.
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       8. DARK CTA BANNER SECTION (Adwali Screenshot 4)
-       ========================================================================== -->
-  <section class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-    <div class="adwali-dark-cta-sec">
-      <span style="color: #FFB800; font-weight: 800; font-size: 0.95rem; text-transform: lowercase; letter-spacing: 1px; display: block; margin-bottom: 12px;">let's talk</span>
-      
-      <h2>Let's give your brand something worth talking about.</h2>
-      
-      <p>
-        Book a free consultation. Thirty minutes, zero pressure, and you'll leave with ideas you can use either way.
-      </p>
-
-      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <a href="audit.html" class="adwali-pill-btn" style="background: #FF6B00; border-color: #FF6B00; padding: 16px 36px; font-size: 1.05rem;">
-          <span>Book a Free Consultation →</span>
-        </a>
-        <a href="tel:+917499181193" class="adwali-pill-btn" style="background: #FFFFFF; color: #001A3D !important; border-color: #FFFFFF; padding: 16px 30px; font-size: 1.05rem;">
-          <span>📞 Call Growth Director: +91 74991 81193</span>
+        <a href="demo_regi.html" class="btn-login" style="padding: 14px 28px; font-size: 1rem; color: #ffffff; border-color: rgba(255,255,255,0.3); background: transparent;">
+          🎁 Register for Free Demo
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================================================
-       9. MASTER FOOTER WITH SKYLINE ART (Adwali Screenshot 2)
-       ========================================================================== -->
-  <footer class="adwali-footer">
-    
-    <!-- Vector Skyline Line Art Illustration -->
-    <div class="adwali-skyline-container">
-      <svg class="adwali-skyline-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none" stroke="#475569" stroke-width="1.5">
-        <!-- Building outlines & dome motifs -->
-        <rect x="50" y="50" width="80" height="70" />
-        <rect x="75" y="30" width="30" height="20" />
-        <line x1="90" y1="15" x2="90" y2="30" />
-        
-        <rect x="180" y="35" width="45" height="85" />
-        <path d="M 180 35 Q 202.5 15 225 35" />
-        
-        <rect x="270" y="55" width="60" height="65" />
-        <path d="M 270 55 Q 300 30 330 55" />
-        
-        <rect x="370" y="40" width="50" height="80" />
-        <path d="M 370 40 Q 395 20 420 40" />
-
-        <rect x="470" y="60" width="90" height="60" />
-        <rect x="500" y="40" width="30" height="20" />
-        <line x1="515" y1="20" x2="515" y2="40" />
-        <!-- Pink highlight flag motif on center tower -->
-        <polygon points="515,20 530,25 515,30" fill="#FF0055" stroke="none" />
-
-        <rect x="610" y="45" width="70" height="75" />
-        <path d="M 610 45 Q 645 15 680 45" />
-
-        <rect x="720" y="50" width="80" height="70" />
-        <rect x="745" y="30" width="30" height="20" />
-
-        <rect x="850" y="40" width="55" height="80" />
-        <path d="M 850 40 Q 877.5 20 905 40" />
-        
-        <line x1="0" y1="119" x2="1200" y2="119" stroke="#334155" stroke-width="2" />
-      </svg>
-    </div>
-
-    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-      <div class="adwali-footer-grid">
-        
-        <div>
-          <div class="adwali-footer-brand-title">
-            <img src="images/logo.png" alt="Next Reach DMS Logo" style="height: 48px;">
-          </div>
-          <p class="adwali-footer-desc">
-            Full-service digital marketing agency from Jaipur &amp; Amravati, serving brands in 100+ countries. Har brand ki growth baat.
-          </p>
-          <div class="adwali-footer-contact">
-            <div><a href="mailto:support@marketiqx.com">support@marketiqx.com</a></div>
-            <div><a href="tel:+917499181193">+91 74991 81193</a></div>
-            <div style="font-size: 0.88rem; color: #94A3B8; margin-top: 4px;">Sahakar Nagar, Opp. New Cotton Market, Amravati, Maharashtra</div>
-          </div>
-        </div>
-
-        <div>
-          <div class="adwali-footer-col-title">work</div>
-          <ul class="adwali-footer-links">
-            <li><a href="services.html#seo">SEO &amp; Organic</a></li>
-            <li><a href="services.html#paid-media">Paid Media &amp; PPC</a></li>
-            <li><a href="services.html#paid-media">Social &amp; Meta Ads</a></li>
-            <li><a href="whatsapp-marketing-services.html">WhatsApp AI Automation</a></li>
-            <li><a href="services.html#content">Content Marketing</a></li>
-            <li><a href="services.html#web">Web Design</a></li>
-            <li><a href="services.html#branding">Branding &amp; Creative</a></li>
-            <li><a href="services.html">All services</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="adwali-footer-col-title">company</div>
-          <ul class="adwali-footer-links">
-            <li><a href="about.html">About</a></li>
-            <li><a href="case-studies.html">Work</a></li>
-            <li><a href="process.html">Process</a></li>
-            <li><a href="blogs.html">Blog</a></li>
-            <li><a href="about.html#careers">Careers</a></li>
-            <li><a href="pricing-sms-voice-email-wa.html">Pricing</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="adwali-footer-col-title">more</div>
-          <ul class="adwali-footer-links">
-            <li><a href="case-studies.html">Case Studies</a></li>
-            <li><a href="audit.html">Free Audit</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="contact.html">Amravati</a></li>
-            <li><a href="contact.html">Jaipur</a></li>
-            <li><a href="contact.html">Delhi</a></li>
-            <li><a href="contact.html">Mumbai</a></li>
-            <li><a href="sitemap.xml">Sitemap</a></li>
-          </ul>
-        </div>
-
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <img src="images/logo.png" alt="Marketiqx Logo" style="height: 42px; margin-bottom: 16px;">
+        <p style="line-height: 1.6; margin-bottom: 16px;">
+          Marketiqx is an official WhatsApp Cloud API &amp; AI revenue engine empowering brands across India with bulk broadcasts, conversational bots, and CRM sync.
+        </p>
+        <p style="color: #64748b; font-size: 0.85rem;">📞 Helpline: +91 74991 81193</p>
       </div>
 
-      <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 0.88rem; color: #64748B;">
-        <div>&copy; 2026 Marketiqx. All rights reserved. Har brand ki growth baat.</div>
-        <div style="display: flex; gap: 20px;">
-          <a href="index.html" style="color: inherit; text-decoration: none;">Privacy Policy</a>
-          <a href="index.html" style="color: inherit; text-decoration: none;">Terms of Service</a>
-        </div>
+      <div class="footer-col">
+        <h4>Platform Modules</h4>
+        <ul>
+          <li><a href="whatsapp-business-api.html">WhatsApp Cloud API</a></li>
+          <li><a href="whatsapp-marketing-services.html">Bulk WhatsApp Broadcasts</a></li>
+          <li><a href="#ai-chatbot">AI Chatbot Workflows</a></li>
+          <li><a href="#crm-integrations">CRM &amp; Webhook Sync</a></li>
+          <li><a href="dashboard.html">Live Web Console</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Omnichannel Channels</h4>
+        <ul>
+          <li><a href="rcs-messaging-services.html">RCS Business Messaging</a></li>
+          <li><a href="bulk-sms.html">Transactional Bulk SMS</a></li>
+          <li><a href="bulk-voicecall.html">Voice OBD &amp; IVR Calls</a></li>
+          <li><a href="pricing-sms-voice-email-wa.html">Full Pricing Calculator</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Account &amp; Access</h4>
+        <ul>
+          <li><a href="login.html">🔑 Client Portal Login</a></li>
+          <li><a href="dashboard.html">🚀 Campaign Dashboard</a></li>
+          <li><a href="demo_regi.html">🎁 Claim 100 Free Credits</a></li>
+          <li><a href="contact.html">💬 Contact Support</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="max-width: 1280px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.82rem;">
+      <div>&copy; 2026 Marketiqx Cloud Platform. All rights reserved. Official Meta Cloud API Infrastructure.</div>
+      <div style="display: flex; gap: 20px;">
+        <a href="index.html" style="color: #64748b; text-decoration: none;">Privacy Policy</a>
+        <a href="index.html" style="color: #64748b; text-decoration: none;">Terms of Service</a>
       </div>
     </div>
   </footer>
 
-  <!-- Floating Back-To-Top Circular Button (Screenshot 1 & 2) -->
-  <button class="adwali-back-to-top" onclick="scrollToTop()" title="Back to top">
-    ↑
-  </button>
-
-  <!-- ==========================================================================
-       PROJECT CASE STUDY DETAILS INTERACTIVE MODAL
-       ========================================================================== -->
-  <div class="project-modal-backdrop" id="projectDetailModal">
-    <div class="project-modal-card">
-      <button type="button" class="modal-close-btn" id="btnCloseProjectModal" aria-label="Close Modal">✕</button>
-      
-      <div class="modal-image-preview">
-        <img src="" alt="Project Preview" id="mProjImg">
-        <div class="modal-image-badge" id="mProjBadge"></div>
-      </div>
-
-      <!-- Live Screenshot Gallery Switcher -->
-      <div class="modal-gallery-thumbs" id="mProjThumbs"></div>
-
-      <div class="modal-content-body">
-        <h3 class="modal-title" id="mProjTitle"></h3>
-        <p class="modal-subtitle" id="mProjDesc"></p>
-
-        <!-- 3-Metric Banner -->
-        <div class="modal-results-banner">
-          <div class="modal-res-item">
-            <div class="num" id="mProjMet1Val"></div>
-            <div class="lbl" id="mProjMet1Lbl"></div>
-          </div>
-          <div class="modal-res-item">
-            <div class="num" id="mProjMet2Val"></div>
-            <div class="lbl" id="mProjMet2Lbl"></div>
-          </div>
-          <div class="modal-res-item">
-            <div class="num" id="mProjMet3Val"></div>
-            <div class="lbl" id="mProjMet3Lbl"></div>
-          </div>
-        </div>
-
-        <!-- 2 Column Breakdown: Challenge & Solution -->
-        <div class="modal-grid-2col">
-          <div class="modal-info-box">
-            <h4>⚠️ The Challenge &amp; Problem Solved</h4>
-            <ul id="mProjChallengeList"></ul>
-          </div>
-          <div class="modal-info-box">
-            <h4>💡 How Marketiqx Engineered It</h4>
-            <ul id="mProjSolutionList"></ul>
-          </div>
-        </div>
-
-        <!-- Innovations & Tech Stack -->
-        <div class="modal-info-box" style="margin-bottom: 24px;">
-          <h4>🚀 Key Innovations &amp; Tech Stack Deployed</h4>
-          <div class="project-deliverables" id="mProjTechStack" style="padding-top: 8px; border-top: none;"></div>
-        </div>
-
-        <!-- Modal CTA Row -->
-        <div class="modal-cta-row">
-          <div>
-            <div style="font-weight: 800; color: #001A3D; font-size: 0.95rem;">Want Similar Scaling for Your Brand?</div>
-            <div style="font-size: 0.82rem; color: #475569;">Get a customized 90-day growth roadmap and revenue audit.</div>
-          </div>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="audit.html" class="adwali-pill-btn" style="padding: 10px 22px; font-size: 0.88rem;">
-              <span>🚀 Book Growth Audit →</span>
-            </a>
-            <a href="https://wa.me/917499181193?text=Hi%20Marketiqx%20team,%20I%20saw%20your%20case%20studies%20and%20want%20to%20discuss%20a%20similar%20project." target="_blank" rel="noopener" class="adwali-pill-btn" style="background: #FFFFFF; color: #001A3D !important; padding: 10px 18px; font-size: 0.88rem;">
-              <span>💬 Discuss on WhatsApp</span>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- ==========================================================================
-       GOOGLE REVIEWS KNOWLEDGE PANEL & VERIFIED RATINGS MODAL
-       ========================================================================== -->
-  <div class="nr-google-modal-backdrop" id="nrGoogleModal">
-    <div class="nr-google-modal-card">
-      <button type="button" class="nr-google-modal-close" onclick="closeGoogleReviewsModal()" aria-label="Close Google Reviews Modal">✕</button>
-
-      <!-- Modal Header -->
-      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1.5px solid #E2E8F0;">
-        <div class="nr-google-g-logo" style="width: 48px; height: 48px; min-width: 48px;">
-          <svg viewBox="0 0 24 24" width="28" height="28">
-            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
-            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
-            <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
-            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
-          </svg>
-        </div>
-        <div>
-          <div style="font-size: 0.8rem; font-weight: 800; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.5px;">✓ Official Google Business Profile</div>
-          <h3 style="margin: 2px 0 0; font-size: 1.45rem; font-weight: 800; color: var(--ad-navy);">Marketiqx</h3>
-          <div style="font-size: 0.85rem; color: #64748B;">Digital Marketing &amp; Performance Revenue Agency • Amravati, Jaipur &amp; Global</div>
-        </div>
-      </div>
-
-      <!-- Rating Score Overview & Star Distribution -->
-      <div style="display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center; margin-bottom: 28px; background: #FAF8F5; padding: 22px; border-radius: 16px; border: 1.5px solid var(--ad-navy);">
-        <div style="text-align: center; border-right: 1px solid #E2E8F0; padding-right: 20px;">
-          <div style="font-size: 3.6rem; font-weight: 800; color: var(--ad-navy); line-height: 1;">4.9</div>
-          <div style="color: #FBBC04; font-size: 1.4rem; margin: 4px 0;">★★★★★</div>
-          <div style="font-size: 0.85rem; font-weight: 700; color: #475569;">148 total reviews</div>
-        </div>
-
-        <div>
-          <div class="nr-google-breakdown-row">
-            <span style="width: 50px; font-weight: 700;">5 ★</span>
-            <div class="nr-google-bar-track"><div class="nr-google-bar-fill" style="width: 94%;"></div></div>
-            <span style="width: 40px; text-align: right; font-weight: 600;">94%</span>
-          </div>
-          <div class="nr-google-breakdown-row">
-            <span style="width: 50px; font-weight: 700;">4 ★</span>
-            <div class="nr-google-bar-track"><div class="nr-google-bar-fill" style="width: 5%;"></div></div>
-            <span style="width: 40px; text-align: right; font-weight: 600;">5%</span>
-          </div>
-          <div class="nr-google-breakdown-row">
-            <span style="width: 50px; font-weight: 700;">3 ★</span>
-            <div class="nr-google-bar-track"><div class="nr-google-bar-fill" style="width: 1%;"></div></div>
-            <span style="width: 40px; text-align: right; font-weight: 600;">1%</span>
-          </div>
-          <div class="nr-google-breakdown-row">
-            <span style="width: 50px; font-weight: 700;">2 ★</span>
-            <div class="nr-google-bar-track"><div class="nr-google-bar-fill" style="width: 0%;"></div></div>
-            <span style="width: 40px; text-align: right; font-weight: 600;">0%</span>
-          </div>
-          <div class="nr-google-breakdown-row">
-            <span style="width: 50px; font-weight: 700;">1 ★</span>
-            <div class="nr-google-bar-track"><div class="nr-google-bar-fill" style="width: 0%;"></div></div>
-            <span style="width: 40px; text-align: right; font-weight: 600;">0%</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Performance Highlights -->
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px;">
-        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; text-align: center;">
-          <div style="font-size: 1.4rem; font-weight: 800; color: #16A34A;">98%</div>
-          <div style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-top: 2px;">ROAS &amp; Revenue Surge</div>
-        </div>
-        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; text-align: center;">
-          <div style="font-size: 1.4rem; font-weight: 800; color: #1A73E8;">99.4%</div>
-          <div style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-top: 2px;">WhatsApp Delivery Rate</div>
-        </div>
-        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; text-align: center;">
-          <div style="font-size: 1.4rem; font-weight: 800; color: #FF6B00;">100%</div>
-          <div style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-top: 2px;">Slack Growth Pod SLA</div>
-        </div>
-      </div>
-
-      <!-- Action Buttons -->
-      <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1.5px solid #E2E8F0;">
-        <div style="font-size: 0.85rem; color: #64748B;">
-          📍 Sahakar Nagar, Opp. New Cotton Market, Amravati &amp; Jaipur
-        </div>
-        <div style="display: flex; gap: 10px;">
-          <button type="button" class="nr-google-btn-secondary" onclick="closeGoogleReviewsModal()" style="padding: 10px 18px; font-size: 0.88rem;">
-            Close
-          </button>
-          <a href="audit.html" class="nr-google-btn-primary" style="padding: 10px 22px; font-size: 0.88rem;">
-            🚀 Book Growth Audit →
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <script>
-    // --- GOOGLE REVIEWS SLIDER & FILTER LOGIC ---
-    function scrollGoogleReviews(dir) {
-      const track = document.getElementById('nrGoogleTrack');
-      if (!track) return;
-      const card = track.querySelector('.nr-google-card');
-      const scrollAmount = card ? (card.offsetWidth + 26) : 380;
-      track.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
-    }
-
-    function filterGoogleReviews(category, btn) {
-      document.querySelectorAll('.nr-google-filter-chip').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-
-      const cards = document.querySelectorAll('#nrGoogleTrack .nr-google-card');
-      cards.forEach(card => {
-        const cats = card.getAttribute('data-category') || '';
-        if (category === 'all' || cats.includes(category)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    function openGoogleReviewsModal() {
-      const modal = document.getElementById('nrGoogleModal');
-      if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-
-    function closeGoogleReviewsModal() {
-      const modal = document.getElementById('nrGoogleModal');
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    }
-
-    function openWriteReviewPrompt() {
-      openGoogleReviewsModal();
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const googleModal = document.getElementById('nrGoogleModal');
-      if (googleModal) {
-        googleModal.addEventListener('click', (e) => {
-          if (e.target === googleModal) closeGoogleReviewsModal();
-        });
-      }
-    });
-
-    // --- FAQ ACCORDION HANDLER ---
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.adwali-faq-header').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const item = btn.closest('.adwali-faq-item');
-          const isActive = item.classList.contains('active');
-          document.querySelectorAll('.adwali-faq-item').forEach(i => {
-            i.classList.remove('active');
-            const icon = i.querySelector('.adwali-faq-toggle-icon');
-            if (icon) icon.textContent = '+';
-          });
-          if (!isActive) {
-            item.classList.add('active');
-            const icon = item.querySelector('.adwali-faq-toggle-icon');
-            if (icon) icon.textContent = '−';
-          }
-        });
-      });
-    });
-
-    // --- SCROLL TO TOP ---
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // --- PROJECT CASE STUDIES DATA & MULTI-SCREENSHOT GALLERY ---
-    const projectCaseStudies = {
-      dswrappingstudio: {
-        title: "D's Wrapping Studio: Luxury Hampers, Personalized Gifting & Bespoke Wrapping Studio",
-        badge: "🎁 Luxury Gifting & Bespoke Hampers • Custom Occasions",
-        image: "images/Screenshot 2026-09-26 134031.png",
-        gallery: [
-          { label: "🎁 Luxury Hamper & Bespoke Studio Showcase", src: "images/Screenshot 2026-09-26 134031.png" }
-        ],
-        desc: "Thoughtfully curated luxury hampers, personalized gifts, bespoke wrapping studio, and event gifting funnels with automated WhatsApp enquiry engine.",
-        metrics: [
-          { val: "4,200+", lbl: "Luxury Hampers Delivered" },
-          { val: "3.8x", lbl: "Blended Meta Ad ROAS" },
-          { val: "150+", lbl: "Corporate & Event Orders" }
-        ],
-        challenges: [
-          "High seasonal demand spikes for festive, wedding, and corporate hampers required instant lead capture.",
-          "Customers required custom hamper pricing based on variable product combinations.",
-          "High drop-off rate when handling inquiries manually via Instagram DMs."
-        ],
-        solutions: [
-          "Engineered an interactive online hamper showcase with 1-click WhatsApp quote generator.",
-          "Deployed Meta Reels and Carousel video ads targeting wedding planners, corporate HRs, and luxury buyers.",
-          "Integrated automated catalog delivery and consultation booking via WhatsApp AI Assistant."
-        ],
-        techStack: ["Bespoke Hamper Funnel", "WhatsApp Direct Inquiry", "Meta Reels Ads", "Custom Quote Estimator", "Automated Catalog"]
-      },
-      amarshoestores: {
-        title: "Amar Shoe Stores: Amravati's Premier Multi-Brand Footwear & Italian Leather Hub",
-        badge: "👟 Luxury Footwear & Sneakers • Italian Leather & Formals",
-        image: "images/Screenshot 2026-09-26 134103.png",
-        gallery: [
-          { label: "👟 Flagship Store Showcase (Chitra Chowk, Amravati)", src: "images/Screenshot 2026-09-26 134103.png" }
-        ],
-        desc: "Amravati's most trusted shoe store at Chitra Chowk scaled with digital WhatsApp footwear catalog, high-performance sneaker launches, handcrafted Italian leather formals, and hyper-local footfall ads.",
-        metrics: [
-          { val: "₹1.8 Cr", lbl: "Annual Footwear Turnover" },
-          { val: "5.4x", lbl: "Blended Ad ROAS" },
-          { val: "8,500+", lbl: "Direct Walk-ins & Orders" }
-        ],
-        challenges: [
-          "Shoppers increasingly purchasing sneakers & formal shoes on national e-commerce apps.",
-          "Local customers unaware of exclusive handcrafted Italian leather formals and regal wedding juttis stock.",
-          "Peak festival & wedding traffic required instant size checking and stock availability assistance."
-        ],
-        solutions: [
-          "Created an interactive 'WhatsApp Digital Shoe Store' with instant size guide and live inventory check.",
-          "Launched hyper-targeted 10km geo-fencing video ads around Chitra Chowk, Amravati.",
-          "Deployed Meta Advantage+ catalog campaigns driving direct footfall and WhatsApp delivery orders."
-        ],
-        techStack: ["WhatsApp Digital Store", "Live Size Checker", "Local Geo-Fencing Ads", "Meta Advantage+", "Digital Footwear Catalog"]
-      },
-      kavitasarees: {
-        title: "Kavita Sarees & Kids Wear: Premier Bridal Trousseau & Wholesale Silk Showroom",
-        badge: "🥻 Luxury Retail & Bridal • Handloom Silk & Kids Wear",
-        image: "images/Screenshot 2026-09-25 162349.png",
-        gallery: [
-          { label: "🥻 Showroom Header & Shop", src: "images/Screenshot 2026-09-25 162349.png" }
-        ],
-        desc: "Engineered omnichannel retail & wholesale lead engine for Handloom Paithani, Kanjeevaram, Bridal Lehengas, and Kids Wear with WhatsApp Direct Shop.",
-        metrics: [
-          { val: "₹1.8 Cr", lbl: "Monthly Turnaround GMV" },
-          { val: "3.8x", lbl: "Meta Ads Blended ROAS" },
-          { val: "+210%", lbl: "Festive Season Footfall" }
-        ],
-        challenges: [
-          "Fierce competition from regional saree traders in Amravati & Vidarbha region.",
-          "Out-of-station NRI & wedding customers struggling to view live Paithani & Bridal Lehengas catalog.",
-          "Slow inquiry response times during wedding season peak."
-        ],
-        solutions: [
-          "Built a luxury digital storefront with instant WhatsApp 1-click Direct Shop button.",
-          "Deployed Meta Advantage+ video campaigns targeting brides and families across Maharashtra.",
-          "Integrated instant video-call appointment booking for wholesale Aher & wedding trousseau."
-        ],
-        techStack: ["Digital Storefront", "WhatsApp Direct Shop", "Meta Advantage+ Ads", "Video Appointment Booking", "Geo-Fencing Ads"]
-      },
-      siddhimarketing: {
-        title: "Siddhi Marketing: Authorized Multi-Brand Electronics & Appliances Showroom",
-        badge: "⚡ Retail & Consumer Tech • Smart TVs, ACs & Gadgets",
-        image: "images/Screenshot 2026-09-25 165625.png",
-        gallery: [
-          { label: "⚡ Electronics Showroom Stage", src: "images/Screenshot 2026-09-25 165625.png" }
-        ],
-        desc: "Scaled multi-brand consumer electronics & appliances retail with zero-down payment EMI funnels, local geo-targeted video ads, and digital visiting card lead engine.",
-        metrics: [
-          { val: "₹3.2 Cr", lbl: "Festive Season Turnover" },
-          { val: "4.4x", lbl: "Blended Ad ROAS" },
-          { val: "+175%", lbl: "Showroom Walk-ins" }
-        ],
-        challenges: [
-          "Heavy price undercutting by big national e-commerce marketplaces.",
-          "Customers hesitating on high upfront costs for premium 4K Smart TVs and Inverter ACs.",
-          "High ad spend waste without hyper-local geo-fencing targeting."
-        ],
-        solutions: [
-          "Launched zero-down payment EMI calculator lead funnel directly integrated with WhatsApp.",
-          "Executed 15km radius Instagram & YouTube video campaigns around Balaji Mandir Road showroom.",
-          "Implemented 1-click digital visiting card and live stock availability inquiry desk."
-        ],
-        techStack: ["EMI Funnel Engine", "Local Geo-Fencing", "WhatsApp Stock Desk", "Meta Video Ads", "Digital Visiting Card"]
-      },
-      marketiqx: {
-        title: "Marketiqx: Intelligent WhatsApp Marketing & Meta Cloud API Platform",
-        badge: "💼 WhatsApp SaaS • Meta Verified Cloud API",
-        image: "images/work-marketiqx.png",
-        gallery: [
-          { label: "🖥️ Platform Home", src: "images/work-marketiqx.png" },
-          { label: "📈 Customer Success (5.2x ROI)", src: "images/marketiqx-stories.png" },
-          { label: "🎁 100 Free Credits Onboarding", src: "images/marketiqx-onboarding.png" },
-          { label: "⚡ SmartQueue™ Architecture", src: "images/marketiqx-smartqueue.png" }
-        ],
-        desc: "Engineered high-throughput SaaS platform, Meta Cloud API multi-agent inbox, zero-drop template broadcast queue, and high-converting trial onboarding funnels.",
-        metrics: [
-          { val: "99.4%", lbl: "Verified Inbox Delivery SLA" },
-          { val: "+380%", lbl: "Broadcast Engagement Surge" },
-          { val: "5.2x", lbl: "Trial-to-Paid Conversion" }
-        ],
-        challenges: [
-          "Legacy broadcast tools had high number-ban risk and 20%+ message drop rates during festive peaks.",
-          "Complex Meta Green Badge onboarding caused users to drop off during setup.",
-          "Lack of multi-agent routing led to slow customer response times and lost sales."
-        ],
-        solutions: [
-          "Integrated official Meta WhatsApp Cloud API with SmartQueue™ anti-drop balancing engine.",
-          "Built a streamlined 3-step green badge onboarding wizard with 100 instant free demo credits.",
-          "Engineered unified multi-agent collaborative live chat inbox with AI bot fallback and webhook triggers."
-        ],
-        techStack: ["Meta Cloud API", "SmartQueue™ Engine", "Redis / WebSockets", "Multi-Agent Inbox", "Automated Billing", "CAPI Tracking"]
-      },
-      letsexplore: {
-        title: "Let's Explore DMC: AI Trip Planning Engine & Global Tour Scaling",
-        badge: "✈️ Travel & Tourism • AI Trip Planner",
-        image: "images/work-letsexplore.png",
-        gallery: [
-          { label: "🌍 Global Travel Portal", src: "images/work-letsexplore.png" },
-          { label: "🏖️ Holiday Packages", src: "images/letsexplore-packages.png" },
-          { label: "✨ Custom Dream Itineraries", src: "images/letsexplore-customise.png" },
-          { label: "🤖 Gemini AI Concierge", src: "images/letsexplore-ai-bot.png" },
-          { label: "📸 Travellers Gallery", src: "images/letsexplore-gallery.png" },
-          { label: "🏛️ Heritage & Domestic Tours", src: "images/letsexplore-heritage.png" }
-        ],
-        desc: "Designed high-converting international holiday package portal, interactive AI Trip Planner lead engine, customized group tour workflows, and instant WhatsApp booking concierge.",
-        metrics: [
-          { val: "+290%", lbl: "Group Tour Enquiries" },
-          { val: "4.8x", lbl: "Blended Meta & Google ROAS" },
-          { val: "65%", lbl: "Lead-to-Call Conversion" }
-        ],
-        challenges: [
-          "Static PDF brochures caused 75%+ drop-offs before travelers requested quotes.",
-          "High ad spend on Meta with broad targeting yielded unqualified budget inquiries.",
-          "Slow manual follow-ups by sales reps resulted in lost travel bookings."
-        ],
-        solutions: [
-          "Developed an interactive 'Gemini AI Trip Planner' generating custom multi-country itineraries in 30 seconds.",
-          "Launched high-intent Google Search campaigns for direct DMC wholesale pricing packages.",
-          "Connected instant WhatsApp concierge desk with automated itinerary delivery."
-        ],
-        techStack: ["AI Trip Planner Funnel", "Meta Advantage+ Ads", "Google Search Exact", "WhatsApp Concierge Bot", "CRM Booking Sync", "Multi-Currency Engine"]
-      },
-      mobilestation: {
-        title: "Mobile Station: Omnichannel Flagship Smartphone Retail & 30-Min Rapid Repair Hub",
-        badge: "📱 Premium Retail & D2C • Apple & Flagship Phones",
-        image: "images/Screenshot 2026-09-16 163951.png",
-        gallery: [
-          { label: "📱 iPhone 18 Pro Max 3D Stage", src: "images/Screenshot 2026-09-16 163951.png" },
-          { label: " Apple Flagship Series Showcase", src: "images/Screenshot 2026-09-16 164102.png" },
-          { label: "✦ Samsung Foldables & S Series Showcase", src: "images/Screenshot 2026-09-16 164019.png" },
-          { label: "🏬 Flagship Experience Lounges (Amravati, Nagpur, BKC)", src: "images/Screenshot 2026-09-16 164028.png" }
-        ],
-        desc: "Scaled premium flagship smartphone retail and 30-minute component engineering lab with hyper-local geo-fencing ads, trade-in value funnels, and WhatsApp VIP desk.",
-        metrics: [
-          { val: "₹2.4 Cr", lbl: "Monthly Turnaround GMV" },
-          { val: "+185%", lbl: "Store Footfall & Walk-ins" },
-          { val: "30 Min", lbl: "Component Engineering Speed" }
-        ],
-        challenges: [
-          "Fierce competition from big e-commerce platforms offering heavy price discounts.",
-          "Customer hesitation and trust barrier regarding open-box/certified grade A+ devices.",
-          "Slow local discovery for fast 30-minute on-spot hardware repairs."
-        ],
-        solutions: [
-          "Built a luxury Apple & flagship storefront with interactive trade-in price estimators.",
-          "Deployed 10km geo-fenced Instagram video ads targeting tech enthusiasts and professionals.",
-          "Implemented 1-click WhatsApp VIP concierge for live stock check and express repair booking."
-        ],
-        techStack: ["D2C Web Store", "Meta Dynamic Catalog Ads", "Trade-In Estimator", "WhatsApp VIP Concierge", "Local Geo-Fencing", "Grade-A+ Verification"]
-      },
-      medex: {
-        title: "MedEx Pharmaceuticals: WHO-GMP Certified Global Sourcing & Bulk Export Hub",
-        badge: "🏥 Global B2B Pharma • WHO-GMP Formulations Export",
-        image: "images/work-medex.png",
-        gallery: [
-          { label: "🏥 Global Sourcing Directory", src: "images/work-medex.png" },
-          { label: "🌐 Global Importers Feedback", src: "images/medex-global-importers.png" },
-          { label: "🏭 Sourcing & Export Infra", src: "images/medex-sourcing-infrastructure.png" },
-          { label: "💊 Formulations Product Catalog", src: "images/medex-formulations-catalog.png" }
-        ],
-        desc: "Built an international B2B pharmaceutical sourcing portal, multi-currency RFQ product directory, wholesale WhatsApp desk, and compliance-first overseas lead pipelines.",
-        metrics: [
-          { val: "14+", lbl: "Export Destination Countries" },
-          { val: "₹5.8 Cr", lbl: "B2B Export Pipeline ARR" },
-          { val: "+240%", lbl: "Wholesale RFQ Volume" }
-        ],
-        challenges: [
-          "Overseas institutional buyers required verified WHO-GMP compliance documentation upfront.",
-          "Manual email-based RFQ processes created 4-day delays in bulk order quotes.",
-          "Low international search visibility for high-demand pharmaceutical formulation lines."
-        ],
-        solutions: [
-          "Engineered an international B2B directory with instant dossier previews and WHO-GMP badges.",
-          "Built an automated multi-currency RFQ quotation builder with instant WhatsApp alert desk.",
-          "Executed global B2B inbound search SEO and high-trust LinkedIn export funnels."
-        ],
-        techStack: ["International B2B Portal", "WHO-GMP Product Directory", "Multi-Currency RFQ Engine", "WhatsApp Export Desk", "Global Inbound SEO", "Compliance Dossiers"]
-      }
-    };
-
-    function openProjectModal(projKey) {
-      const data = projectCaseStudies[projKey];
-      if (!data) return;
-
-      const modal = document.getElementById('projectDetailModal');
-      const imgEl = document.getElementById('mProjImg');
-      imgEl.src = data.image;
-      document.getElementById('mProjBadge').textContent = data.badge;
-      document.getElementById('mProjTitle').textContent = data.title;
-      document.getElementById('mProjDesc').textContent = data.desc;
-
-      // Render Gallery Buttons
-      const thumbsContainer = document.getElementById('mProjThumbs');
-      if (thumbsContainer && data.gallery && data.gallery.length > 0) {
-        thumbsContainer.innerHTML = data.gallery.map((g, idx) => `
-          <button type="button" class="modal-thumb-btn ${idx === 0 ? 'active' : ''}" onclick="switchModalImage(this, '${g.src}')">
-            ${g.label}
-          </button>
-        `).join('');
-        thumbsContainer.style.display = 'flex';
-      } else if (thumbsContainer) {
-        thumbsContainer.style.display = 'none';
-      }
-
-      document.getElementById('mProjMet1Val').textContent = data.metrics[0].val;
-      document.getElementById('mProjMet1Lbl').textContent = data.metrics[0].lbl;
-      document.getElementById('mProjMet2Val').textContent = data.metrics[1].val;
-      document.getElementById('mProjMet2Lbl').textContent = data.metrics[1].lbl;
-      document.getElementById('mProjMet3Val').textContent = data.metrics[2].val;
-      document.getElementById('mProjMet3Lbl').textContent = data.metrics[2].lbl;
-
-      const chList = document.getElementById('mProjChallengeList');
-      chList.innerHTML = data.challenges.map(c => `<li><span class="bullet">⚠️</span> <span>${c}</span></li>`).join('');
-
-      const solList = document.getElementById('mProjSolutionList');
-      solList.innerHTML = data.solutions.map(s => `<li><span class="bullet">✓</span> <span>${s}</span></li>`).join('');
-
-      const stackBox = document.getElementById('mProjTechStack');
-      stackBox.innerHTML = data.techStack.map(t => `<span class="deliv-pill" style="background: white; border: 1px solid #E2E8F0;">${t}</span>`).join('');
-
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function switchModalImage(btn, src) {
-      document.getElementById('mProjImg').src = src;
-      document.querySelectorAll('.modal-thumb-btn').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-    }
-
-    function closeProjectModal() {
-      const modal = document.getElementById('projectDetailModal');
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const closeBtn = document.getElementById('btnCloseProjectModal');
-      const modal = document.getElementById('projectDetailModal');
-      if (closeBtn) closeBtn.addEventListener('click', closeProjectModal);
-      if (modal) {
-        modal.addEventListener('click', (e) => {
-          if (e.target === modal) closeProjectModal();
-        });
-      }
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeProjectModal();
-      });
-    });
-  </script>
-  <script src="js/main.js"></script>
-  <script src="js/api.js"></script>
 </body>
 </html>
