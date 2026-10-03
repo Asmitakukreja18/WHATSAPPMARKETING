@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Marketiqx Shared Mobile Navigation & Responsive Experience
  * Automatically handles mobile hamburger navigation, responsive drawers,
  * and seamless interactions across all pages.
@@ -57,8 +57,14 @@
             <a href="pricing-sms-voice-email-wa.html" class="${currentPage === 'pricing-sms-voice-email-wa.html' ? 'active' : ''}">
               <span>💳</span> Pricing & Tariffs
             </a>
-            <a href="about-us.html" class="${currentPage === 'about-us.html' ? 'active' : ''}">
-              <span>🏢</span> About Marketiqx
+            <a href="about.html" class="${currentPage === 'about.html' || currentPage === 'about-us.html' ? 'active' : ''}">
+              <span>🏢</span> About NextReach DMS
+            </a>
+            <a href="services.html" class="${currentPage === 'services.html' ? 'active' : ''}">
+              <span>🚀</span> Growth Services
+            </a>
+            <a href="whatsapp-marketing-services.html" class="${currentPage === 'whatsapp-marketing-services.html' ? 'active' : ''}">
+              <span>🤖</span> WhatsApp Automation
             </a>
             <a href="leadership.html" class="${currentPage === 'leadership.html' ? 'active' : ''}">
               <span>👥</span> Leadership & Team
@@ -66,8 +72,8 @@
             <a href="contact.html" class="${currentPage === 'contact.html' ? 'active' : ''}">
               <span>📍</span> Contact & Offices
             </a>
-            <a href="demo_regi.html" class="${currentPage === 'demo_regi.html' ? 'active' : ''}" style="color: #0ea5e9; font-weight: 700;">
-              <span>🎁</span> Free Demo (100 Credits)
+            <a href="audit.html" class="${currentPage === 'audit.html' ? 'active' : ''}" style="color: #FF6B00; font-weight: 700;">
+              <span>🎁</span> Free Revenue Audit
             </a>
           </nav>
 
@@ -76,7 +82,7 @@
           <div class="mobile-nav-section-title">Quick Access</div>
           <div class="mobile-nav-actions">
             <a href="tel:+917499181193" class="mobile-phone-btn">
-              📞 24/7 Helpline: +91 74991 81193
+              📞 Growth Helpline: +91 74991 81193
             </a>
             <div class="mobile-actions-row">
               <a href="login.html" class="btn-secondary" style="flex: 1; text-align: center; justify-content: center;">🔑 Login</a>

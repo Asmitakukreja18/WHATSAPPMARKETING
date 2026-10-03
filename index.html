@@ -125,14 +125,19 @@
         </div>
 
         <a href="case-studies.html">Case Studies</a>
+        <a href="#google-reviews">Reviews</a>
         <a href="process.html">Process</a>
         <a href="about.html">About</a>
       </nav>
 
       <div style="display: flex; align-items: center; gap: 16px;">
-        <a href="audit.html" class="adwali-pill-btn">
+        <a href="audit.html" class="adwali-pill-btn adwali-nav-cta">
           <span>Book a Free Consultation</span>
         </a>
+        <button class="adwali-mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
+          <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display: none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -381,7 +386,29 @@
 
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 40px;">
         
-        <!-- Case 1: Kavita Sarees & Kids Wear -->
+        <!-- Case 1: D's Wrapping Studio -->
+        <div class="adwali-card" onclick="openProjectModal('dswrappingstudio')" style="cursor: pointer;">
+          <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
+            <img src="images/Screenshot 2026-09-26 134031.png" alt="D's Wrapping Studio" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <span style="font-size: 0.8rem; font-weight: 800; color: #FF6B00; text-transform: uppercase;">🎁 LUXURY GIFTING &amp; BESPOKE HAMPERS • CUSTOM OCCASIONS</span>
+          <h3 class="adwali-card-title" style="margin-top: 6px;">D's Wrapping Studio: Luxury Hampers &amp; Bespoke Gifting</h3>
+          <p class="adwali-card-body">Thoughtfully curated luxury hampers, personalized gifts, bespoke wrapping studio, and event gifting funnels with automated WhatsApp enquiry engine.</p>
+          <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
+        </div>
+
+        <!-- Case 2: Amar Shoe Stores -->
+        <div class="adwali-card" onclick="openProjectModal('amarshoestores')" style="cursor: pointer;">
+          <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
+            <img src="images/Screenshot 2026-09-26 134103.png" alt="Amar Shoe Stores" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <span style="font-size: 0.8rem; font-weight: 800; color: #FF6B00; text-transform: uppercase;">👟 LUXURY FOOTWEAR &amp; SNEAKERS • ITALIAN LEATHER &amp; FORMALS</span>
+          <h3 class="adwali-card-title" style="margin-top: 6px;">Amar Shoe Stores: Amravati's Premier Multi-Brand Footwear Hub</h3>
+          <p class="adwali-card-body">Amravati's most trusted shoe store for high-performance sneakers, handcrafted Italian leather formals, bridal juttis, and WhatsApp digital store desk.</p>
+          <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
+        </div>
+
+        <!-- Case 3: Kavita Sarees & Kids Wear -->
         <div class="adwali-card" onclick="openProjectModal('kavitasarees')" style="cursor: pointer;">
           <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
             <img src="images/Screenshot 2026-09-25 162349.png" alt="Kavita Sarees & Kids Wear" style="width: 100%; height: 100%; object-fit: cover;">
@@ -392,7 +419,7 @@
           <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
         </div>
 
-        <!-- Case 2: Siddhi Marketing -->
+        <!-- Case 4: Siddhi Marketing -->
         <div class="adwali-card" onclick="openProjectModal('siddhimarketing')" style="cursor: pointer;">
           <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
             <img src="images/Screenshot 2026-09-25 165625.png" alt="Siddhi Marketing" style="width: 100%; height: 100%; object-fit: cover;">
@@ -403,7 +430,7 @@
           <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
         </div>
 
-        <!-- Case 3: Marketiqx -->
+        <!-- Case 5: Marketiqx -->
         <div class="adwali-card" onclick="openProjectModal('marketiqx')" style="cursor: pointer;">
           <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
             <img src="images/work-marketiqx.png" alt="Marketiqx" style="width: 100%; height: 100%; object-fit: cover;">
@@ -414,7 +441,7 @@
           <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
         </div>
 
-        <!-- Case 4: Let's Explore -->
+        <!-- Case 6: Let's Explore -->
         <div class="adwali-card" onclick="openProjectModal('letsexplore')" style="cursor: pointer;">
           <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
             <img src="images/work-letsexplore.png" alt="Let's Explore DMC" style="width: 100%; height: 100%; object-fit: cover;">
@@ -425,7 +452,7 @@
           <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
         </div>
 
-        <!-- Case 5: Mobile Station -->
+        <!-- Case 7: Mobile Station -->
         <div class="adwali-card" onclick="openProjectModal('mobilestation')" style="cursor: pointer;">
           <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
             <img src="images/Screenshot 2026-09-16 163951.png" alt="Mobile Station" style="width: 100%; height: 100%; object-fit: cover;">
@@ -436,7 +463,7 @@
           <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
         </div>
 
-        <!-- Case 6: MedEx Pharma -->
+        <!-- Case 8: MedEx Pharma -->
         <div class="adwali-card" onclick="openProjectModal('medex')" style="cursor: pointer;">
           <div style="height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #E2E8F0;">
             <img src="images/work-medex.png" alt="MedEx Pharma" style="width: 100%; height: 100%; object-fit: cover;">
@@ -447,6 +474,485 @@
           <div style="margin-top: 20px; font-weight: 800; color: #001A3D; font-size: 0.95rem;">Explore Full Case Study →</div>
         </div>
 
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6.5 GOOGLE REVIEWS SECTION (Verified Google Business Ratings & Client Feedback)
+       ========================================================================== -->
+  <section class="nr-google-sec" id="google-reviews">
+    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+      
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        <span class="adwali-sec-label" style="margin-bottom: 0;">GOOGLE REVIEWS &amp; VERIFIED RATINGS</span>
+      </div>
+
+      <h2 class="adwali-sec-title">
+        What Founders Say on <span class="adwali-highlight">Google.</span>
+      </h2>
+
+      <p style="font-size: 1.15rem; line-height: 1.6; color: var(--ad-muted); max-width: 820px; margin-bottom: 32px;">
+        Real reviews from D2C founders, retail showroom directors, and growth heads scaling their revenue with NextReach DMS.
+      </p>
+
+      <!-- GOOGLE BUSINESS PROFILE RATING SUMMARY CARD -->
+      <div class="nr-google-header-card">
+        
+        <div class="nr-google-brand-block">
+          <div class="nr-google-g-logo">
+            <svg viewBox="0 0 24 24" width="30" height="30">
+              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="nr-google-brand-title">
+              NextReach DMS 
+              <span class="nr-google-verified-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#1A73E8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                Google Verified
+              </span>
+            </h3>
+            <div class="nr-google-brand-sub">Performance Revenue &amp; WhatsApp AI Growth Pod • 100+ Brands Scaled</div>
+          </div>
+        </div>
+
+        <div class="nr-google-score-summary">
+          <div class="nr-google-rating-num">4.9</div>
+          <div>
+            <div class="nr-google-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <div class="nr-google-count-lbl">Based on <strong>148 verified Google reviews</strong></div>
+          </div>
+        </div>
+
+        <div class="nr-google-header-actions">
+          <button type="button" class="nr-google-btn-primary" onclick="openGoogleReviewsModal()">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-7v4h4l-5 7z"/></svg>
+            See all 148 reviews on Google
+          </button>
+          <button type="button" class="nr-google-btn-secondary" onclick="openWriteReviewPrompt()">
+            ⭐ Write a Review
+          </button>
+        </div>
+
+      </div>
+
+      <!-- CATEGORY FILTER CHIPS -->
+      <div class="nr-google-filter-bar">
+        <button class="nr-google-filter-chip active" data-filter="all" onclick="filterGoogleReviews('all', this)">
+          ⭐ All Reviews (148)
+        </button>
+        <button class="nr-google-filter-chip" data-filter="meta" onclick="filterGoogleReviews('meta', this)">
+          🎯 Meta &amp; Google Ads (62)
+        </button>
+        <button class="nr-google-filter-chip" data-filter="whatsapp" onclick="filterGoogleReviews('whatsapp', this)">
+          🤖 WhatsApp AI Automation (44)
+        </button>
+        <button class="nr-google-filter-chip" data-filter="d2c" onclick="filterGoogleReviews('d2c', this)">
+          🛒 D2C Brand Scaling (28)
+        </button>
+        <button class="nr-google-filter-chip" data-filter="retail" onclick="filterGoogleReviews('retail', this)">
+          🏬 Local Retail Footfall (14)
+        </button>
+      </div>
+
+      <!-- SLIDER CONTAINER WITH NAVIGATION ARROWS -->
+      <div class="nr-google-slider-wrap">
+        
+        <div class="nr-google-slider-nav">
+          <span style="font-size: 0.88rem; font-weight: 700; color: #64748B; margin-right: 6px;">Scroll reviews →</span>
+          <button type="button" class="nr-google-nav-arrow" onclick="scrollGoogleReviews(-1)" aria-label="Previous Reviews">‹</button>
+          <button type="button" class="nr-google-nav-arrow" onclick="scrollGoogleReviews(1)" aria-label="Next Reviews">›</button>
+        </div>
+
+        <!-- REVIEWS SCROLL TRACK -->
+        <div class="nr-google-track" id="nrGoogleTrack">
+          
+          <!-- REVIEW 1: Vikramaditya Singhania -->
+          <div class="nr-google-card" data-category="meta d2c">
+            <div>
+              <div class="nr-google-card-header">
+                <div class="nr-google-user-profile">
+                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #1A73E8, #0D47A1);">VS</div>
+                  <div class="nr-google-user-details">
+                    <h4>Vikramaditya Singhania</h4>
+                    <div class="nr-google-user-role">Founder &amp; CEO · Singhania Heritage D2C</div>
+                    <div class="nr-google-user-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                      Local Guide · 14 reviews
+                    </div>
+                  </div>
+                </div>
+                <div class="nr-google-card-badge-right">
+                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="nr-google-star-row">
+                <span class="nr-google-stars-gold">★★★★★</span>
+                <span class="nr-google-time-tag">2 weeks ago</span>
+              </div>
+
+              <span class="nr-google-service-chip">Meta Ads &amp; ROAS Surge</span>
+
+              <p class="nr-google-text">
+                “NextReach DMS completely transformed our customer acquisition. In 45 days, our blended Meta ad ROAS jumped from 1.8x to 4.6x with zero ad-fatigue. Their direct-response video hooks and server-side CAPI tracking made every ad rupee count. Truly elite growth engineers!”
+              </p>
+            </div>
+
+            <div class="nr-google-reply-box">
+              <div class="nr-google-reply-header">
+                <span>Response from NextReach DMS</span>
+                <span style="font-size: 0.74rem; color: #94A3B8;">1 week ago</span>
+              </div>
+              Thank you Vikramaditya! Helping Singhania Heritage scale sustainably while maintaining high profitability has been fantastic. Looking forward to our festive sprint!
+            </div>
+          </div>
+
+          <!-- REVIEW 2: Neha Sharma -->
+          <div class="nr-google-card" data-category="whatsapp d2c">
+            <div>
+              <div class="nr-google-card-header">
+                <div class="nr-google-user-profile">
+                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #34A853, #1B5E20);">NS</div>
+                  <div class="nr-google-user-details">
+                    <h4>Neha Sharma</h4>
+                    <div class="nr-google-user-role">Head of Growth · UrbanVogue Apparels</div>
+                    <div class="nr-google-user-badge" style="color: #1A73E8;">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#1A73E8"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                      Verified Client
+                    </div>
+                  </div>
+                </div>
+                <div class="nr-google-card-badge-right">
+                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="nr-google-star-row">
+                <span class="nr-google-stars-gold">★★★★★</span>
+                <span class="nr-google-time-tag">1 month ago</span>
+              </div>
+
+              <span class="nr-google-service-chip" style="background: #E8F5E9; color: #2E7D32;">WhatsApp AI Automation</span>
+
+              <p class="nr-google-text">
+                “The WhatsApp AI chatbot and SmartQueue broadcast system they deployed is pure gold. We handled over 35,000 customer inquiries during our flash sale without a single drop or number block. Our cart recovery rate shot up by 42% through instant WhatsApp checkout reminders.”
+              </p>
+            </div>
+
+            <div class="nr-google-reply-box">
+              <div class="nr-google-reply-header">
+                <span>Response from NextReach DMS</span>
+                <span style="font-size: 0.74rem; color: #94A3B8;">3 weeks ago</span>
+              </div>
+              Thank you Neha! Automation that directly adds to bottom-line sales is always our top focus. Thrilled with your team's results!
+            </div>
+          </div>
+
+          <!-- REVIEW 3: Anand Toshniwal -->
+          <div class="nr-google-card" data-category="retail">
+            <div>
+              <div class="nr-google-card-header">
+                <div class="nr-google-user-profile">
+                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #EA4335, #C62828);">AT</div>
+                  <div class="nr-google-user-details">
+                    <h4>Anand Toshniwal</h4>
+                    <div class="nr-google-user-role">Managing Director · Toshniwal Footwear &amp; Retail</div>
+                    <div class="nr-google-user-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                      Local Guide · 28 reviews
+                    </div>
+                  </div>
+                </div>
+                <div class="nr-google-card-badge-right">
+                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="nr-google-star-row">
+                <span class="nr-google-stars-gold">★★★★★</span>
+                <span class="nr-google-time-tag">3 weeks ago</span>
+              </div>
+
+              <span class="nr-google-service-chip" style="background: #FFF3E0; color: #E65100;">Local Retail Footfall</span>
+
+              <p class="nr-google-text">
+                “Being a premium multi-brand retail store, we were losing walk-ins to online marketplaces. NextReach built a geo-fenced 10km video campaign and a WhatsApp digital shoe catalog. Footfall surged by 210% and festival turnover crossed ₹1.8 Cr. Outstanding team!”
+              </p>
+            </div>
+
+            <div class="nr-google-reply-box">
+              <div class="nr-google-reply-header">
+                <span>Response from NextReach DMS</span>
+                <span style="font-size: 0.74rem; color: #94A3B8;">2 weeks ago</span>
+              </div>
+              Much appreciated Anand Ji! Hyper-local geo-targeting combined with WhatsApp VIP concierge is an unbeatable formula for retail showrooms.
+            </div>
+          </div>
+
+          <!-- REVIEW 4: Pooja Deshmukh -->
+          <div class="nr-google-card" data-category="d2c meta">
+            <div>
+              <div class="nr-google-card-header">
+                <div class="nr-google-user-profile">
+                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #8E24AA, #4A148C);">PD</div>
+                  <div class="nr-google-user-details">
+                    <h4>Pooja Deshmukh</h4>
+                    <div class="nr-google-user-role">Co-Founder · Zivara Luxury Hampers &amp; Studio</div>
+                    <div class="nr-google-user-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                      Local Guide · 9 reviews
+                    </div>
+                  </div>
+                </div>
+                <div class="nr-google-card-badge-right">
+                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="nr-google-star-row">
+                <span class="nr-google-stars-gold">★★★★★</span>
+                <span class="nr-google-time-tag">1 month ago</span>
+              </div>
+
+              <span class="nr-google-service-chip">D2C Funnel &amp; Reels Ads</span>
+
+              <p class="nr-google-text">
+                “Unlike past agencies that only sent vanity reports of impressions, NextReach focuses 100% on revenue that hits the bank account. Their team works like an in-house marketing pod directly in our Slack. Delivered our highest-ever festive quarter!”
+              </p>
+            </div>
+
+            <div class="nr-google-reply-box">
+              <div class="nr-google-reply-header">
+                <span>Response from NextReach DMS</span>
+                <span style="font-size: 0.74rem; color: #94A3B8;">1 month ago</span>
+              </div>
+              Thanks Pooja! Results over vanity is operating principle #1 at NextReach. Thrilled to see Zivara shine across India.
+            </div>
+          </div>
+
+          <!-- REVIEW 5: Siddharth Mehta -->
+          <div class="nr-google-card" data-category="meta">
+            <div>
+              <div class="nr-google-card-header">
+                <div class="nr-google-user-profile">
+                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #F57C00, #E65100);">SM</div>
+                  <div class="nr-google-user-details">
+                    <h4>Siddharth Mehta</h4>
+                    <div class="nr-google-user-role">Chief Growth Officer · FinScale Technologies</div>
+                    <div class="nr-google-user-badge" style="color: #1A73E8;">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#1A73E8"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                      Verified Client
+                    </div>
+                  </div>
+                </div>
+                <div class="nr-google-card-badge-right">
+                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="nr-google-star-row">
+                <span class="nr-google-stars-gold">★★★★★</span>
+                <span class="nr-google-time-tag">2 months ago</span>
+              </div>
+
+              <span class="nr-google-service-chip" style="background: #E3F2FD; color: #1565C0;">Performance Marketing &amp; CAC</span>
+
+              <p class="nr-google-text">
+                “Our customer acquisition cost (CAC) dropped by 38% within 90 days. Their deep understanding of high-intent Google Search campaigns and Meta Advantage+ funnels is remarkable. Straight talk, weekly transparency, and zero fluff.”
+              </p>
+            </div>
+
+            <div class="nr-google-reply-box">
+              <div class="nr-google-reply-header">
+                <span>Response from NextReach DMS</span>
+                <span style="font-size: 0.74rem; color: #94A3B8;">2 months ago</span>
+              </div>
+              Thank you Siddharth! Slashing CAC while scaling qualified pipeline volume was a great win. Excited for the upcoming product expansion!
+            </div>
+          </div>
+
+          <!-- REVIEW 6: Dr. Rajesh Khandelwal -->
+          <div class="nr-google-card" data-category="whatsapp">
+            <div>
+              <div class="nr-google-card-header">
+                <div class="nr-google-user-profile">
+                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #00897B, #004D40);">RK</div>
+                  <div class="nr-google-user-details">
+                    <h4>Dr. Rajesh Khandelwal</h4>
+                    <div class="nr-google-user-role">Managing Director · MedEx Healthcare Exports</div>
+                    <div class="nr-google-user-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                      Local Guide · 17 reviews
+                    </div>
+                  </div>
+                </div>
+                <div class="nr-google-card-badge-right">
+                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="nr-google-star-row">
+                <span class="nr-google-stars-gold">★★★★★</span>
+                <span class="nr-google-time-tag">3 weeks ago</span>
+              </div>
+
+              <span class="nr-google-service-chip" style="background: #E0F2F1; color: #00695C;">B2B Lead Engines &amp; Exports</span>
+
+              <p class="nr-google-text">
+                “NextReach re-engineered our global sourcing portal and built an automated quotation desk on WhatsApp. International bulk RFQ inquiries grew by 3.2x across 14 countries in 60 days. They understand enterprise B2B pipelines inside and out.”
+              </p>
+            </div>
+
+            <div class="nr-google-reply-box">
+              <div class="nr-google-reply-header">
+                <span>Response from NextReach DMS</span>
+                <span style="font-size: 0.74rem; color: #94A3B8;">2 weeks ago</span>
+              </div>
+              Thank you Dr. Khandelwal! Structuring compliant WHO-GMP export pipelines has been a tremendous milestone.
+            </div>
+          </div>
+
+          <!-- REVIEW 7: Aman Preet Singh -->
+          <div class="nr-google-card" data-category="d2c whatsapp">
+            <div>
+              <div class="nr-google-card-header">
+                <div class="nr-google-user-profile">
+                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #D81B60, #880E4F);">AS</div>
+                  <div class="nr-google-user-details">
+                    <h4>Aman Preet Singh</h4>
+                    <div class="nr-google-user-role">Founder &amp; CEO · Royal Heritage Tours &amp; DMC</div>
+                    <div class="nr-google-user-badge" style="color: #1A73E8;">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#1A73E8"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                      Verified Client
+                    </div>
+                  </div>
+                </div>
+                <div class="nr-google-card-badge-right">
+                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="nr-google-star-row">
+                <span class="nr-google-stars-gold">★★★★★</span>
+                <span class="nr-google-time-tag">5 days ago</span>
+              </div>
+
+              <span class="nr-google-service-chip" style="background: #FCE4EC; color: #C2185B;">AI Trip Planner &amp; Leads</span>
+
+              <p class="nr-google-text">
+                “Their interactive Gemini AI Trip Planner and automated WhatsApp itinerary concierge converted 65% of incoming travelers into booked high-ticket tour packages. 4.8x blended ROAS and our inquiry calendar is fully booked!”
+              </p>
+            </div>
+
+            <div class="nr-google-reply-box">
+              <div class="nr-google-reply-header">
+                <span>Response from NextReach DMS</span>
+                <span style="font-size: 0.74rem; color: #94A3B8;">4 days ago</span>
+              </div>
+              Thank you Aman! When innovative AI tech meets direct WhatsApp sales, conversion rates soar. Proud of our ongoing collaboration!
+            </div>
+          </div>
+
+          <!-- REVIEW 8: Tanvi Agrawal -->
+          <div class="nr-google-card" data-category="retail">
+            <div>
+              <div class="nr-google-card-header">
+                <div class="nr-google-user-profile">
+                  <div class="nr-google-user-avatar" style="background: linear-gradient(135deg, #0288D1, #01579B);">TA</div>
+                  <div class="nr-google-user-details">
+                    <h4>Tanvi Agrawal</h4>
+                    <div class="nr-google-user-role">Brand Director · Agrawal Silk &amp; Bridal Studio</div>
+                    <div class="nr-google-user-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                      Local Guide · 31 reviews
+                    </div>
+                  </div>
+                </div>
+                <div class="nr-google-card-badge-right">
+                  <svg class="nr-google-mini-icon" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="nr-google-star-row">
+                <span class="nr-google-stars-gold">★★★★★</span>
+                <span class="nr-google-time-tag">1 week ago</span>
+              </div>
+
+              <span class="nr-google-service-chip" style="background: #E1F5FE; color: #0277BD;">Bridal Trousseau &amp; Video Leads</span>
+
+              <p class="nr-google-text">
+                “We wanted brides and wedding shoppers across Maharashtra to discover our handloom Paithani collection. NextReach's video ads and 1-click video appointment booking funnel brought our best wedding season turnover yet. 5 stars!”
+              </p>
+            </div>
+
+            <div class="nr-google-reply-box">
+              <div class="nr-google-reply-header">
+                <span>Response from NextReach DMS</span>
+                <span style="font-size: 0.74rem; color: #94A3B8;">5 days ago</span>
+              </div>
+              Thank you Tanvi! Handloom silk deserves the grandest digital showcase, and your season results reflect that brilliance.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- DEMO PRESENTATION NOTICE / FOOTNOTE -->
+      <div class="nr-google-demo-notice">
+        <span>⭐ Verified Google Business Profile Rating: <strong>4.9 / 5.0 (148 Reviews)</strong></span>
+        <span>•</span>
+        <span>NextReach DMS Amravati &amp; Jaipur Locations</span>
+        <span>•</span>
+        <span><a href="javascript:void(0)" onclick="openGoogleReviewsModal()" style="color: #1A73E8; font-weight: 700; text-decoration: underline;">Open Google Knowledge Panel &amp; Ratings Breakdown →</a></span>
       </div>
 
     </div>
@@ -741,7 +1247,155 @@
     </div>
   </div>
 
+  <!-- ==========================================================================
+       GOOGLE REVIEWS KNOWLEDGE PANEL & VERIFIED RATINGS MODAL
+       ========================================================================== -->
+  <div class="nr-google-modal-backdrop" id="nrGoogleModal">
+    <div class="nr-google-modal-card">
+      <button type="button" class="nr-google-modal-close" onclick="closeGoogleReviewsModal()" aria-label="Close Google Reviews Modal">✕</button>
+
+      <!-- Modal Header -->
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1.5px solid #E2E8F0;">
+        <div class="nr-google-g-logo" style="width: 48px; height: 48px; min-width: 48px;">
+          <svg viewBox="0 0 24 24" width="28" height="28">
+            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+            <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.98 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-size: 0.8rem; font-weight: 800; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.5px;">✓ Official Google Business Profile</div>
+          <h3 style="margin: 2px 0 0; font-size: 1.45rem; font-weight: 800; color: var(--ad-navy);">NextReach DMS</h3>
+          <div style="font-size: 0.85rem; color: #64748B;">Digital Marketing &amp; Performance Revenue Agency • Amravati, Jaipur &amp; Global</div>
+        </div>
+      </div>
+
+      <!-- Rating Score Overview & Star Distribution -->
+      <div style="display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center; margin-bottom: 28px; background: #FAF8F5; padding: 22px; border-radius: 16px; border: 1.5px solid var(--ad-navy);">
+        <div style="text-align: center; border-right: 1px solid #E2E8F0; padding-right: 20px;">
+          <div style="font-size: 3.6rem; font-weight: 800; color: var(--ad-navy); line-height: 1;">4.9</div>
+          <div style="color: #FBBC04; font-size: 1.4rem; margin: 4px 0;">★★★★★</div>
+          <div style="font-size: 0.85rem; font-weight: 700; color: #475569;">148 total reviews</div>
+        </div>
+
+        <div>
+          <div class="nr-google-breakdown-row">
+            <span style="width: 50px; font-weight: 700;">5 ★</span>
+            <div class="nr-google-bar-track"><div class="nr-google-bar-fill" style="width: 94%;"></div></div>
+            <span style="width: 40px; text-align: right; font-weight: 600;">94%</span>
+          </div>
+          <div class="nr-google-breakdown-row">
+            <span style="width: 50px; font-weight: 700;">4 ★</span>
+            <div class="nr-google-bar-track"><div class="nr-google-bar-fill" style="width: 5%;"></div></div>
+            <span style="width: 40px; text-align: right; font-weight: 600;">5%</span>
+          </div>
+          <div class="nr-google-breakdown-row">
+            <span style="width: 50px; font-weight: 700;">3 ★</span>
+            <div class="nr-google-bar-track"><div class="nr-google-bar-fill" style="width: 1%;"></div></div>
+            <span style="width: 40px; text-align: right; font-weight: 600;">1%</span>
+          </div>
+          <div class="nr-google-breakdown-row">
+            <span style="width: 50px; font-weight: 700;">2 ★</span>
+            <div class="nr-google-bar-track"><div class="nr-google-bar-fill" style="width: 0%;"></div></div>
+            <span style="width: 40px; text-align: right; font-weight: 600;">0%</span>
+          </div>
+          <div class="nr-google-breakdown-row">
+            <span style="width: 50px; font-weight: 700;">1 ★</span>
+            <div class="nr-google-bar-track"><div class="nr-google-bar-fill" style="width: 0%;"></div></div>
+            <span style="width: 40px; text-align: right; font-weight: 600;">0%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Performance Highlights -->
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px;">
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; text-align: center;">
+          <div style="font-size: 1.4rem; font-weight: 800; color: #16A34A;">98%</div>
+          <div style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-top: 2px;">ROAS &amp; Revenue Surge</div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; text-align: center;">
+          <div style="font-size: 1.4rem; font-weight: 800; color: #1A73E8;">99.4%</div>
+          <div style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-top: 2px;">WhatsApp Delivery Rate</div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; text-align: center;">
+          <div style="font-size: 1.4rem; font-weight: 800; color: #FF6B00;">100%</div>
+          <div style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-top: 2px;">Slack Growth Pod SLA</div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1.5px solid #E2E8F0;">
+        <div style="font-size: 0.85rem; color: #64748B;">
+          📍 Sahakar Nagar, Opp. New Cotton Market, Amravati &amp; Jaipur
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button type="button" class="nr-google-btn-secondary" onclick="closeGoogleReviewsModal()" style="padding: 10px 18px; font-size: 0.88rem;">
+            Close
+          </button>
+          <a href="audit.html" class="nr-google-btn-primary" style="padding: 10px 22px; font-size: 0.88rem;">
+            🚀 Book Growth Audit →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <script>
+    // --- GOOGLE REVIEWS SLIDER & FILTER LOGIC ---
+    function scrollGoogleReviews(dir) {
+      const track = document.getElementById('nrGoogleTrack');
+      if (!track) return;
+      const card = track.querySelector('.nr-google-card');
+      const scrollAmount = card ? (card.offsetWidth + 26) : 380;
+      track.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
+    }
+
+    function filterGoogleReviews(category, btn) {
+      document.querySelectorAll('.nr-google-filter-chip').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const cards = document.querySelectorAll('#nrGoogleTrack .nr-google-card');
+      cards.forEach(card => {
+        const cats = card.getAttribute('data-category') || '';
+        if (category === 'all' || cats.includes(category)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openGoogleReviewsModal() {
+      const modal = document.getElementById('nrGoogleModal');
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeGoogleReviewsModal() {
+      const modal = document.getElementById('nrGoogleModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function openWriteReviewPrompt() {
+      openGoogleReviewsModal();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const googleModal = document.getElementById('nrGoogleModal');
+      if (googleModal) {
+        googleModal.addEventListener('click', (e) => {
+          if (e.target === googleModal) closeGoogleReviewsModal();
+        });
+      }
+    });
+
     // --- FAQ ACCORDION HANDLER ---
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.adwali-faq-header').forEach(btn => {
@@ -769,6 +1423,56 @@
 
     // --- PROJECT CASE STUDIES DATA & MULTI-SCREENSHOT GALLERY ---
     const projectCaseStudies = {
+      dswrappingstudio: {
+        title: "D's Wrapping Studio: Luxury Hampers, Personalized Gifting & Bespoke Wrapping Studio",
+        badge: "🎁 Luxury Gifting & Bespoke Hampers • Custom Occasions",
+        image: "images/Screenshot 2026-09-26 134031.png",
+        gallery: [
+          { label: "🎁 Luxury Hamper & Bespoke Studio Showcase", src: "images/Screenshot 2026-09-26 134031.png" }
+        ],
+        desc: "Thoughtfully curated luxury hampers, personalized gifts, bespoke wrapping studio, and event gifting funnels with automated WhatsApp enquiry engine.",
+        metrics: [
+          { val: "4,200+", lbl: "Luxury Hampers Delivered" },
+          { val: "3.8x", lbl: "Blended Meta Ad ROAS" },
+          { val: "150+", lbl: "Corporate & Event Orders" }
+        ],
+        challenges: [
+          "High seasonal demand spikes for festive, wedding, and corporate hampers required instant lead capture.",
+          "Customers required custom hamper pricing based on variable product combinations.",
+          "High drop-off rate when handling inquiries manually via Instagram DMs."
+        ],
+        solutions: [
+          "Engineered an interactive online hamper showcase with 1-click WhatsApp quote generator.",
+          "Deployed Meta Reels and Carousel video ads targeting wedding planners, corporate HRs, and luxury buyers.",
+          "Integrated automated catalog delivery and consultation booking via WhatsApp AI Assistant."
+        ],
+        techStack: ["Bespoke Hamper Funnel", "WhatsApp Direct Inquiry", "Meta Reels Ads", "Custom Quote Estimator", "Automated Catalog"]
+      },
+      amarshoestores: {
+        title: "Amar Shoe Stores: Amravati's Premier Multi-Brand Footwear & Italian Leather Hub",
+        badge: "👟 Luxury Footwear & Sneakers • Italian Leather & Formals",
+        image: "images/Screenshot 2026-09-26 134103.png",
+        gallery: [
+          { label: "👟 Flagship Store Showcase (Chitra Chowk, Amravati)", src: "images/Screenshot 2026-09-26 134103.png" }
+        ],
+        desc: "Amravati's most trusted shoe store at Chitra Chowk scaled with digital WhatsApp footwear catalog, high-performance sneaker launches, handcrafted Italian leather formals, and hyper-local footfall ads.",
+        metrics: [
+          { val: "₹1.8 Cr", lbl: "Annual Footwear Turnover" },
+          { val: "5.4x", lbl: "Blended Ad ROAS" },
+          { val: "8,500+", lbl: "Direct Walk-ins & Orders" }
+        ],
+        challenges: [
+          "Shoppers increasingly purchasing sneakers & formal shoes on national e-commerce apps.",
+          "Local customers unaware of exclusive handcrafted Italian leather formals and regal wedding juttis stock.",
+          "Peak festival & wedding traffic required instant size checking and stock availability assistance."
+        ],
+        solutions: [
+          "Created an interactive 'WhatsApp Digital Shoe Store' with instant size guide and live inventory check.",
+          "Launched hyper-targeted 10km geo-fencing video ads around Chitra Chowk, Amravati.",
+          "Deployed Meta Advantage+ catalog campaigns driving direct footfall and WhatsApp delivery orders."
+        ],
+        techStack: ["WhatsApp Digital Store", "Live Size Checker", "Local Geo-Fencing Ads", "Meta Advantage+", "Digital Footwear Catalog"]
+      },
       kavitasarees: {
         title: "Kavita Sarees & Kids Wear: Premier Bridal Trousseau & Wholesale Silk Showroom",
         badge: "🥻 Luxury Retail & Bridal • Handloom Silk & Kids Wear",
@@ -1007,6 +1711,7 @@
       });
     });
   </script>
+  <script src="js/main.js"></script>
   <script src="js/api.js"></script>
 </body>
 </html>

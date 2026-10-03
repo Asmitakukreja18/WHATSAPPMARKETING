@@ -493,7 +493,13 @@
       
       <!-- Top Quick Switcher -->
       <div class="project-switcher-bar">
-        <button type="button" class="p-switch-btn active" id="btn-tab-marketiqx" onclick="loadCaseStudy('marketiqx')">
+        <button type="button" class="p-switch-btn active" id="btn-tab-dswrappingstudio" onclick="loadCaseStudy('dswrappingstudio')">
+          🎁 D's Studio (Bespoke Hampers)
+        </button>
+        <button type="button" class="p-switch-btn" id="btn-tab-amarshoestores" onclick="loadCaseStudy('amarshoestores')">
+          👟 Amar Shoe Stores (Footwear)
+        </button>
+        <button type="button" class="p-switch-btn" id="btn-tab-marketiqx" onclick="loadCaseStudy('marketiqx')">
           💼 Marketiqx (WhatsApp SaaS)
         </button>
         <button type="button" class="p-switch-btn" id="btn-tab-letsexplore" onclick="loadCaseStudy('letsexplore')">
@@ -673,6 +679,58 @@
   <!-- DATA & DYNAMIC CONTROLLER SCRIPT -->
   <script>
     const caseStudiesData = {
+      dswrappingstudio: {
+        pageTitle: "Case Study: D's Wrapping Studio Luxury Hampers & Bespoke Gifting │ NextReach",
+        badge: "🎁 Luxury Gifting & Bespoke Hampers • Custom Occasions",
+        title: "D's Wrapping Studio: Luxury Hampers, Personalized Gifting & Event Wrapping Studio",
+        subtitle: "Thoughtfully curated luxury hampers, personalized gifts, bespoke wrapping studio, and event gifting funnels with automated WhatsApp enquiry engine.",
+        metrics: [
+          { val: "4,200+", lbl: "Luxury Hampers Delivered" },
+          { val: "3.8x", lbl: "Blended Meta Ad ROAS" },
+          { val: "150+", lbl: "Corporate & Event Orders" }
+        ],
+        mainImage: "images/Screenshot 2026-09-26 134031.png",
+        gallery: [
+          { label: "🎁 Luxury Hamper & Bespoke Studio Showcase", src: "images/Screenshot 2026-09-26 134031.png", desc: "Custom curated hampers, personalized gift wrapping, and occasion gifting desk." }
+        ],
+        challenges: [
+          "High seasonal demand spikes for festive, wedding, and corporate hampers required instant lead capture.",
+          "Customers required custom hamper pricing based on variable product combinations.",
+          "High drop-off rate when handling inquiries manually via Instagram DMs."
+        ],
+        solutions: [
+          "Engineered an interactive online hamper showcase with 1-click WhatsApp quote generator.",
+          "Deployed Meta Reels and Carousel video ads targeting wedding planners, corporate HRs, and luxury buyers.",
+          "Integrated automated catalog delivery and consultation booking via WhatsApp AI Assistant."
+        ],
+        techStack: ["Bespoke Hamper Funnel", "WhatsApp Direct Inquiry", "Meta Reels Ads", "Custom Quote Estimator", "Automated Catalog"]
+      },
+      amarshoestores: {
+        pageTitle: "Case Study: Amar Shoe Stores Luxury Footwear & Italian Leather Hub │ NextReach",
+        badge: "👟 Luxury Footwear & Sneakers • Italian Leather & Formals",
+        title: "Amar Shoe Stores: Amravati's Premier Multi-Brand Footwear & Italian Leather Destination",
+        subtitle: "Amravati's most trusted shoe store at Chitra Chowk scaled with digital WhatsApp footwear catalog, high-performance sneaker launches, handcrafted Italian leather formals, and hyper-local footfall ads.",
+        metrics: [
+          { val: "₹1.8 Cr", lbl: "Annual Footwear Turnover" },
+          { val: "5.4x", lbl: "Blended Ad ROAS" },
+          { val: "8,500+", lbl: "Direct Walk-ins & Orders" }
+        ],
+        mainImage: "images/Screenshot 2026-09-26 134103.png",
+        gallery: [
+          { label: "👟 Flagship Store Showcase (Chitra Chowk, Amravati)", src: "images/Screenshot 2026-09-26 134103.png", desc: "Sneakers, handcrafted Italian leather formals, boys special footwear, and regal wedding juttis." }
+        ],
+        challenges: [
+          "Shoppers increasingly purchasing sneakers & formal shoes on national e-commerce apps.",
+          "Local customers unaware of exclusive handcrafted Italian leather formals and regal wedding juttis stock.",
+          "Peak festival & wedding traffic required instant size checking and stock availability assistance."
+        ],
+        solutions: [
+          "Created an interactive 'WhatsApp Digital Shoe Store' with instant size guide and live inventory check.",
+          "Launched hyper-targeted 10km geo-fencing video ads around Chitra Chowk, Amravati.",
+          "Deployed Meta Advantage+ catalog campaigns driving direct footfall and WhatsApp delivery orders."
+        ],
+        techStack: ["WhatsApp Digital Store", "Live Size Checker", "Local Geo-Fencing Ads", "Meta Advantage+", "Digital Footwear Catalog"]
+      },
       marketiqx: {
         pageTitle: "Case Study: Marketiqx WhatsApp SaaS & Cloud API Platform │ NextReach",
         badge: "💼 WhatsApp SaaS • Meta Verified Cloud API",

@@ -193,28 +193,97 @@ function initCaseStudyFilter() {
   });
 }
 
-// 6. Mobile Menu
+// 6. Universal Responsive Mobile Navigation System
 function initMobileMenu() {
-  const toggle = document.querySelector('.mobile-toggle');
-  const nav = document.querySelector('.nav-links');
+  const toggles = document.querySelectorAll('.mobile-toggle, .adwali-mobile-toggle, #mobileMenuBtn');
+  const navs = document.querySelectorAll('.nav-links, .adwali-nav-links, #mainNavLinks');
 
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      if (nav.style.display === 'flex') {
-        nav.style.display = 'none';
-      } else {
-        nav.style.display = 'flex';
-        nav.style.flexDirection = 'column';
-        nav.style.position = 'absolute';
-        nav.style.top = '76px';
-        nav.style.left = '0';
-        nav.style.right = '0';
-        nav.style.background = 'var(--bg-card)';
-        nav.style.padding = '24px';
-        nav.style.borderBottom = '1px solid var(--border-subtle)';
+  if (!toggles.length || !navs.length) return;
+
+  // Create global backdrop overlay if not existing
+  let backdrop = document.querySelector('.mobile-nav-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'mobile-nav-backdrop';
+    document.body.appendChild(backdrop);
+  }
+
+  function closeAllNavs() {
+    navs.forEach(nav => {
+      nav.classList.remove('mobile-open', 'active', 'is-open');
+    });
+    toggles.forEach(btn => {
+      btn.classList.remove('active');
+      const hamburger = btn.querySelector('.hamburger-icon');
+      const close = btn.querySelector('.close-icon');
+      if (hamburger && close) {
+        hamburger.style.display = 'block';
+        close.style.display = 'none';
       }
     });
+    backdrop.classList.remove('active');
+    document.body.classList.remove('mobile-nav-lock');
   }
+
+  function openNav(nav, btn) {
+    nav.classList.add('mobile-open', 'active');
+    btn.classList.add('active');
+    const hamburger = btn.querySelector('.hamburger-icon');
+    const close = btn.querySelector('.close-icon');
+    if (hamburger && close) {
+      hamburger.style.display = 'none';
+      close.style.display = 'block';
+    }
+    backdrop.classList.add('active');
+    document.body.classList.add('mobile-nav-lock');
+  }
+
+  toggles.forEach(toggleBtn => {
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const header = toggleBtn.closest('header, .header-nav, .adwali-header') || document;
+      const targetNav = header.querySelector('.nav-links, .adwali-nav-links') || navs[0];
+      const isOpen = targetNav.classList.contains('mobile-open') || targetNav.classList.contains('active');
+
+      if (isOpen) {
+        closeAllNavs();
+      } else {
+        openNav(targetNav, toggleBtn);
+      }
+    });
+  });
+
+  // Accordion toggle for submenus on mobile screens
+  document.querySelectorAll('.adwali-dropdown-trigger, .dropdown-trigger').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      if (window.innerWidth <= 991) {
+        const parent = trigger.closest('.adwali-nav-item, .nav-item-dropdown');
+        if (parent) {
+          e.preventDefault();
+          parent.classList.toggle('accordion-expanded');
+          parent.classList.toggle('open');
+        }
+      }
+    });
+  });
+
+  // Close when clicking backdrop
+  backdrop.addEventListener('click', closeAllNavs);
+
+  // Close menu when clicking normal links
+  document.querySelectorAll('.adwali-nav-links a:not(.adwali-dropdown-trigger), .nav-links a:not(.dropdown-trigger)').forEach(link => {
+    link.addEventListener('click', closeAllNavs);
+  });
+
+  // Close on ESC key press
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAllNavs();
+  });
+
+  // Auto-close on viewport resize to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 991) closeAllNavs();
+  });
 }
 
 // 7. Adwali-Inspired Hardware Accelerated Scroll Reveal System

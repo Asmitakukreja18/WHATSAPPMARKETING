@@ -800,3 +800,779 @@ body {
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 14px 30px rgba(255, 107, 0, 0.35);
 }
+
+/* ==========================================================================
+   ADWALI COMPREHENSIVE RESPONSIVE DESIGN ENGINE (MOBILE & TABLET)
+   ========================================================================== */
+
+/* 1. Mobile Toggle Button Component */
+.adwali-mobile-toggle {
+  display: none;
+  background: transparent;
+  border: 1.5px solid var(--ad-navy);
+  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ad-navy);
+  transition: all 0.25s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.adwali-mobile-toggle:hover,
+.adwali-mobile-toggle.active {
+  background-color: var(--ad-orange-soft);
+  color: var(--ad-orange);
+  border-color: var(--ad-orange);
+}
+
+.adwali-mobile-toggle svg {
+  display: block;
+}
+
+/* Mobile Navigation Backdrop */
+.mobile-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 14, 26, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.mobile-nav-lock {
+  overflow: hidden !important;
+}
+
+/* 2. Responsive Breakpoints (Laptop / Tablet: <= 991px) */
+@media (max-width: 991px) {
+  .adwali-mobile-toggle {
+    display: flex;
+  }
+
+  .adwali-header {
+    padding: 12px 0;
+  }
+
+  .adwali-header .container {
+    padding: 0 16px !important;
+  }
+
+  .adwali-nav-cta {
+    display: none !important;
+  }
+
+  .adwali-nav-links {
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--ad-bg);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 20px 40px;
+    gap: 10px;
+    overflow-y: auto;
+    z-index: 999;
+    border-top: 1.5px solid var(--ad-border);
+    box-shadow: 0 20px 40px rgba(0, 26, 61, 0.2);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, visibility 0.35s ease;
+  }
+
+  .adwali-nav-links.mobile-open,
+  .adwali-nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .adwali-nav-links > a,
+  .adwali-dropdown-trigger {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ad-navy);
+    border-radius: 14px;
+    background: var(--ad-card-bg);
+    border: 1px solid var(--ad-border-subtle);
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
+
+  .adwali-nav-item {
+    width: 100%;
+  }
+
+  .adwali-dropdown-menu {
+    position: static;
+    transform: none !important;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    box-shadow: none;
+    border: 1px solid var(--ad-border-subtle);
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 8px;
+    margin-top: 8px;
+    display: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .adwali-nav-item.accordion-expanded .adwali-dropdown-menu,
+  .adwali-nav-item.open .adwali-dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .adwali-dropdown-menu a {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+  }
+
+  .adwali-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .adwali-sec-title {
+    font-size: 2.6rem;
+  }
+
+  .adwali-hero-title {
+    font-size: 3.2rem;
+  }
+
+  .adwali-dark-cta-sec h2 {
+    font-size: 2.75rem;
+  }
+
+  .adwali-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+/* 3. Small Tablets & Large Phones (<= 768px) */
+@media (max-width: 768px) {
+  .adwali-hero {
+    padding: 48px 0 40px;
+  }
+
+  .adwali-hero-title {
+    font-size: clamp(2.2rem, 7vw, 2.9rem);
+    line-height: 1.12;
+    letter-spacing: -1px;
+  }
+
+  .adwali-hero-sub {
+    font-size: 1.08rem;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  .adwali-sec-title {
+    font-size: clamp(1.8rem, 6vw, 2.3rem);
+    letter-spacing: -0.75px;
+  }
+
+  .adwali-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .adwali-hero-actions .adwali-pill-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .adwali-hero-card {
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 8px 8px 0px var(--ad-navy);
+  }
+
+  .adwali-dark-cta-sec {
+    padding: 40px 20px;
+    border-radius: 20px;
+    margin: 40px 0 60px;
+  }
+
+  .adwali-dark-cta-sec h2 {
+    font-size: 2.1rem;
+  }
+
+  .adwali-back-to-top {
+    width: 48px;
+    height: 48px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 1.3rem;
+  }
+}
+
+/* 4. Small Mobile Phones (<= 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px !important;
+  }
+
+  .adwali-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .adwali-hero-card {
+    padding: 18px;
+    box-shadow: 5px 5px 0px var(--ad-navy);
+  }
+
+  .adwali-highlight {
+    padding: 2px 8px;
+    margin: 0 2px;
+  }
+}
+
+/* ==========================================================================
+   GOOGLE REVIEWS SECTION & WIDGET STYLES (Verified Google Business Look)
+   ========================================================================== */
+.nr-google-sec {
+  padding: 90px 0;
+  background-color: var(--ad-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.nr-google-header-card {
+  background: #FFFFFF;
+  border: 1.5px solid var(--ad-navy);
+  border-radius: 24px;
+  padding: 32px 36px;
+  box-shadow: 6px 6px 0px var(--ad-navy);
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.nr-google-brand-block {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nr-google-g-logo {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  border: 1px solid #E2E8F0;
+}
+
+.nr-google-brand-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--ad-navy);
+  line-height: 1.2;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nr-google-verified-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #E8F0FE;
+  color: #1A73E8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+
+.nr-google-brand-sub {
+  font-size: 0.95rem;
+  color: var(--ad-muted);
+  margin-top: 4px;
+}
+
+.nr-google-score-summary {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nr-google-rating-num {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--ad-navy);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.nr-google-stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #FBBC04;
+  font-size: 1.35rem;
+}
+
+.nr-google-count-lbl {
+  font-size: 0.88rem;
+  color: #475569;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.nr-google-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nr-google-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1A73E8;
+  color: #FFFFFF !important;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 12px 22px;
+  border-radius: 9999px;
+  text-decoration: none;
+  border: 1.5px solid #1A73E8;
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.25);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.nr-google-btn-primary:hover {
+  background: #1557B0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(26, 115, 232, 0.35);
+}
+
+.nr-google-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  color: var(--ad-navy) !important;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 12px 20px;
+  border-radius: 9999px;
+  text-decoration: none;
+  border: 1.5px solid var(--ad-navy);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.nr-google-btn-secondary:hover {
+  background: #F1F5F9;
+  transform: translateY(-2px);
+}
+
+/* Category Filter Bar */
+.nr-google-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  scrollbar-width: none;
+}
+
+.nr-google-filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.nr-google-filter-chip {
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  color: var(--ad-navy);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nr-google-filter-chip:hover {
+  border-color: var(--ad-navy);
+}
+
+.nr-google-filter-chip.active {
+  background: var(--ad-navy);
+  border-color: var(--ad-navy);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(0, 26, 61, 0.18);
+}
+
+/* Slider Controls & Carousel Track */
+.nr-google-slider-wrap {
+  position: relative;
+}
+
+.nr-google-slider-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.nr-google-nav-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ad-navy);
+  background: #FFFFFF;
+  color: var(--ad-navy);
+  font-size: 1.3rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nr-google-nav-arrow:hover {
+  background: var(--ad-navy);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.nr-google-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(33.333% - 18px);
+  gap: 26px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 4px 24px;
+  scrollbar-width: thin;
+  scrollbar-color: #CBD5E1 transparent;
+}
+
+.nr-google-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.nr-google-track::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+/* Individual Google Review Card */
+.nr-google-card {
+  background: #FFFFFF;
+  border: 1.5px solid var(--ad-navy);
+  border-radius: 20px;
+  padding: 26px;
+  box-shadow: 5px 5px 0px var(--ad-navy);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  min-height: 380px;
+  box-sizing: border-box;
+}
+
+.nr-google-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 7px 7px 0px var(--ad-navy);
+}
+
+.nr-google-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.nr-google-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nr-google-user-avatar {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.nr-google-user-details h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ad-navy);
+  line-height: 1.25;
+}
+
+.nr-google-user-role {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748B;
+  margin-top: 2px;
+}
+
+.nr-google-user-badge {
+  font-size: 0.74rem;
+  color: #EA4335;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.nr-google-card-badge-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.nr-google-mini-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.nr-google-star-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.nr-google-stars-gold {
+  color: #FBBC04;
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+}
+
+.nr-google-time-tag {
+  font-size: 0.78rem;
+  color: #94A3B8;
+  font-weight: 600;
+}
+
+.nr-google-service-chip {
+  display: inline-block;
+  background: var(--ad-orange-soft);
+  color: var(--ad-orange);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  margin-bottom: 14px;
+}
+
+.nr-google-text {
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: #334155;
+  margin: 0 0 16px;
+  flex-grow: 1;
+}
+
+.nr-google-reply-box {
+  background: #F8FAFC;
+  border-left: 3px solid #1A73E8;
+  border-radius: 0 10px 10px 0;
+  padding: 12px 14px;
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: #475569;
+  line-height: 1.45;
+}
+
+.nr-google-reply-header {
+  font-weight: 700;
+  color: var(--ad-navy);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nr-google-demo-notice {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 0.85rem;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Google Reviews Full Modal (All Reviews & Google Knowledge Panel) */
+.nr-google-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 26, 61, 0.7);
+  backdrop-filter: blur(6px);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.nr-google-modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nr-google-modal-card {
+  background: #FFFFFF;
+  border: 2px solid var(--ad-navy);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 760px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 36px;
+  box-shadow: 10px 10px 0px var(--ad-navy);
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.nr-google-modal-backdrop.active .nr-google-modal-card {
+  transform: translateY(0);
+}
+
+.nr-google-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ad-navy);
+  transition: all 0.2s ease;
+}
+
+.nr-google-modal-close:hover {
+  background: var(--ad-navy);
+  color: #FFFFFF;
+}
+
+/* Rating Breakdown Bars inside Modal */
+.nr-google-breakdown-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-size: 0.88rem;
+  color: #475569;
+}
+
+.nr-google-bar-track {
+  flex-grow: 1;
+  height: 10px;
+  background: #E2E8F0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.nr-google-bar-fill {
+  height: 100%;
+  background: #FBBC04;
+  border-radius: 9999px;
+}
+
+@media (max-width: 992px) {
+  .nr-google-track {
+    grid-auto-columns: calc(50% - 14px);
+  }
+  .nr-google-header-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nr-google-header-actions {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .nr-google-track {
+    grid-auto-columns: 88%;
+  }
+  .nr-google-card {
+    padding: 20px;
+    min-height: auto;
+  }
+  .nr-google-rating-num {
+    font-size: 2.5rem;
+  }
+  .nr-google-modal-card {
+    padding: 24px 18px;
+  }
+}
+
