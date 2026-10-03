@@ -1,14 +1,14 @@
 {
-  "name": "whatsapp-marketing-nextreach-backend",
+  "name": "whatsapp-marketing-marketiqx-backend",
   "version": "1.0.0",
-  "description": "Enterprise WhatsApp Marketing & NextReach DMS Lead Management Backend Engine",
+  "description": "Enterprise WhatsApp Marketing & Marketiqx Lead Management Backend Engine",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js"
   },
-  "keywords": ["whatsapp", "marketing", "nextreach", "crm", "bulk-messaging", "meta-api"],
-  "author": "NextReach DMS",
+  "keywords": ["whatsapp", "marketing", "marketiqx", "crm", "bulk-messaging", "meta-api"],
+  "author": "Marketiqx",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

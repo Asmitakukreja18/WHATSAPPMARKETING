@@ -1,23 +1,23 @@
 ﻿/**
- * NextReach DMS & WhatsApp Marketing - 100% WhatsApp Direct Lead Engine
+ * Marketiqx & WhatsApp Marketing - 100% WhatsApp Direct Lead Engine
  * Directs all form submissions instantly to WhatsApp (+91 74991 81193) with complete formatted details
  */
 
 const WHATSAPP_NUMBER = "917499181193";
 
-window.NextReachAPI = {
+window.MarketiqxAPI = {
   
   // 1. Submit Free Growth Audit / Lead
   async submitAudit(data) {
     // Save locally
     try {
-      const stored = JSON.parse(localStorage.getItem('nextreach_leads') || '[]');
+      const stored = JSON.parse(localStorage.getItem('marketiqx_leads') || '[]');
       stored.unshift({
         ...data,
         id: 'LEAD_' + Date.now(),
         timestamp: new Date().toISOString()
       });
-      localStorage.setItem('nextreach_leads', JSON.stringify(stored));
+      localStorage.setItem('marketiqx_leads', JSON.stringify(stored));
     } catch(e) {}
 
     // Save to local backend if running
@@ -35,13 +35,13 @@ window.NextReachAPI = {
   // 2. Submit Direct Contact Inquiries
   async submitContact(data) {
     try {
-      const stored = JSON.parse(localStorage.getItem('nextreach_contacts') || '[]');
+      const stored = JSON.parse(localStorage.getItem('marketiqx_contacts') || '[]');
       stored.unshift({
         ...data,
         id: 'MSG_' + Date.now(),
         timestamp: new Date().toISOString()
       });
-      localStorage.setItem('nextreach_contacts', JSON.stringify(stored));
+      localStorage.setItem('marketiqx_contacts', JSON.stringify(stored));
     } catch(e) {}
 
     try {
@@ -58,7 +58,7 @@ window.NextReachAPI = {
   // 3. Format ALL Details for WhatsApp Message
   createWhatsAppAuditUrl(data) {
     const text = 
-`🚀 *NEW GROWTH AUDIT LEAD (NextReach DMS)*
+`🚀 *NEW GROWTH AUDIT LEAD (Marketiqx)*
 ━━━━━━━━━━━━━━━━━━━━━━
 👤 *Full Name:* ${data.name || 'Not provided'}
 📧 *Email Address:* ${data.email || 'Not provided'}
@@ -68,20 +68,20 @@ window.NextReachAPI = {
 🏢 *Business Model:* ${data.model || 'Not provided'}
 ⚠️ *Pipeline Bottleneck:* ${data.bottleneck || 'Not provided'}
 ━━━━━━━━━━━━━━━━━━━━━━
-Hi NextReach Team, I have submitted the Growth Audit form. Please review my account details.`;
+Hi Marketiqx Team, I have submitted the Growth Audit form. Please review my account details.`;
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
   },
 
   createWhatsAppContactUrl(data) {
     const text = 
-`💬 *NEW DIRECT MESSAGE (NextReach DMS)*
+`💬 *NEW DIRECT MESSAGE (Marketiqx)*
 ━━━━━━━━━━━━━━━━━━━━━━
 👤 *Full Name:* ${data.name || 'Not provided'}
 📧 *Email Address:* ${data.email || 'Not provided'}
 📱 *Phone / WhatsApp:* ${data.phone || 'Not provided'}
 📝 *Message / Query:* ${data.message || 'Not provided'}
 ━━━━━━━━━━━━━━━━━━━━━━
-Hi NextReach Team, I would like to connect regarding growth marketing services.`;
+Hi Marketiqx Team, I would like to connect regarding growth marketing services.`;
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
   },
 
@@ -154,10 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       // Save locally in background
-      NextReachAPI.submitAudit(data);
+      MarketiqxAPI.submitAudit(data);
 
       // Generate formatted WhatsApp message URL
-      const waUrl = NextReachAPI.createWhatsAppAuditUrl(data);
+      const waUrl = MarketiqxAPI.createWhatsAppAuditUrl(data);
 
       // Redirect immediately to WhatsApp
       window.location.href = waUrl;
@@ -185,10 +185,10 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       // Save locally in background
-      NextReachAPI.submitContact(data);
+      MarketiqxAPI.submitContact(data);
 
       // Generate WhatsApp Link
-      const waUrl = NextReachAPI.createWhatsAppContactUrl(data);
+      const waUrl = MarketiqxAPI.createWhatsAppContactUrl(data);
 
       // Redirect immediately to WhatsApp
       window.location.href = waUrl;

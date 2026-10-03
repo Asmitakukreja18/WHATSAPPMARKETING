@@ -1,6 +1,6 @@
-# NextReach DMS — Elite Revenue Machines & Multi-Channel Marketing Platform
+# Marketiqx — Elite Revenue Machines & Multi-Channel Marketing Platform
 
-NextReach DMS is a high-performance growth marketing agency and multi-channel revenue engine.
+Marketiqx is a high-performance growth marketing agency and multi-channel revenue engine.
 
 ## 🚀 Key Features & Pages
 - **Homepage (`index.html`)**: Attention Engineering, Infrastructure, GEO AI Search Optimization, Lead Gen Systems, and Customer Retention.
@@ -17,4 +17,4 @@ NextReach DMS is a high-performance growth marketing agency and multi-channel re
 - Responsive Mobile-First Architecture
 
 ---
-© 2026 NextReach DMS. All rights reserved.
+© 2026 Marketiqx. All rights reserved.

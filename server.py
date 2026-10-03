@@ -37,11 +37,11 @@ DEFAULT_TEMPLATES = [
         "category": "MARKETING",
         "language": "en",
         "status": "APPROVED",
-        "header": "🚀 NextReach Growth Pod Update",
+        "header": "🚀 Marketiqx Growth Pod Update",
         "body": "Hi {{1}}, thank you for booking a Free Growth Audit for {{2}}. Our Director is reviewing your pipeline. Your call is scheduled for {{3}}.",
         "buttons": [
             {"type": "QUICK_REPLY", "text": "Confirm Call 📞"},
-            {"type": "URL", "text": "View Case Studies 📈", "url": "https://nextreachdms.com/case-studies.html"}
+            {"type": "URL", "text": "View Case Studies 📈", "url": "https://marketiqx.com/case-studies.html"}
         ]
     },
     {
@@ -59,7 +59,7 @@ DEFAULT_TEMPLATES = [
     }
 ]
 
-class NextReachBackendHandler(http.server.SimpleHTTPRequestHandler):
+class MarketiqxBackendHandler(http.server.SimpleHTTPRequestHandler):
     
     def _send_json_response(self, status_code, data):
         self.send_response(status_code)
@@ -107,7 +107,7 @@ class NextReachBackendHandler(http.server.SimpleHTTPRequestHandler):
             hub_verify_token = query_params.get('hub.verify_token', [''])[0]
             hub_challenge = query_params.get('hub.challenge', [''])[0]
 
-            VERIFY_TOKEN = "nextreach_wa_secret_2026"
+            VERIFY_TOKEN = "marketiqx_wa_secret_2026"
             if hub_mode == "subscribe" and hub_verify_token == VERIFY_TOKEN:
                 self.send_response(200)
                 self.send_header('Content-Type', 'text/plain')
@@ -367,11 +367,11 @@ class NextReachBackendHandler(http.server.SimpleHTTPRequestHandler):
 
 def run_server():
     os.chdir(BASE_DIR)
-    with socketserver.TCPServer(("", PORT), NextReachBackendHandler) as httpd:
+    with socketserver.TCPServer(("", PORT), MarketiqxBackendHandler) as httpd:
         print("============================================================")
-        print("Server NextReach DMS & WhatsApp Marketing Engine Backend Live")
+        print("Server Marketiqx & WhatsApp Marketing Engine Backend Live")
         print(f"Base URL: http://localhost:{PORT}/")
-        print(f"NextReach Portal: http://localhost:{PORT}/nextreach/index.html")
+        print(f"Marketiqx Portal: http://localhost:{PORT}/marketiqx/index.html")
         print("REST API Endpoints:")
         print("   - POST /api/leads            (Lead Capture & Audit)")
         print("   - POST /api/contact          (Direct Inquiries)")

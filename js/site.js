@@ -58,7 +58,7 @@
               <span>💳</span> Pricing & Tariffs
             </a>
             <a href="about.html" class="${currentPage === 'about.html' || currentPage === 'about-us.html' ? 'active' : ''}">
-              <span>🏢</span> About NextReach DMS
+              <span>🏢</span> About Marketiqx
             </a>
             <a href="services.html" class="${currentPage === 'services.html' ? 'active' : ''}">
               <span>🚀</span> Growth Services

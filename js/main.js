@@ -1,5 +1,5 @@
 /**
- * NextReach DMS - Enterprise Agency JavaScript Engine
+ * Marketiqx - Enterprise Agency JavaScript Engine
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 1. Theme Management (Light / Dark)
 function initTheme() {
-  const savedTheme = localStorage.getItem('nextreach_theme') || 'dark';
+  const savedTheme = localStorage.getItem('marketiqx_theme') || 'dark';
   document.documentElement.setAttribute('data-theme', savedTheme);
   updateThemeIcon(savedTheme);
 
@@ -27,7 +27,7 @@ function initTheme() {
       const current = document.documentElement.getAttribute('data-theme');
       const next = current === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('nextreach_theme', next);
+      localStorage.setItem('marketiqx_theme', next);
       updateThemeIcon(next);
       showToast(`Switched to ${next === 'dark' ? '🌙 Dark Mode' : '☀️ Light Mode'}`);
     });

@@ -1,13 +1,13 @@
 /* ==========================================================================
-   NextReach DMS — Performance Growth Agency & AI Revenue Engine
+   Marketiqx — Performance Growth Agency & AI Revenue Engine
    Brand Theme: Deep Royal Navy Blue (#002D62) & Vibrant Growth Orange (#FF6B00)
-   Strictly Zero Green in Core Palette (Matching Official NextReach DMS Logo)
+   Strictly Zero Green in Core Palette (Matching Official Marketiqx Logo)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap');
 
 :root {
-  /* Brand Core Palette (Official NextReach DMS Logo Colors) */
+  /* Brand Core Palette (Official Marketiqx Logo Colors) */
   --nr-navy-deep: #001a3d;
   --nr-navy-main: #002d62;
   --nr-navy-light: #0d3b75;
@@ -5051,7 +5051,7 @@ input:checked+.slider-round:before {
 
 /* ==========================================================================
    ADWALI-INSPIRED ORGANIC TRANSITIONS & DYNAMIC MICRO-INTERACTIONS MODULE
-   (Preserving NextReach Deep Navy & Growth Orange Brand Palette)
+   (Preserving Marketiqx Deep Navy & Growth Orange Brand Palette)
    ========================================================================== */
 
 /* 1. Header Scroll Shrink & Glassmorphic Elevation */
@@ -5346,4 +5346,4 @@ input:checked+.slider-round:before {
     grid-template-columns: 1fr !important;
     gap: 20px !important;
   }
-}
+}

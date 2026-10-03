@@ -81,7 +81,7 @@ const server = http.createServer((req, res) => {
           category: "MARKETING",
           language: "en",
           status: "APPROVED",
-          header: "🚀 NextReach Growth Pod Update",
+          header: "🚀 Marketiqx Growth Pod Update",
           body: "Hi {{1}}, thank you for booking a Free Growth Audit for {{2}}. Our Director is reviewing your pipeline."
         }
       ]
@@ -226,8 +226,8 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => {
   console.log(`============================================================`);
-  console.log(`🚀 NextReach DMS & WhatsApp Marketing Server Running (Node.js)`);
+  console.log(`🚀 Marketiqx & WhatsApp Marketing Server Running (Node.js)`);
   console.log(`📍 URL: http://localhost:${PORT}/`);
-  console.log(`⚡ NextReach DMS: http://localhost:${PORT}/nextreach/index.html`);
+  console.log(`⚡ Marketiqx: http://localhost:${PORT}/marketiqx/index.html`);
   console.log(`============================================================`);
 });
